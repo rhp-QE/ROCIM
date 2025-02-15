@@ -1,5 +1,14 @@
 CMakeFiles/main.dir/main.cpp.o: /root/ROCIM/ROCIM_CLIENT/main.cpp \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/iostream \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/io_context.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/config.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/config.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/config/user.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/config/detail/select_compiler_config.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/config/compiler/clang.hpp \
+  /usr/lib/llvm-14/lib/clang/14.0.0/include/stdint.h \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/config/compiler/clang_version.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/config/detail/select_stdlib_config.hpp \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/version \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/x86_64-linux-gnu/c++/11/bits/c++config.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
   /usr/include/features.h /usr/include/features-time64.h \
@@ -11,39 +20,89 @@ CMakeFiles/main.dir/main.cpp.o: /root/ROCIM/ROCIM_CLIENT/main.cpp \
   /usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/x86_64-linux-gnu/c++/11/bits/cpu_defines.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/pstl/pstl_config.h \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/ostream \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/ios \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/iosfwd \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stringfwd.h \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/memoryfwd.h \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/postypes.h \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/cwchar \
-  /usr/include/wchar.h \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/config/stdlib/libstdcpp3.hpp \
+  /usr/include/unistd.h /usr/include/x86_64-linux-gnu/bits/posix_opt.h \
+  /usr/include/x86_64-linux-gnu/bits/environments.h \
+  /usr/include/x86_64-linux-gnu/bits/types.h \
+  /usr/include/x86_64-linux-gnu/bits/typesizes.h \
+  /usr/include/x86_64-linux-gnu/bits/time64.h \
+  /usr/lib/llvm-14/lib/clang/14.0.0/include/stddef.h \
+  /usr/include/x86_64-linux-gnu/bits/confname.h \
+  /usr/include/x86_64-linux-gnu/bits/getopt_posix.h \
+  /usr/include/x86_64-linux-gnu/bits/getopt_core.h \
+  /usr/include/x86_64-linux-gnu/bits/unistd_ext.h \
+  /usr/include/linux/close_range.h \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/ext/hash_set \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/ext/slist \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/shared_mutex \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/config/detail/select_platform_config.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/config/platform/linux.hpp \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/cstdlib \
+  /usr/include/stdlib.h \
   /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+  /usr/include/x86_64-linux-gnu/bits/waitflags.h \
+  /usr/include/x86_64-linux-gnu/bits/waitstatus.h \
   /usr/include/x86_64-linux-gnu/bits/floatn.h \
   /usr/include/x86_64-linux-gnu/bits/floatn-common.h \
-  /usr/lib/llvm-14/lib/clang/14.0.0/include/stddef.h \
-  /usr/lib/llvm-14/lib/clang/14.0.0/include/stdarg.h \
-  /usr/include/x86_64-linux-gnu/bits/wchar.h \
-  /usr/include/x86_64-linux-gnu/bits/types/wint_t.h \
-  /usr/include/x86_64-linux-gnu/bits/types/mbstate_t.h \
-  /usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h \
-  /usr/include/x86_64-linux-gnu/bits/types/__FILE.h \
-  /usr/include/x86_64-linux-gnu/bits/types/FILE.h \
   /usr/include/x86_64-linux-gnu/bits/types/locale_t.h \
   /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h \
+  /usr/include/x86_64-linux-gnu/sys/types.h \
+  /usr/include/x86_64-linux-gnu/bits/types/clock_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/clockid_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/time_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/timer_t.h \
+  /usr/include/x86_64-linux-gnu/bits/stdint-intn.h /usr/include/endian.h \
+  /usr/include/x86_64-linux-gnu/bits/endian.h \
+  /usr/include/x86_64-linux-gnu/bits/endianness.h \
+  /usr/include/x86_64-linux-gnu/bits/byteswap.h \
+  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+  /usr/include/x86_64-linux-gnu/sys/select.h \
+  /usr/include/x86_64-linux-gnu/bits/select.h \
+  /usr/include/x86_64-linux-gnu/bits/types/sigset_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h \
+  /usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h \
+  /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h \
+  /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h \
+  /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h \
+  /usr/include/x86_64-linux-gnu/bits/atomic_wide_counter.h \
+  /usr/include/x86_64-linux-gnu/bits/struct_mutex.h \
+  /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h \
+  /usr/include/alloca.h \
+  /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/std_abs.h \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/config/detail/posix_features.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/config/detail/suffix.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/config/helper_macros.hpp \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/optional \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/string_view \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/variant \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/any \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/memory_resource \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/charconv \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/execution \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/filesystem \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/config/detail/cxx_composite.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/version.hpp \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/experimental/string_view \
+  /usr/include/linux/version.h \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/cstddef \
+  /usr/lib/llvm-14/lib/clang/14.0.0/include/__stddef_max_align_t.h \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/stdexcept \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/exception \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/exception.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/exception_ptr.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/exception_defines.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/cxxabi_init_exception.h \
-  /usr/lib/llvm-14/lib/clang/14.0.0/include/__stddef_max_align_t.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/typeinfo \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/hash_bytes.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/new \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/move.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/type_traits \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/nested_exception.h \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/string \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stringfwd.h \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/memoryfwd.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/char_traits.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_algobase.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/functexcept.h \
@@ -59,55 +118,29 @@ CMakeFiles/main.dir/main.cpp.o: /root/ROCIM/ROCIM_CLIENT/main.cpp \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/ptr_traits.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/debug/debug.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/predefined_ops.h \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/postypes.h \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/cwchar \
+  /usr/include/wchar.h \
+  /usr/lib/llvm-14/lib/clang/14.0.0/include/stdarg.h \
+  /usr/include/x86_64-linux-gnu/bits/wchar.h \
+  /usr/include/x86_64-linux-gnu/bits/types/wint_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/mbstate_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/__FILE.h \
+  /usr/include/x86_64-linux-gnu/bits/types/FILE.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/cstdint \
-  /usr/lib/llvm-14/lib/clang/14.0.0/include/stdint.h \
-  /usr/include/stdint.h /usr/include/x86_64-linux-gnu/bits/types.h \
-  /usr/include/x86_64-linux-gnu/bits/typesizes.h \
-  /usr/include/x86_64-linux-gnu/bits/time64.h \
-  /usr/include/x86_64-linux-gnu/bits/stdint-intn.h \
+  /usr/include/stdint.h \
   /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/allocator.h \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/x86_64-linux-gnu/c++/11/bits/c++allocator.h \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/ext/new_allocator.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/localefwd.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/x86_64-linux-gnu/c++/11/bits/c++locale.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/clocale \
   /usr/include/locale.h /usr/include/x86_64-linux-gnu/bits/locale.h \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/iosfwd \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/cctype \
-  /usr/include/ctype.h /usr/include/x86_64-linux-gnu/bits/endian.h \
-  /usr/include/x86_64-linux-gnu/bits/endianness.h \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/ios_base.h \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/ext/atomicity.h \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/x86_64-linux-gnu/c++/11/bits/gthr.h \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/x86_64-linux-gnu/c++/11/bits/gthr-default.h \
-  /usr/include/pthread.h /usr/include/sched.h \
-  /usr/include/x86_64-linux-gnu/bits/types/time_t.h \
-  /usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h \
-  /usr/include/x86_64-linux-gnu/bits/sched.h \
-  /usr/include/x86_64-linux-gnu/bits/types/struct_sched_param.h \
-  /usr/include/x86_64-linux-gnu/bits/cpu-set.h /usr/include/time.h \
-  /usr/include/x86_64-linux-gnu/bits/time.h \
-  /usr/include/x86_64-linux-gnu/bits/timex.h \
-  /usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h \
-  /usr/include/x86_64-linux-gnu/bits/types/clock_t.h \
-  /usr/include/x86_64-linux-gnu/bits/types/struct_tm.h \
-  /usr/include/x86_64-linux-gnu/bits/types/clockid_t.h \
-  /usr/include/x86_64-linux-gnu/bits/types/timer_t.h \
-  /usr/include/x86_64-linux-gnu/bits/types/struct_itimerspec.h \
-  /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h \
-  /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h \
-  /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h \
-  /usr/include/x86_64-linux-gnu/bits/atomic_wide_counter.h \
-  /usr/include/x86_64-linux-gnu/bits/struct_mutex.h \
-  /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h \
-  /usr/include/x86_64-linux-gnu/bits/setjmp.h \
-  /usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h \
-  /usr/include/x86_64-linux-gnu/bits/types/struct___jmp_buf_tag.h \
-  /usr/include/x86_64-linux-gnu/bits/pthread_stack_min-dynamic.h \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/x86_64-linux-gnu/c++/11/bits/atomic_word.h \
-  /usr/include/x86_64-linux-gnu/sys/single_threaded.h \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/locale_classes.h \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/string \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/allocator.h \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/x86_64-linux-gnu/c++/11/bits/c++allocator.h \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/ext/new_allocator.h \
+  /usr/include/ctype.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/ostream_insert.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/cxxabi_forced.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_function.h \
@@ -115,25 +148,28 @@ CMakeFiles/main.dir/main.cpp.o: /root/ROCIM/ROCIM_CLIENT/main.cpp \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/range_access.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/initializer_list \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/basic_string.h \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/ext/atomicity.h \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/x86_64-linux-gnu/c++/11/bits/gthr.h \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/x86_64-linux-gnu/c++/11/bits/gthr-default.h \
+  /usr/include/pthread.h /usr/include/sched.h \
+  /usr/include/x86_64-linux-gnu/bits/sched.h \
+  /usr/include/x86_64-linux-gnu/bits/types/struct_sched_param.h \
+  /usr/include/x86_64-linux-gnu/bits/cpu-set.h /usr/include/time.h \
+  /usr/include/x86_64-linux-gnu/bits/time.h \
+  /usr/include/x86_64-linux-gnu/bits/timex.h \
+  /usr/include/x86_64-linux-gnu/bits/types/struct_tm.h \
+  /usr/include/x86_64-linux-gnu/bits/types/struct_itimerspec.h \
+  /usr/include/x86_64-linux-gnu/bits/setjmp.h \
+  /usr/include/x86_64-linux-gnu/bits/types/struct___jmp_buf_tag.h \
+  /usr/include/x86_64-linux-gnu/bits/pthread_stack_min-dynamic.h \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/x86_64-linux-gnu/c++/11/bits/atomic_word.h \
+  /usr/include/x86_64-linux-gnu/sys/single_threaded.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/ext/alloc_traits.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/alloc_traits.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_construct.h \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/string_view \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/functional_hash.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/string_view.tcc \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/ext/string_conversions.h \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/cstdlib \
-  /usr/include/stdlib.h /usr/include/x86_64-linux-gnu/bits/waitflags.h \
-  /usr/include/x86_64-linux-gnu/bits/waitstatus.h \
-  /usr/include/x86_64-linux-gnu/sys/types.h /usr/include/endian.h \
-  /usr/include/x86_64-linux-gnu/bits/byteswap.h \
-  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
-  /usr/include/x86_64-linux-gnu/sys/select.h \
-  /usr/include/x86_64-linux-gnu/bits/select.h \
-  /usr/include/x86_64-linux-gnu/bits/types/sigset_t.h \
-  /usr/include/alloca.h \
-  /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/std_abs.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/cstdio \
   /usr/include/stdio.h \
   /usr/include/x86_64-linux-gnu/bits/types/__fpos_t.h \
@@ -148,38 +184,41 @@ CMakeFiles/main.dir/main.cpp.o: /root/ROCIM/ROCIM_CLIENT/main.cpp \
   /usr/include/x86_64-linux-gnu/bits/types/error_t.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/charconv.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/basic_string.tcc \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/locale_classes.tcc \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/system_error \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/x86_64-linux-gnu/c++/11/bits/error_constants.h \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/stdexcept \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/streambuf \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/streambuf.tcc \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/basic_ios.h \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/locale_facets.h \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/cwctype \
-  /usr/include/wctype.h \
-  /usr/include/x86_64-linux-gnu/bits/wctype-wchar.h \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/x86_64-linux-gnu/c++/11/bits/ctype_base.h \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/streambuf_iterator.h \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/x86_64-linux-gnu/c++/11/bits/ctype_inline.h \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/locale_facets.tcc \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/basic_ios.tcc \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/ostream.tcc \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/istream \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/istream.tcc \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/async_result.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/type_traits.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/push_options.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/pop_options.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/default_completion_token.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/deferred.hpp \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/tuple \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/utility \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_relops.h \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/array \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/uses_allocator.h \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/invoke.h \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/associator.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/utility.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/impl/deferred.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/chrono.hpp \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/chrono \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/ratio \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/limits \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/ctime \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/parse_numbers.h \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/concurrency_hint.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/noncopyable.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/cstdint.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/wrapped_handler.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/bind_handler.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/handler_cont_helpers.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/memory.hpp \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/memory \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_uninitialized.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_tempbuf.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_raw_storage_iter.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/align.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bit \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/uses_allocator.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/unique_ptr.h \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/utility \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_relops.h \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/tuple \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/array \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/invoke.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/shared_ptr.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/shared_ptr_base.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/allocated_ptr.h \
@@ -192,67 +231,6 @@ CMakeFiles/main.dir/main.cpp.o: /root/ROCIM/ROCIM_CLIENT/main.cpp \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/backward/auto_ptr.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/pstl/glue_memory_defs.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/pstl/execution_defs.h \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/any_completion_executor.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/config.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/config.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/config/user.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/config/detail/select_compiler_config.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/config/compiler/clang.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/config/compiler/clang_version.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/config/detail/select_stdlib_config.hpp \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/version \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/config/stdlib/libstdcpp3.hpp \
-  /usr/include/unistd.h /usr/include/x86_64-linux-gnu/bits/posix_opt.h \
-  /usr/include/x86_64-linux-gnu/bits/environments.h \
-  /usr/include/x86_64-linux-gnu/bits/confname.h \
-  /usr/include/x86_64-linux-gnu/bits/getopt_posix.h \
-  /usr/include/x86_64-linux-gnu/bits/getopt_core.h \
-  /usr/include/x86_64-linux-gnu/bits/unistd_ext.h \
-  /usr/include/linux/close_range.h \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/ext/hash_set \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/ext/slist \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/shared_mutex \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/config/detail/select_platform_config.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/config/platform/linux.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/config/detail/posix_features.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/config/detail/suffix.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/config/helper_macros.hpp \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/optional \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/variant \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/any \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/memory_resource \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/charconv \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/execution \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/filesystem \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/config/detail/cxx_composite.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/version.hpp \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/experimental/string_view \
-  /usr/include/linux/version.h \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/execution.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/execution/allocator.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/type_traits.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/execution/executor.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/execution/invocable_archetype.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/push_options.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/pop_options.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/traits/equality_comparable.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/traits/execute_member.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/is_applicable_property.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/traits/query_static_constexpr_member.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/traits/static_query.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/execution/any_executor.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/assert.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/assert.hpp \
-  /usr/include/assert.h \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/atomic_count.hpp \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/atomic \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/cstddef.hpp \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/cstddef \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/executor_function.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/handler_alloc_helpers.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/memory.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/cstdint.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/throw_exception.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/throw_exception.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/exception/exception.hpp \
@@ -261,27 +239,12 @@ CMakeFiles/main.dir/main.cpp.o: /root/ROCIM/ROCIM_CLIENT/main.cpp \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/cstring \
   /usr/include/string.h /usr/include/strings.h \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/config/workaround.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/recycling_allocator.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/thread_context.hpp \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/climits \
-  /usr/lib/llvm-14/lib/clang/14.0.0/include/limits.h \
-  /usr/include/limits.h /usr/include/x86_64-linux-gnu/bits/posix1_lim.h \
-  /usr/include/x86_64-linux-gnu/bits/local_lim.h \
-  /usr/include/linux/limits.h \
-  /usr/include/x86_64-linux-gnu/bits/posix2_lim.h \
-  /usr/include/x86_64-linux-gnu/bits/xopen_lim.h \
-  /usr/include/x86_64-linux-gnu/bits/uio_lim.h \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/call_stack.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/noncopyable.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/tss_ptr.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/keyword_tss_ptr.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/impl/thread_context.ipp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/thread_info_base.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/multiple_exceptions.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/impl/multiple_exceptions.ipp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/associated_allocator.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/associator.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/functional.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/handler_continuation_hook.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/system/error_code.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/system/detail/error_code.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/system/is_error_code_enum.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/system/detail/error_category.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/system/detail/config.hpp \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/functional \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/std_function.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/unordered_map \
@@ -299,6 +262,91 @@ CMakeFiles/main.dir/main.cpp.o: /root/ROCIM/ROCIM_CLIENT/main.cpp \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/algorithmfwd.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_heap.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/uniform_int_dist.h \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/system_error \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/x86_64-linux-gnu/c++/11/bits/error_constants.h \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/atomic \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/system/detail/error_condition.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/system/detail/generic_category.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/system/detail/generic_category_message.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/system/detail/enable_if.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/system/detail/is_same.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/system/detail/errc.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/system/is_error_condition_enum.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/system/detail/cerrno.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/system/detail/append_int.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/system/detail/snprintf.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/system/detail/system_category.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/system/detail/system_category_impl.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/system/detail/system_category_message.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/system/api_config.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/system/detail/interop_category.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/system/detail/std_category.hpp \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/ostream \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/ios \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/ios_base.h \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/locale_classes.h \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/locale_classes.tcc \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/streambuf \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/streambuf.tcc \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/basic_ios.h \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/locale_facets.h \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/cwctype \
+  /usr/include/wctype.h \
+  /usr/include/x86_64-linux-gnu/bits/wctype-wchar.h \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/x86_64-linux-gnu/c++/11/bits/ctype_base.h \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/streambuf_iterator.h \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/x86_64-linux-gnu/c++/11/bits/ctype_inline.h \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/locale_facets.tcc \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/basic_ios.tcc \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/ostream.tcc \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/system/error_category.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/system/detail/error_category_impl.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/system/detail/std_category_impl.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/system/detail/mutex.hpp \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/mutex \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/std_mutex.h \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/unique_lock.h \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/system/error_condition.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/system/errc.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/system/generic_category.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/system/system_category.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/system/detail/throws.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/execution.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/execution/allocator.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/execution/executor.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/execution/invocable_archetype.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/traits/equality_comparable.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/traits/execute_member.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/is_applicable_property.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/traits/query_static_constexpr_member.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/traits/static_query.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/execution/any_executor.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/assert.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/assert.hpp \
+  /usr/include/assert.h \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/atomic_count.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/cstddef.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/executor_function.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/handler_alloc_helpers.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/recycling_allocator.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/thread_context.hpp \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/climits \
+  /usr/lib/llvm-14/lib/clang/14.0.0/include/limits.h \
+  /usr/include/limits.h /usr/include/x86_64-linux-gnu/bits/posix1_lim.h \
+  /usr/include/x86_64-linux-gnu/bits/local_lim.h \
+  /usr/include/linux/limits.h \
+  /usr/include/x86_64-linux-gnu/bits/posix2_lim.h \
+  /usr/include/x86_64-linux-gnu/bits/xopen_lim.h \
+  /usr/include/x86_64-linux-gnu/bits/uio_lim.h \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/call_stack.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/tss_ptr.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/keyword_tss_ptr.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/impl/thread_context.ipp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/thread_info_base.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/multiple_exceptions.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/impl/multiple_exceptions.ipp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/associated_allocator.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/functional.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/non_const_lvalue.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/scoped_ptr.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/execution/bad_executor.hpp \
@@ -319,44 +367,6 @@ CMakeFiles/main.dir/main.cpp.o: /root/ROCIM/ROCIM_CLIENT/main.cpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/posix_event.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/impl/posix_event.ipp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/throw_error.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/system/error_code.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/system/detail/error_code.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/system/is_error_code_enum.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/system/detail/error_category.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/system/detail/config.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/system/detail/error_condition.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/system/detail/generic_category.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/system/detail/generic_category_message.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/system/detail/enable_if.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/system/detail/is_same.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/system/detail/errc.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/system/is_error_condition_enum.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/system/detail/cerrno.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/system/detail/append_int.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/system/detail/snprintf.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/system/detail/system_category.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/system/detail/system_category_impl.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/system/detail/system_category_message.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/system/api_config.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/system/detail/interop_category.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/system/detail/std_category.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/system/error_category.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/system/detail/error_category_impl.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/system/detail/std_category_impl.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/system/detail/mutex.hpp \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/mutex \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/chrono \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/ratio \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/limits \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/ctime \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/parse_numbers.h \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/std_mutex.h \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/unique_lock.h \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/system/error_condition.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/system/errc.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/system/generic_category.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/system/system_category.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/system/detail/throws.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/impl/throw_error.ipp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/system/system_error.hpp \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/cassert \
@@ -395,52 +405,27 @@ CMakeFiles/main.dir/main.cpp.o: /root/ROCIM/ROCIM_CLIENT/main.cpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/execution/outstanding_work.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/execution/prefer_only.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/execution/relationship.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/impl/any_completion_executor.ipp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/any_completion_handler.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/any_io_executor.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/execution_context.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/impl/execution_context.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/handler_type_requirements.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/async_result.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/default_completion_token.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/deferred.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/utility.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/impl/deferred.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/service_registry.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/impl/service_registry.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/impl/service_registry.ipp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/impl/execution_context.ipp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/impl/any_io_executor.ipp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/associated_cancellation_slot.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/cancellation_signal.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/cancellation_type.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/impl/cancellation_signal.ipp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/associated_executor.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/is_executor.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/is_executor.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/system_executor.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/impl/system_executor.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/executor_op.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/fenced_block.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/std_fenced_block.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/scheduler_operation.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/handler_tracking.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/impl/handler_tracking.ipp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/op_queue.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/global.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/posix_global.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/system_context.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/scheduler.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/conditionally_enabled_event.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/conditionally_enabled_mutex.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/null_event.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/impl/null_event.ipp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/op_queue.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/scheduler_operation.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/handler_tracking.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/impl/handler_tracking.ipp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/scheduler_task.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/thread.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/posix_thread.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/impl/posix_thread.ipp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/impl/scheduler.ipp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/concurrency_hint.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/limits.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/scheduler_thread_info.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/signal_blocker.hpp \
@@ -513,16 +498,45 @@ CMakeFiles/main.dir/main.cpp.o: /root/ROCIM/ROCIM_CLIENT/main.cpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/impl/epoll_reactor.ipp \
   /usr/include/x86_64-linux-gnu/sys/epoll.h \
   /usr/include/x86_64-linux-gnu/bits/epoll.h \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/impl/io_context.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/completion_handler.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/fenced_block.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/std_fenced_block.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/handler_work.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/associated_executor.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/is_executor.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/is_executor.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/system_executor.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/impl/system_executor.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/executor_op.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/global.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/posix_global.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/system_context.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/thread_group.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/impl/system_context.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/impl/system_context.ipp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/associated_immediate_executor.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/initiate_dispatch.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/work_dispatcher.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/executor_work_guard.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/impl/io_context.ipp \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/iostream \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/istream \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/istream.tcc \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/any_completion_executor.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/impl/any_completion_executor.ipp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/any_completion_handler.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/any_io_executor.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/impl/any_io_executor.ipp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/associated_cancellation_slot.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/cancellation_signal.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/cancellation_type.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/impl/cancellation_signal.ipp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/cancellation_state.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/recycling_allocator.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/append.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/impl/append.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/handler_cont_helpers.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/handler_continuation_hook.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/initiation_base.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/as_tuple.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/impl/as_tuple.hpp \
@@ -530,17 +544,6 @@ CMakeFiles/main.dir/main.cpp.o: /root/ROCIM/ROCIM_CLIENT/main.cpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/basic_datagram_socket.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/basic_socket.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/io_object_impl.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/io_context.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/chrono.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/wrapped_handler.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/bind_handler.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/impl/io_context.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/completion_handler.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/handler_work.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/initiate_dispatch.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/work_dispatcher.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/executor_work_guard.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/impl/io_context.ipp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/post.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/initiate_post.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/socket_base.hpp \
@@ -1127,4 +1130,11 @@ CMakeFiles/main.dir/main.cpp.o: /root/ROCIM/ROCIM_CLIENT/main.cpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/bind/detail/bind_cc.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/bind/detail/bind_mf_cc.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/bind/detail/bind_mf2_cc.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/bind/placeholders.hpp
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/bind/placeholders.hpp \
+  /root/ROCIM/ROCIM_CLIENT/include/net/ILongConnection.h \
+  /root/ROCIM/ROCIM_CLIENT/include/net/LongConnectionImpl.h \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/queue \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/deque \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_deque.h \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/deque.tcc \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_queue.h

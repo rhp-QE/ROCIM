@@ -29,6 +29,8 @@ public:
 
     void appendString(const std::string &str);
 
+    char* writeIndex();
+
 private:
     int readIndex_;
     int writeIndex_;

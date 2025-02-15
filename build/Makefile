@@ -527,29 +527,29 @@ main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main.cpp.s
 .PHONY : main.cpp.s
 
-src/Sample.o: src/Sample.cpp.o
-.PHONY : src/Sample.o
+src/net/LongConnectionImpl.o: src/net/LongConnectionImpl.cpp.o
+.PHONY : src/net/LongConnectionImpl.o
 
 # target to build an object file
-src/Sample.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/Sample.cpp.o
-.PHONY : src/Sample.cpp.o
+src/net/LongConnectionImpl.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/net/LongConnectionImpl.cpp.o
+.PHONY : src/net/LongConnectionImpl.cpp.o
 
-src/Sample.i: src/Sample.cpp.i
-.PHONY : src/Sample.i
+src/net/LongConnectionImpl.i: src/net/LongConnectionImpl.cpp.i
+.PHONY : src/net/LongConnectionImpl.i
 
 # target to preprocess a source file
-src/Sample.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/Sample.cpp.i
-.PHONY : src/Sample.cpp.i
+src/net/LongConnectionImpl.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/net/LongConnectionImpl.cpp.i
+.PHONY : src/net/LongConnectionImpl.cpp.i
 
-src/Sample.s: src/Sample.cpp.s
-.PHONY : src/Sample.s
+src/net/LongConnectionImpl.s: src/net/LongConnectionImpl.cpp.s
+.PHONY : src/net/LongConnectionImpl.s
 
 # target to generate assembly for a file
-src/Sample.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/Sample.cpp.s
-.PHONY : src/Sample.cpp.s
+src/net/LongConnectionImpl.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/net/LongConnectionImpl.cpp.s
+.PHONY : src/net/LongConnectionImpl.cpp.s
 
 # Help Target
 help:
@@ -592,9 +592,9 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
-	@echo "... src/Sample.o"
-	@echo "... src/Sample.i"
-	@echo "... src/Sample.s"
+	@echo "... src/net/LongConnectionImpl.o"
+	@echo "... src/net/LongConnectionImpl.i"
+	@echo "... src/net/LongConnectionImpl.s"
 .PHONY : help
 
 

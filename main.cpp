@@ -1,7 +1,12 @@
+#include <boost/asio/io_context.hpp>
 #include <iostream>
 #include <memory>
 #include <boost/asio.hpp>
 #include <boost/bind/bind.hpp>
+
+
+#include <net/ILongConnection.h>
+#include <net/LongConnectionImpl.h>
 
 using boost::asio::ip::tcp;
 
@@ -84,7 +89,8 @@ private:
     tcp::acceptor acceptor_;
 };
 
-int main() {
+
+void test1() {
     try {
         boost::asio::io_context io_context;
         Server server(io_context, 8888);  // 监听端口 7777
@@ -92,6 +98,81 @@ int main() {
     } catch (std::exception& e) {
         std::cerr << "Exception: " << e.what() << std::endl;
     }
+}
 
+void test2() {
+    // boost::asio::io_context io_context;
+    
+    // roc::net::LongConnectionConfig config1 = {"127.0.0.1", "8181", 30000 };
+
+
+    // auto client = roc::net::Client::create(io_context, config1);
+    
+    // client->set_receive_callback([](const std::vector<char>& data) {
+    //     std::cout<<"receive data : "<<std::string(data.begin(), data.end())<<std::endl;
+    // });
+
+    // client->set_connect_callback([&client]() {
+    //     std::cout<<"connect success up"<<std::endl;
+    //     // 发送数据示例
+    //     client->send({'H', 'e', 'l', 'l', 'o'});
+    // });
+    
+    // client->connect();
+
+    // // 在其他线程运行io_context
+    // std::thread io_thread([&io_context](){
+    //     io_context.run();
+    // });
+    
+   
+    // ...其他业务逻辑
+    while(true){}
+}
+
+void test3() {
+    using namespace::roc::net;
+    using LongConnectionType = ILongConnection<LongConnectionImpl>;
+
+    boost::asio::io_context io_context;
+    
+    roc::net::LongConnectionConfig config = {"127.0.0.1", "8181", 30000 };
+
+    std::shared_ptr<LongConnectionType> conn = std::make_shared<LongConnectionImpl>(io_context, config);
+
+    std::cout<<"ok1"<<std::endl;
+
+    conn->set_receive_callback([](const std::vector<char>& data) {
+        std::cout<<"receive data : "<<std::string(data.begin(), data.end())<<std::endl;
+    });
+
+    std::cout<<"ok1"<<std::endl;
+    conn->set_connect_callback([&conn]() {
+        std::cout<<"connect success up"<<std::endl;
+        // 发送数据示例
+        conn->send({'H', 'e', 'l', 'l', 'o'});
+    });
+    
+    std::cout<<"ok1"<<std::endl;
+    conn->connect();
+
+    std::cout<<"ok1"<<std::endl;
+    std::cout<<"ok1"<<std::endl;
+
+    // 在其他线程运行io_context
+    std::thread io_thread([&io_context](){
+        io_context.run();
+    });
+    
+   
+    // ...其他业务逻辑
+    std::string str;
+    while(std::cin>>str){
+        conn->send(std::vector<char>(str.begin(), str.end()));
+    }
+}
+
+int main() {
+    test3();
     return 0;
 }

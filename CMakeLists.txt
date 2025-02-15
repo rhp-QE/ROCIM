@@ -19,7 +19,7 @@ project(ROCIM_CLIENT VERSION 0.1.0 LANGUAGES C CXX)
 include_directories(${CMAKE_SOURCE_DIR}/include)
 
 # src
-file(GLOB SOURCES "src/*.cpp")
+file(GLOB SOURCES "src/net/*.cpp")
 
 # main
 list(APPEND SOURCES ${CMAKE_SOURCE_DIR}/main.cpp)

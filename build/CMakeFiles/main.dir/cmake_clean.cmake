@@ -1,8 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/main.dir/main.cpp.o"
   "CMakeFiles/main.dir/main.cpp.o.d"
-  "CMakeFiles/main.dir/src/Sample.cpp.o"
-  "CMakeFiles/main.dir/src/Sample.cpp.o.d"
+  "CMakeFiles/main.dir/src/net/LongConnectionImpl.cpp.o"
+  "CMakeFiles/main.dir/src/net/LongConnectionImpl.cpp.o.d"
   "main"
   "main.pdb"
 )
