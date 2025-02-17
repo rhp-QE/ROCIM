@@ -8,6 +8,7 @@
 #include <memory>
 #include <mutex>
 #include <cstring>
+#include <optional>
 
 namespace roc::base {
 
@@ -54,9 +55,10 @@ public:
     void write(const void* data, size_t len);           // 用户主动写入数据（追加到末尾）
     std::vector<boost::asio::mutable_buffer> prepare_buffers(size_t hint = 0); // 获取可写缓冲区
     void commit(size_t written);                        // 提交写入数据
-    ReadResult get_read_buffers(size_t size = 0);           // 返回数据及区间游标
+    std::optional<ReadResult> get_read_buffers(size_t size = 0);           // 返回数据及区间游标
 
-    size_t length() const noexcept;                        // 当前可读数据总长度
+    size_t readable() const noexcept;                        // 当前可读数据总长度
+    size_t writeable() const noexcept;
 
 private:
     mutable std::mutex mutex_;

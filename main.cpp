@@ -146,7 +146,7 @@ void test4() {
 
 
     conn->set_receive_callback([](roc::base::NetBuffer *buffer) {
-        auto str = buffer->get_read_buffers().readString();
+        auto str = buffer->get_read_buffers().value().readString();
 
         std::cout<<"[receive data]"<<str<<std::endl;
     });
@@ -182,11 +182,11 @@ void testBuffer() {
     string str = "rhpmark";
 
     buffer->write(str.data(), str.length());
-    std::string res = buffer->get_read_buffers().readString();
+    std::string res = buffer->get_read_buffers().value().readString();
 
     str = "appendstr";
     buffer->write(str.data(), str.length());
-    std::string res1 = buffer->get_read_buffers().readString();
+    std::string res1 = buffer->get_read_buffers().value().readString();
 
 
     cout<<res<<endl;

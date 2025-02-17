@@ -5,6 +5,7 @@
 #include <iostream>
 #include <list>
 #include <memory>
+#include <optional>
 #include <system_error>
 
 using namespace::roc::base;
@@ -105,7 +106,13 @@ void NetBuffer::write(const void* data, size_t len) {
 }
 
 std::vector<boost::asio::mutable_buffer> NetBuffer::prepare_buffers(size_t hint) {
-    hint = hint == 0 ? 1 : hint;
+    /// 保证有足够空间
+    if (writeable() < hint || writeable() == 0) {
+        append_new_block(std::max(default_block_size_, hint));
+    }
+
+    hint = (hint == 0) ? writeable() : hint;
+    size_t oo = hint;
     std::cout<<"[prepare]"<<hint<<std::endl;
     std::vector<boost::asio::mutable_buffer> bufs;
     std::list<std::unique_ptr<Block>>::const_iterator it = write_block_cursor_;
@@ -115,65 +122,58 @@ std::vector<boost::asio::mutable_buffer> NetBuffer::prepare_buffers(size_t hint)
     for(; it != blocks_.end(); ++it) {
         auto& block = *it;
 
-        bufs.emplace_back(block->data.get() + block->write_pos, block->writable());
-        tt += block->writable();
+        size_t chunk = std::min(hint, block->writable());
 
-        if (block->writable() >= hint) {
-            hint = 0;
+        bufs.emplace_back(block->data.get() + block->write_pos, chunk);
+        tt += chunk;
+        hint -= chunk;
+        if (hint == 0) {
             break;
-        } else {
-            hint -= block->writable();
         }
-    }
-
-    if (hint > 0) {
-        const size_t new_size = std::max(default_block_size_, hint);
-        append_new_block(new_size);
-        auto& new_block = blocks_.back();
-        bufs.emplace_back(new_block->data.get(), new_block->writable());
-        tt += new_block->writable();
     }
 
     ++id;
     std::cout<<"[call prepare buffer]"<<this<<" "<<tt<<" "<<id<<std::endl;
 
+    std::cout<<"[block count]"<<this<<" "<<blocks_.size()<<std::endl;
+
     return bufs;
 }
 
 void NetBuffer::commit(size_t written) {
+    if (written > writeable()) {
+        std::cout<<"error"<<std::endl;
+        return;
+    }
+
     std::cout<<"[call commit] :"<<this<<" "<<written<<" "<<id<<std::endl;
     std::list<std::unique_ptr<Block>>::const_iterator it = write_block_cursor_;
 
     for(; it != blocks_.end(); ++it) {
         auto& block = *it;
-        size_t blockCommit = std::min(block->writable(), written);
-        block->write_pos += blockCommit;
-        written -= blockCommit;
+        size_t chunk = std::min(block->writable(), written);
+        block->write_pos += chunk;
+        written -= chunk;
 
-        std::cout<<"[block commit count]"<<blockCommit<<std::endl;
+        std::cout<<"[block commit count]"<<chunk<<std::endl;
 
         if (written == 0) {
             break;
         }
     }
 
-    if (it != blocks_.end() && (*it)->writable() == 0) {
-        ++it;
-    }
-
     write_block_cursor_ = it;
-
-    if (written > 0) {
-        std::cerr<<"[base::buffer::commit error] commit count over writeable "<<written<<std::endl;
-    }
 }
 
-NetBuffer::ReadResult NetBuffer::get_read_buffers(size_t size) {
+std::optional<NetBuffer::ReadResult> NetBuffer::get_read_buffers(size_t size) {
+
+    if (size > readable() || readable() == 0) {
+        std::cerr << "[base::buffer::get_read_buffer] readable count is not enough" << std::endl;
+        return std::nullopt;
+    }
 
     NetBuffer::ReadResult result;
-    size_t len = length();
-
-    size = (size == 0) ? len : size;
+    size = (size == 0) ? readable() : size;
 
     // 从全局游标位置开始读取
     auto it = read_block_cursor_;
@@ -183,8 +183,7 @@ NetBuffer::ReadResult NetBuffer::get_read_buffers(size_t size) {
 
     for (; it != blocks_.end(); ++it) {
         auto& block = *it;
-        const size_t readable = block->readable();
-        const size_t chunk = std::min(readable, size);
+        const size_t chunk = std::min(block->readable(), size);
         buffers.emplace_back(block->data.get() + block->read_pos, chunk);
         block->read_pos += chunk;
         size -= chunk;
@@ -196,10 +195,6 @@ NetBuffer::ReadResult NetBuffer::get_read_buffers(size_t size) {
         }
     }
 
-    if (size != 0) {
-        std::cerr << "[base::buffer::get_read_buffer error] readable count is not enough" << std::endl;
-    }
-
     result.cursor.start_block = read_block_cursor_;
     result.buffers = buffers;
     result.buffer_ = shared_from_this();
@@ -208,7 +203,7 @@ NetBuffer::ReadResult NetBuffer::get_read_buffers(size_t size) {
     return result;
 }
 
-size_t NetBuffer::length() const noexcept {
+size_t NetBuffer::readable() const noexcept {
     std::list<std::unique_ptr<Block>>::const_iterator it = read_block_cursor_;
     size_t total = 0;
 
@@ -220,7 +215,23 @@ size_t NetBuffer::length() const noexcept {
     return total;
 }
 
+size_t NetBuffer::writeable() const noexcept {
+    std::list<std::unique_ptr<Block>>::const_iterator it = read_block_cursor_;
+    size_t total = 0;
+
+    for (; it != blocks_.end(); ++it) {
+        auto& block = *it;
+        total += block->writable();
+    }
+
+    return total;
+}
+
 void NetBuffer::append_new_block(size_t hint) {
+    bool end = write_block_cursor_ == blocks_.end();
     const size_t new_size = std::max(default_block_size_, hint);
     blocks_.emplace_back(std::make_unique<Block>(new_size));
+    if (end) {
+        write_block_cursor_ = --blocks_.end();
+    }
 }

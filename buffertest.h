@@ -70,17 +70,19 @@ void test3() {
     int cnt = 1;
 
     conn->set_receive_callback([&cnt, conn](roc::base::NetBuffer *buffer) {
-        std::cout<<"[call receive data]"<<std::endl;
-        size_t len = buffer->length();
-        if (len<size) {
+        
+        auto data = buffer->get_read_buffers(size);
+        if (!data) {
             return;
         }
 
-        auto sizee = buffer->get_read_buffers(size).readBytes(bbb);
-        
+        auto sizee = data.value().readBytes(bbb);
+
         check();
 
         cc-=1;
+
+        std::cout<<"[left receive count]"<<cc<<std::endl;
         if (cc > 0) {
             product();
             conn->send(buf, size);

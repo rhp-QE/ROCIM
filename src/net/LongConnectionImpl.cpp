@@ -105,23 +105,25 @@ void LongConnectionImpl::do_write() {
     auto self = shared_from_this();
     
     auto readResult = self->write_buffer_->get_read_buffers();
+    if (!readResult){
+        return;
+    }
 
-    auto str = readResult.readString();
+    auto str = readResult.value().readString();
 
     boost::asio::async_write(
         socket_,
-        readResult.buffers,
+        readResult.value().buffers,
         [self, readResult](const boost::system::error_code& ec, size_t) {
             if (ec) {
                 self->handle_disconnect(ec);
                 return;
             }
 
-           // auto str = self->write_buffer_->get_read_buffers().readString();
-
-          //  if (str.length()) {
-          //      self->do_write();
-          //  }
+            if (self->write_buffer_->readable() > 0) {
+                std::cout<<"read recall"<<std::endl;
+                self->do_write();
+            }
         });
 }
 
