@@ -9,6 +9,8 @@
 
 using namespace::roc::base;
 
+int id = 0;
+
 NetBuffer::Block::Block(size_t size) 
     : capacity(size), data(new char[size]) {}
 
@@ -108,10 +110,13 @@ std::vector<boost::asio::mutable_buffer> NetBuffer::prepare_buffers(size_t hint)
     std::vector<boost::asio::mutable_buffer> bufs;
     std::list<std::unique_ptr<Block>>::const_iterator it = write_block_cursor_;
 
+    size_t tt = 0;
+
     for(; it != blocks_.end(); ++it) {
         auto& block = *it;
 
         bufs.emplace_back(block->data.get() + block->write_pos, block->writable());
+        tt += block->writable();
 
         if (block->writable() >= hint) {
             hint = 0;
@@ -126,13 +131,17 @@ std::vector<boost::asio::mutable_buffer> NetBuffer::prepare_buffers(size_t hint)
         append_new_block(new_size);
         auto& new_block = blocks_.back();
         bufs.emplace_back(new_block->data.get(), new_block->writable());
+        tt += new_block->writable();
     }
+
+    ++id;
+    std::cout<<"[call prepare buffer]"<<this<<" "<<tt<<" "<<id<<std::endl;
 
     return bufs;
 }
 
 void NetBuffer::commit(size_t written) {
-    std::cout<<"[call commit] :"<<written<<std::endl;
+    std::cout<<"[call commit] :"<<this<<" "<<written<<" "<<id<<std::endl;
     std::list<std::unique_ptr<Block>>::const_iterator it = write_block_cursor_;
 
     for(; it != blocks_.end(); ++it) {
@@ -155,7 +164,7 @@ void NetBuffer::commit(size_t written) {
     write_block_cursor_ = it;
 
     if (written > 0) {
-        std::cerr<<"[base::buffer::commit error] commit count over writeable"<<std::endl;
+        std::cerr<<"[base::buffer::commit error] commit count over writeable "<<written<<std::endl;
     }
 }
 
