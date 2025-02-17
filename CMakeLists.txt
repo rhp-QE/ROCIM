@@ -20,11 +20,14 @@ include_directories(${CMAKE_SOURCE_DIR}/include)
 
 # src
 file(GLOB SOURCES "src/net/*.cpp")
+file(GLOB SOURCES1 "src/base/*.cpp")
 
 # main
 list(APPEND SOURCES ${CMAKE_SOURCE_DIR}/main.cpp)
 
-add_executable(main ${SOURCES})
+
+
+add_executable(main ${SOURCES} ${SOURCES1})
 
 #--------------------------------------
 
@@ -36,7 +39,13 @@ target_include_directories(main PRIVATE "/root/wcdb/src/build/export_headers")
 target_link_directories(main PRIVATE "/root/wcdb/src/build/")
 target_link_libraries(main PRIVATE WCDB)
 
+# 设置默认构建类型为 Debug（可选）
+if (NOT CMAKE_BUILD_TYPE)
+    set(CMAKE_BUILD_TYPE Debug)
+endif()
 
+# 显式添加调试编译选项（通常 CMake 会自动处理）
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -g -O0")
 
 include(CTest)
 enable_testing()

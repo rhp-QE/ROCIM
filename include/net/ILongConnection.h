@@ -5,6 +5,8 @@
 #include <functional>
 #include <linux/stat.h>
 #include <vector>
+#include <base/LinkBuffer.h>
+
 
 namespace roc::net {
 
@@ -14,7 +16,7 @@ struct LongConnectionConfig {
     uint32_t reconnect_interval = 5000; // 重连间隔，单位毫秒
 };
 
-using ReceiveCallback = std::function<void(const std::vector<char>&)>;
+using ReceiveCallback = std::function<void(base::NetBuffer *buffer)>;
 using ConnectCallback = std::function<void()>;
 
 template<typename T>
@@ -23,7 +25,8 @@ public:
     virtual ~ILongConnection() = default;
     void set_receive_callback(ReceiveCallback callback);
     void set_connect_callback(ConnectCallback callback);
-    void send(const std::vector<char>& data);
+    void send(const std::string& data);
+    void send(const char* data, size_t size);
     void connect();
     void disconnect();
 };
@@ -39,8 +42,13 @@ void ILongConnection<T>::set_connect_callback(ConnectCallback callback) {
 }
 
 template<typename T>
-void ILongConnection<T>::send(const std::vector<char>& data) {
+void ILongConnection<T>::send(const std::string& data) {
     static_cast<T*>(this)->send_impl(data);
+}
+
+template<typename T>
+void ILongConnection<T>::send(const char* data, size_t size) {
+    static_cast<T*>(this)->send_impl(data, size);
 }
 
 template<typename T>

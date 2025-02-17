@@ -8,6 +8,10 @@
 #include <net/ILongConnection.h>
 #include <net/LongConnectionImpl.h>
 
+#include <base/LinkBuffer.h>
+
+#include "buffertest.h"
+
 using boost::asio::ip::tcp;
 
 class Session : public std::enable_shared_from_this<Session> {
@@ -130,7 +134,7 @@ void test2() {
     while(true){}
 }
 
-void test3() {
+void test4() {
     using namespace::roc::net;
     using LongConnectionType = ILongConnection<LongConnectionImpl>;
 
@@ -140,39 +144,61 @@ void test3() {
 
     std::shared_ptr<LongConnectionType> conn = std::make_shared<LongConnectionImpl>(io_context, config);
 
-    std::cout<<"ok1"<<std::endl;
 
-    conn->set_receive_callback([](const std::vector<char>& data) {
-        std::cout<<"receive data : "<<std::string(data.begin(), data.end())<<std::endl;
+    conn->set_receive_callback([](roc::base::NetBuffer *buffer) {
+        auto str = buffer->get_read_buffers().readString();
+
+        std::cout<<"[receive data]"<<str<<std::endl;
     });
 
-    std::cout<<"ok1"<<std::endl;
     conn->set_connect_callback([&conn]() {
-        std::cout<<"connect success up"<<std::endl;
+        std::cout<<"[connect success up]"<<std::endl;
         // 发送数据示例
-        conn->send({'H', 'e', 'l', 'l', 'o'});
+        conn->send("connected");
     });
     
-    std::cout<<"ok1"<<std::endl;
     conn->connect();
 
-    std::cout<<"ok1"<<std::endl;
-    std::cout<<"ok1"<<std::endl;
 
     // 在其他线程运行io_context
     std::thread io_thread([&io_context](){
         io_context.run();
     });
-    
-   
+
     // ...其他业务逻辑
     std::string str;
     while(std::cin>>str){
-        conn->send(std::vector<char>(str.begin(), str.end()));
+        conn->send(str);
+    }
+}
+
+
+void testBuffer() {
+    using namespace::roc::base;
+    using namespace::std;
+
+    std::shared_ptr<NetBuffer> buffer = std::make_shared<NetBuffer>();
+
+    string str = "rhpmark";
+
+    buffer->write(str.data(), str.length());
+    std::string res = buffer->get_read_buffers().readString();
+
+    str = "appendstr";
+    buffer->write(str.data(), str.length());
+    std::string res1 = buffer->get_read_buffers().readString();
+
+
+    cout<<res<<endl;
+    cout<<":"<<res1<<":"<<endl;
+
+    while(true) {
+
     }
 }
 
 int main() {
+   // testBuffer();
     test3();
     return 0;
 }

@@ -1,5 +1,11 @@
+#include <memory>
 #include <net/ILongConnection.h>
 #include <queue>
+
+#include <base/LinkBuffer.h>
+
+#ifndef LongConnection_H_
+#define LongConnection_H_
 
 namespace roc::net {
 
@@ -7,7 +13,8 @@ class LongConnectionImpl : public ILongConnection<LongConnectionImpl>, public st
 public:
     LongConnectionImpl(boost::asio::io_context& io_context, const LongConnectionConfig& config);
 
-    void send_impl(const std::vector<char>& data);
+    void send_impl(const std::string& data);
+    void send_impl(const char* data, size_t size);
     void connect_impl();
     void disconnect_impl();
     void set_connect_callback_impl(ConnectCallback callback);
@@ -25,8 +32,8 @@ private:
     boost::asio::ip::tcp::resolver resolver_;
     boost::asio::steady_timer reconnect_timer_;
     LongConnectionConfig config_;
-    std::array<char, 1024> read_buffer_;
-    std::queue<std::vector<char>> write_queue_;
+    std::shared_ptr<roc::base::NetBuffer> read_buffer_;
+    std::shared_ptr<roc::base::NetBuffer> write_buffer_;
     bool connected_ = false;
 
     std::shared_ptr<ILongConnection<LongConnectionImpl>> create_client(
@@ -41,3 +48,5 @@ protected:
 };
 
 } /// namespace roc::net
+
+#endif

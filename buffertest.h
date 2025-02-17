@@ -1,0 +1,102 @@
+#include <boost/asio/io_context.hpp>
+#include <iostream>
+#include <memory>
+#include <boost/asio.hpp>
+#include <boost/bind/bind.hpp>
+
+
+#include <net/ILongConnection.h>
+#include <net/LongConnectionImpl.h>
+
+#include <base/LinkBuffer.h>
+#include <random>
+
+char buf[4096];
+
+char bbb[4096];
+
+size_t size;
+
+size_t hash;
+
+// 定义字符范围
+const char charset[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+
+void product() {
+        // 创建随机数生成器
+        std::random_device rd;  // 获取随机数种子
+        std::mt19937 gen(rd()); // 以随机数种子初始化生成器
+        std::uniform_int_distribution<> distrib(0, 4000); // 定义范围
+    
+        // 生成随机数
+        size = distrib(gen) + 10;
+
+    hash = 0;
+    for (int i = 0; i < size; ++i) {
+        std::random_device rd; // 随机数种子
+        std::mt19937 gen(rd()); // 初始化生成器
+        std::uniform_int_distribution<> distrib(0, sizeof(charset) - 2); // 分布范围
+
+        buf[i] = charset[distrib(gen)];
+
+        hash = (hash * 131) + buf[i];
+    }
+}
+
+void check() {
+    size_t hh = 0;
+    for (int i = 0; i < size; ++i) {
+        hh = (hh * 131) + bbb[i];
+    }
+
+    std::cout<<"[hash]"<<hash <<" "<<hh<<std::endl;
+    if (hh != hash) {
+        std::cerr<<"[error]"<<std::endl;
+    }
+}
+
+int cc = 1000;
+
+void test3() {
+    using namespace::roc::net;
+    using LongConnectionType = ILongConnection<LongConnectionImpl>;
+
+    boost::asio::io_context io_context;
+    
+    roc::net::LongConnectionConfig config = {"127.0.0.1", "8182", 30000 };
+
+    std::shared_ptr<LongConnectionType> conn = std::make_shared<LongConnectionImpl>(io_context, config);
+
+    int cnt = 1;
+
+    conn->set_receive_callback([&cnt, conn](roc::base::NetBuffer *buffer) {
+        std::cout<<"[call receive data]"<<std::endl;
+        auto sizee = buffer->get_read_buffers().readBytes(bbb);
+        check();
+
+        cc-=1;
+        if (cc > 0) {
+            product();
+            conn->send(buf, size);
+        }
+    });
+
+    conn->set_connect_callback([&conn]() {
+        std::cout<<"[connect success up]"<<std::endl;
+        // 发送数据示例
+        product();
+        conn->send(buf, size);
+    });
+    
+    conn->connect();
+
+
+    // 在其他线程运行io_context
+    std::thread io_thread([&io_context](){
+        io_context.run();
+    });
+
+    // ...其他业务逻辑
+    while(true){
+    }
+}

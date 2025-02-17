@@ -1,4 +1,6 @@
+#include "base/LinkBuffer.h"
 #include <iostream>
+#include <memory>
 #include <net/ILongConnection.h>
 #include <net/LongConnectionImpl.h>
 
@@ -9,16 +11,25 @@ LongConnectionImpl::LongConnectionImpl(boost::asio::io_context& io_context, cons
       socket_(io_context),
       resolver_(io_context),
       reconnect_timer_(io_context),
-      config_(config) {}
+      config_(config),
+      write_buffer_(std::make_shared<base::NetBuffer>()),
+      read_buffer_(std::make_shared<base::NetBuffer>()){}
 
-void LongConnectionImpl::send_impl(const std::vector<char>& data) {
-    boost::asio::post(io_context_, [self = shared_from_this(), data]() {
-        bool write_in_progress = !self->write_queue_.empty();
-        self->write_queue_.push(data);
-        if (!write_in_progress) {
-            self->do_write();
+void LongConnectionImpl::send_impl(const std::string& data) { 
+       if (data.length() <= 0) {
+            return;
         }
-    });
+        write_buffer_->write(data.data(), data.length());
+        do_write();
+}
+
+void LongConnectionImpl::send_impl(const char* data, size_t size) { 
+    if (size < 0) {
+         return;
+     }
+     std::cout<<"[call send_impl]"<<std::endl;
+     write_buffer_->write(data, size);
+     do_write();
 }
 
 void LongConnectionImpl::connect_impl() {
@@ -49,7 +60,7 @@ void LongConnectionImpl::do_connect() {
         config_.port,
         [self](const boost::system::error_code& ec, const auto& endpoints) {
             if (ec) {
-                std::cout << "resolve addr error" << std::endl;
+                std::cout << "[resolve addr error]" << std::endl;
                 self->schedule_reconnect();
                 return;
             }
@@ -59,14 +70,14 @@ void LongConnectionImpl::do_connect() {
                 endpoints,
                 [self](const boost::system::error_code& ec, const auto&) {
                     if (!ec) {
-                        std::cout << "connect success" << std::endl;
+                        std::cout << "[connect success]" << std::endl;
                         self->connected_ = true;
                         if (self->connect_callback_) {
                             self->connect_callback_();
                         }
                         self->do_read();
                     } else {
-                        std::cout << "connect error" << std::endl;
+                        std::cout << "[connect error]" << std::endl;
                         self->schedule_reconnect();
                     }
                 });
@@ -76,15 +87,12 @@ void LongConnectionImpl::do_connect() {
 void LongConnectionImpl::do_read() {
     auto self = shared_from_this();
     socket_.async_read_some(
-        boost::asio::buffer(read_buffer_),
+        self->read_buffer_->prepare_buffers(),
         [self](const boost::system::error_code& ec, size_t bytes_transferred) {
             if (!ec) {
+                self->read_buffer_->commit(bytes_transferred);
                 if (self->receive_callback_) {
-                    std::vector<char> data(
-                        self->read_buffer_.data(),
-                        self->read_buffer_.data() + bytes_transferred
-                    );
-                    self->receive_callback_(data);
+                    self->receive_callback_(self->read_buffer_.get());
                 }
                 self->do_read();
             } else {
@@ -95,20 +103,25 @@ void LongConnectionImpl::do_read() {
 
 void LongConnectionImpl::do_write() {
     auto self = shared_from_this();
-    const auto& data = write_queue_.front();
+    
+    auto readResult = self->write_buffer_->get_read_buffers();
+
+    auto str = readResult.readString();
+
     boost::asio::async_write(
         socket_,
-        boost::asio::buffer(data),
-        [self](const boost::system::error_code& ec, size_t) {
+        readResult.buffers,
+        [self, readResult](const boost::system::error_code& ec, size_t) {
             if (ec) {
                 self->handle_disconnect(ec);
                 return;
             }
 
-            self->write_queue_.pop();
-            if (!self->write_queue_.empty()) {
-                self->do_write();
-            }
+           // auto str = self->write_buffer_->get_read_buffers().readString();
+
+          //  if (str.length()) {
+          //      self->do_write();
+          //  }
         });
 }
 

@@ -527,6 +527,30 @@ main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+src/base/LinkBuffer.o: src/base/LinkBuffer.cpp.o
+.PHONY : src/base/LinkBuffer.o
+
+# target to build an object file
+src/base/LinkBuffer.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/base/LinkBuffer.cpp.o
+.PHONY : src/base/LinkBuffer.cpp.o
+
+src/base/LinkBuffer.i: src/base/LinkBuffer.cpp.i
+.PHONY : src/base/LinkBuffer.i
+
+# target to preprocess a source file
+src/base/LinkBuffer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/base/LinkBuffer.cpp.i
+.PHONY : src/base/LinkBuffer.cpp.i
+
+src/base/LinkBuffer.s: src/base/LinkBuffer.cpp.s
+.PHONY : src/base/LinkBuffer.s
+
+# target to generate assembly for a file
+src/base/LinkBuffer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/base/LinkBuffer.cpp.s
+.PHONY : src/base/LinkBuffer.cpp.s
+
 src/net/LongConnectionImpl.o: src/net/LongConnectionImpl.cpp.o
 .PHONY : src/net/LongConnectionImpl.o
 
@@ -592,6 +616,9 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... src/base/LinkBuffer.o"
+	@echo "... src/base/LinkBuffer.i"
+	@echo "... src/base/LinkBuffer.s"
 	@echo "... src/net/LongConnectionImpl.o"
 	@echo "... src/net/LongConnectionImpl.i"
 	@echo "... src/net/LongConnectionImpl.s"
