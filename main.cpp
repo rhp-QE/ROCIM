@@ -200,5 +200,6 @@ void testBuffer() {
 int main() {
    // testBuffer();
     test3();
+    testUniquePtr();
     return 0;
 }

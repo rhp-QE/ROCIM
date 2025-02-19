@@ -7,6 +7,7 @@
 #include <memory>
 #include <optional>
 #include <system_error>
+#include <type_traits>
 
 using namespace::roc::base;
 
@@ -29,10 +30,23 @@ size_t NetBuffer::Block::readable() const noexcept {
 }
 
 void NetBuffer::ReadResult::release() const {
- //   auto& it = cursor.start_block;
+    for (auto& ref_block_iterator : cursor.ref_block_iterators) {
+        if (ref_block_iterator == buffer_->blocks_.end()) {
+            continue;
+        }
 
+        auto&& block = std::move(*ref_block_iterator);
+        
+        --block->refCount;
 
-   // buffer_->read_block_cursor_ = buffer_->blocks_.begin();
+        std::cout<<"[block refcount]"<<block->refCount<<std::endl;
+
+        if (block->refCount == 0) {
+            std::cout<<"[reuse block]"<<std::endl;
+            buffer_->blocks_.erase(ref_block_iterator);
+            buffer_->append_new_block(block);
+        }
+    }
 }
 
 std::string NetBuffer::ReadResult::readString() const {
@@ -147,7 +161,7 @@ void NetBuffer::commit(size_t written) {
     }
 
     std::cout<<"[call commit] :"<<this<<" "<<written<<" "<<id<<std::endl;
-    std::list<std::unique_ptr<Block>>::const_iterator it = write_block_cursor_;
+    std::list<std::unique_ptr<Block>>::iterator it = write_block_cursor_;
 
     for(; it != blocks_.end(); ++it) {
         auto& block = *it;
@@ -180,12 +194,15 @@ std::optional<NetBuffer::ReadResult> NetBuffer::get_read_buffers(size_t size) {
 
     // 记录本次读取的起始位置
     std::vector<boost::asio::const_buffer> buffers;
+    std::vector<ReadCursor::BlockItorType> ref_block_iterators;
 
     for (; it != blocks_.end(); ++it) {
         auto& block = *it;
         const size_t chunk = std::min(block->readable(), size);
         buffers.emplace_back(block->data.get() + block->read_pos, chunk);
+        ref_block_iterators.emplace_back(it);
         block->read_pos += chunk;
+        ++block->refCount;
         size -= chunk;
 
         std::cout<<"[read from block count]"<<chunk<<std::endl;
@@ -195,7 +212,7 @@ std::optional<NetBuffer::ReadResult> NetBuffer::get_read_buffers(size_t size) {
         }
     }
 
-    result.cursor.start_block = read_block_cursor_;
+    result.cursor.ref_block_iterators = ref_block_iterators;
     result.buffers = buffers;
     result.buffer_ = shared_from_this();
 
@@ -231,6 +248,15 @@ void NetBuffer::append_new_block(size_t hint) {
     bool end = write_block_cursor_ == blocks_.end();
     const size_t new_size = std::max(default_block_size_, hint);
     blocks_.emplace_back(std::make_unique<Block>(new_size));
+    if (end) {
+        write_block_cursor_ = --blocks_.end();
+    }
+}
+
+void NetBuffer::append_new_block(std::unique_ptr<Block>&& block) {
+    block->reset();
+    bool end = write_block_cursor_ == blocks_.end();
+    blocks_.emplace_back(std::move(block));
     if (end) {
         write_block_cursor_ = --blocks_.end();
     }

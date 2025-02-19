@@ -10,10 +10,12 @@
 
 #include <base/LinkBuffer.h>
 #include <random>
+#include <utility>
+#include <variant>
 
-char buf[4096];
+char buf[6096];
 
-char bbb[4096];
+char bbb[6096];
 
 size_t size;
 
@@ -26,7 +28,7 @@ void product() {
         // 创建随机数生成器
         std::random_device rd;  // 获取随机数种子
         std::mt19937 gen(rd()); // 以随机数种子初始化生成器
-        std::uniform_int_distribution<> distrib(0, 4000); // 定义范围
+        std::uniform_int_distribution<> distrib(0, 6000); // 定义范围
     
         // 生成随机数
         size = distrib(gen) + 10;
@@ -78,6 +80,8 @@ void test3() {
 
         auto sizee = data.value().readBytes(bbb);
 
+        data->release();
+
         check();
 
         cc-=1;
@@ -107,4 +111,17 @@ void test3() {
     // ...其他业务逻辑
     while(true){
     }
+}
+
+
+
+void test(std::unique_ptr<int>&& ptr) {
+    std::vector<std::unique_ptr<int>> vec;
+    vec.emplace_back(std::move(ptr));
+}
+
+void testUniquePtr() {
+    std::unique_ptr<int> ptr = std::make_unique<int>(1);
+
+    test(std::move(ptr));
 }

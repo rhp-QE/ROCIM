@@ -4,6 +4,7 @@
 #include <boost/asio.hpp>
 #include <boost/asio/buffer.hpp>
 #include <cstddef>
+#include <iostream>
 #include <list>
 #include <memory>
 #include <mutex>
@@ -25,11 +26,20 @@ public:
         void reset() noexcept;    // 重置块状态
         size_t writable() const noexcept; // 剩余可写空间
         size_t readable() const noexcept; // 剩余可读数据
+        size_t refCount = 0; // 引用次数
+
+        ~Block() {
+            std::cout<<"[release block]"<<std::endl;
+        }
     };
 
     // 读取游标（记录数据区间）
     struct ReadCursor {
-        std::list<std::unique_ptr<Block>>::const_iterator start_block; // 起始块
+        using BlockItorType = std::list<std::unique_ptr<Block>>::iterator;
+
+        std::vector<BlockItorType> ref_block_iterators;
+
+        std::list<std::unique_ptr<Block>>::iterator ref_block_iterator; // 起始块
         size_t start_offset;       // 起始块内的偏移
         std::list<std::unique_ptr<Block>>::const_iterator end_block;   // 结束块
         size_t end_offset;         // 结束块内的偏移
@@ -64,12 +74,13 @@ private:
     mutable std::mutex mutex_;
     std::list<std::unique_ptr<Block>> blocks_;
     size_t default_block_size_;
-    std::list<std::unique_ptr<Block>>::const_iterator write_block_cursor_; // 空闲块遍历游标
-    std::list<std::unique_ptr<Block>>::const_iterator read_block_cursor_; // 空闲块遍历游标
+    std::list<std::unique_ptr<Block>>::iterator write_block_cursor_; // 空闲块遍历游标
+    std::list<std::unique_ptr<Block>>::iterator read_block_cursor_; // 空闲块遍历游标
 
     void append_new_block(size_t hint);                 // 创建新块
+    void append_new_block(std::unique_ptr<Block>&& block);
 };
 
 } /// namespace roc::base
 
-#endif // NET_BUFFER_HPP
+#endif
