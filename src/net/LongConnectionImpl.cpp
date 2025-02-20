@@ -119,6 +119,10 @@ void LongConnectionImpl::do_write() {
                 self->handle_disconnect(ec);
                 return;
             }
+            
+            std::cout<<"[write buffer]"<<self->write_buffer_<<std::endl;
+            std::cout<<"[read buffer]"<<self->read_buffer_<<std::endl;
+            readResult.value().release();
 
             if (self->write_buffer_->readable() > 0) {
                 std::cout<<"read recall"<<std::endl;

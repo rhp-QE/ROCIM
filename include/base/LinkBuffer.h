@@ -26,7 +26,7 @@ public:
         void reset() noexcept;    // 重置块状态
         size_t writable() const noexcept; // 剩余可写空间
         size_t readable() const noexcept; // 剩余可读数据
-        size_t refCount = 0; // 引用次数
+        size_t refCount = 1; // 引用次数
 
         ~Block() {
             std::cout<<"[release block]"<<std::endl;
@@ -78,9 +78,21 @@ private:
     std::list<std::unique_ptr<Block>>::iterator read_block_cursor_; // 空闲块遍历游标
 
     void append_new_block(size_t hint);                 // 创建新块
-    void append_new_block(std::unique_ptr<Block>&& block);
+    void append_new_block(std::unique_ptr<Block> block);
 };
 
 } /// namespace roc::base
+
+
+template<typename T>
+int find_index(const std::list<T>& lst, typename std::list<T>::iterator target) {
+    int index = 0;
+    for (auto it = lst.begin(); it != lst.end(); ++it, ++index) {
+        if (it == target) {
+            return index;
+        }
+    }
+    return -1; // 未找到（目标迭代器不属于该 list）
+}
 
 #endif

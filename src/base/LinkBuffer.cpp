@@ -34,17 +34,30 @@ void NetBuffer::ReadResult::release() const {
         if (ref_block_iterator == buffer_->blocks_.end()) {
             continue;
         }
-
-        auto&& block = std::move(*ref_block_iterator);
         
-        --block->refCount;
+        --(*ref_block_iterator)->refCount;
 
-        std::cout<<"[block refcount]"<<block->refCount<<std::endl;
+        if ((*ref_block_iterator)->refCount != 0 && (*ref_block_iterator)->readable() !=0 ) {
+            std::cout<<"[error --]"<<std::endl;
+        }
 
-        if (block->refCount == 0) {
-            std::cout<<"[reuse block]"<<std::endl;
+        std::cout<<"[block refcount]"<<(*ref_block_iterator)->refCount<<std::endl;
+
+        
+        std::cout<<"*[reuse block]"<<buffer_<<" "<<buffer_->readable()<<" "<<buffer_->writeable()<<" "<<buffer_->blocks_.size()<<" "<<find_index(buffer_->blocks_, buffer_->read_block_cursor_)<<" "<<find_index(buffer_->blocks_, buffer_->write_block_cursor_)<<std::endl;
+        if ((*ref_block_iterator)->refCount == 0) {
+            std::cout<<"-[reuse block]"<<buffer_<<" "<<buffer_->readable()<<" "<<buffer_->writeable()<<" "<<buffer_->blocks_.size()<<" "<<find_index(buffer_->blocks_, buffer_->read_block_cursor_)<<" "<<find_index(buffer_->blocks_, buffer_->write_block_cursor_)<<std::endl;
+            std::cout<<"[reuse block addr]"<<(*ref_block_iterator).get()<<std::endl;
+            int i = 0;
+            for(auto it = buffer_->blocks_.begin() ; it!=buffer_->blocks_.end() && i<30;++i, ++it) {
+                std::cout<<(*it)->refCount<<" ";
+            }
+            std::cout<<std::endl;
+            auto block = std::move(*ref_block_iterator);
             buffer_->blocks_.erase(ref_block_iterator);
-            buffer_->append_new_block(block);
+            buffer_->append_new_block(std::move(block));
+            std::cout<<"+[reuse block]"<<buffer_<<" "<<buffer_->readable()<<" "<<buffer_->writeable()<<" "<<buffer_->blocks_.size()<<" "<<find_index(buffer_->blocks_, buffer_->read_block_cursor_)<<" "<<find_index(buffer_->blocks_, buffer_->write_block_cursor_)<<std::endl;
+            std::cout<<"[back block addr]"<<buffer_->blocks_.back().get()<<std::endl;
         }
     }
 }
@@ -120,6 +133,7 @@ void NetBuffer::write(const void* data, size_t len) {
 }
 
 std::vector<boost::asio::mutable_buffer> NetBuffer::prepare_buffers(size_t hint) {
+    std::cout<<"[block count] "<<this<<" "<<blocks_.size()<<std::endl;
     /// 保证有足够空间
     if (writeable() < hint || writeable() == 0) {
         append_new_block(std::max(default_block_size_, hint));
@@ -149,7 +163,6 @@ std::vector<boost::asio::mutable_buffer> NetBuffer::prepare_buffers(size_t hint)
     ++id;
     std::cout<<"[call prepare buffer]"<<this<<" "<<tt<<" "<<id<<std::endl;
 
-    std::cout<<"[block count]"<<this<<" "<<blocks_.size()<<std::endl;
 
     return bufs;
 }
@@ -186,6 +199,8 @@ std::optional<NetBuffer::ReadResult> NetBuffer::get_read_buffers(size_t size) {
         return std::nullopt;
     }
 
+    std::cout<<"[left read count]"<<readable()<<" [block count]"<<blocks_.size()<<" "<<this<<std::endl;
+
     NetBuffer::ReadResult result;
     size = (size == 0) ? readable() : size;
 
@@ -207,6 +222,11 @@ std::optional<NetBuffer::ReadResult> NetBuffer::get_read_buffers(size_t size) {
 
         std::cout<<"[read from block count]"<<chunk<<std::endl;
 
+        if (block->readable() == 0) {
+            --block->refCount;
+            std::cout<<block->refCount<<" "<<this<<std::endl;
+        }
+
         if (size == 0) {
             break;
         }
@@ -217,6 +237,9 @@ std::optional<NetBuffer::ReadResult> NetBuffer::get_read_buffers(size_t size) {
     result.buffer_ = shared_from_this();
 
     read_block_cursor_ = it;
+    if (read_block_cursor_ != blocks_.end() && (*read_block_cursor_)->readable()) {
+        ++read_block_cursor_;
+    }
     return result;
 }
 
@@ -245,6 +268,13 @@ size_t NetBuffer::writeable() const noexcept {
 }
 
 void NetBuffer::append_new_block(size_t hint) {
+    std::cout<<"malloc new block] "<<this<<std::endl;
+
+    if (blocks_.size() > 30) {
+        std::cout<<"[error]"<<this<<" "<< writeable()<<" "<<readable()<<" "<<blocks_.size()<<std::endl;
+        std::cout<<"[error]"<<this<<" "<<find_index(blocks_, write_block_cursor_)<<" "<<find_index(blocks_, read_block_cursor_)<<std::endl;
+    }
+
     bool end = write_block_cursor_ == blocks_.end();
     const size_t new_size = std::max(default_block_size_, hint);
     blocks_.emplace_back(std::make_unique<Block>(new_size));
@@ -253,11 +283,20 @@ void NetBuffer::append_new_block(size_t hint) {
     }
 }
 
-void NetBuffer::append_new_block(std::unique_ptr<Block>&& block) {
+void NetBuffer::append_new_block(std::unique_ptr<Block> block) {
     block->reset();
-    bool end = write_block_cursor_ == blocks_.end();
+    block->refCount = 1;
+    bool end_write = write_block_cursor_ == blocks_.end();
+    bool end_read = read_block_cursor_ == blocks_.end();
     blocks_.emplace_back(std::move(block));
-    if (end) {
+    std::cout<<"reuse block count]"<<blocks_.back()->writable()<<std::endl;
+    if (end_write) {
         write_block_cursor_ = --blocks_.end();
+        std::cout<<"[reset write]"<<std::endl;
+    }
+
+    if (end_read) {
+        read_block_cursor_ = --blocks_.end();
+        std::cout<<"[reset read]"<<std::endl;
     }
 }
