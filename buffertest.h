@@ -57,7 +57,7 @@ void check() {
     }
 }
 
-int cc = 20;
+int cc = 1000;
 
 void test3() {
     using namespace::roc::net;

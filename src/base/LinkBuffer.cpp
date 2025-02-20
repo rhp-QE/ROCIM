@@ -132,44 +132,46 @@ void NetBuffer::write(const void* data, size_t len) {
     commit(written);
 }
 
-std::vector<boost::asio::mutable_buffer> NetBuffer::prepare_buffers(size_t hint) {
+/// 准备写入空间
+/// size = 0 : 返回剩余的所有空间
+std::vector<boost::asio::mutable_buffer> NetBuffer::prepare_buffers(size_t size) {
     std::cout<<"[block count] "<<this<<" "<<blocks_.size()<<std::endl;
     /// 保证有足够空间
-    if (writeable() < hint || writeable() == 0) {
-        append_new_block(std::max(default_block_size_, hint));
+    if (writeable() < size || writeable() == 0) {
+        append_new_block(std::max(default_block_size_, size));
     }
 
-    hint = (hint == 0) ? writeable() : hint;
-    size_t oo = hint;
-    std::cout<<"[prepare]"<<hint<<std::endl;
+    size = (size == 0) ? writeable() : size;
+
+    std::cout<<"[prepare]"<<size<<std::endl;
     std::vector<boost::asio::mutable_buffer> bufs;
     std::list<std::unique_ptr<Block>>::const_iterator it = write_block_cursor_;
 
-    size_t tt = 0;
+    size_t prepare_size = 0;
 
     for(; it != blocks_.end(); ++it) {
         auto& block = *it;
 
-        size_t chunk = std::min(hint, block->writable());
+        size_t chunk = std::min(size, block->writable());
 
         bufs.emplace_back(block->data.get() + block->write_pos, chunk);
-        tt += chunk;
-        hint -= chunk;
-        if (hint == 0) {
+        prepare_size += chunk;
+        size -= chunk;
+        if (size == 0) {
             break;
         }
     }
 
     ++id;
-    std::cout<<"[call prepare buffer]"<<this<<" "<<tt<<" "<<id<<std::endl;
-
+    std::cout<<"[call prepare buffer]"<<this<<" "<<prepare_size<<" "<<id<<std::endl;
 
     return bufs;
 }
 
+/// 写入后确认提交
 void NetBuffer::commit(size_t written) {
     if (written > writeable()) {
-        std::cout<<"error"<<std::endl;
+        std::cout<<"[error] commit size over left size"<<std::endl;
         return;
     }
 
@@ -189,9 +191,16 @@ void NetBuffer::commit(size_t written) {
         }
     }
 
+    // 确保 write_cursor 指向的空间始终可写
+    if (it != blocks_.end() && (*it)->writable() == 0) {
+        ++ it;
+    }
+
     write_block_cursor_ = it;
 }
 
+/// 获取数据
+/// size < readable : 返回 std::nullopt
 std::optional<NetBuffer::ReadResult> NetBuffer::get_read_buffers(size_t size) {
 
     if (size > readable() || readable() == 0) {
@@ -222,7 +231,8 @@ std::optional<NetBuffer::ReadResult> NetBuffer::get_read_buffers(size_t size) {
 
         std::cout<<"[read from block count]"<<chunk<<std::endl;
 
-        if (block->readable() == 0) {
+        /// 该节点引用计数 - 1
+        if (block->readable() == 0 && block->writable() == 0) {
             --block->refCount;
             std::cout<<block->refCount<<" "<<this<<std::endl;
         }
@@ -232,14 +242,15 @@ std::optional<NetBuffer::ReadResult> NetBuffer::get_read_buffers(size_t size) {
         }
     }
 
+    if ((*it)->refCount == 1) {
+        ++it;
+    }
+    read_block_cursor_ = it;
+
     result.cursor.ref_block_iterators = ref_block_iterators;
     result.buffers = buffers;
     result.buffer_ = shared_from_this();
 
-    read_block_cursor_ = it;
-    if (read_block_cursor_ != blocks_.end() && (*read_block_cursor_)->readable()) {
-        ++read_block_cursor_;
-    }
     return result;
 }
 
@@ -290,6 +301,8 @@ void NetBuffer::append_new_block(std::unique_ptr<Block> block) {
     bool end_read = read_block_cursor_ == blocks_.end();
     blocks_.emplace_back(std::move(block));
     std::cout<<"reuse block count]"<<blocks_.back()->writable()<<std::endl;
+
+    /// 读、写 位置游标在末尾 需要重置    
     if (end_write) {
         write_block_cursor_ = --blocks_.end();
         std::cout<<"[reset write]"<<std::endl;
