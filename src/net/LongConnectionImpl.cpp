@@ -2,7 +2,8 @@
 #include <iostream>
 #include <memory>
 #include <net/ILongConnection.h>
-#include <net/LongConnectionImpl.h>
+
+#include "LongConnectionImpl.h"
 
 namespace roc::net {
 
@@ -73,7 +74,7 @@ void LongConnectionImpl::do_connect() {
                         std::cout << "[connect success]" << std::endl;
                         self->connected_ = true;
                         if (self->connect_callback_) {
-                            self->connect_callback_();
+                            self->connect_callback_(self);
                         }
                         self->do_read();
                     } else {
@@ -92,7 +93,7 @@ void LongConnectionImpl::do_read() {
             if (!ec) {
                 self->read_buffer_->commit(bytes_transferred);
                 if (self->receive_callback_) {
-                    self->receive_callback_(self->read_buffer_.get());
+                    self->receive_callback_(self, self->read_buffer_.get());
                 }
                 self->do_read();
             } else {

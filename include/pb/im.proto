@@ -1,0 +1,65 @@
+syntax = "proto3";
+
+package im;
+
+option go_package = "./;im";
+option csharp_namespace = "IM.Protocol";
+
+
+// 新增用户结构
+message User {
+  uint64 uid = 1;                // 用户ID
+  string username = 2;           // 用户名
+  map<string, string> profile = 6; // 扩展属性
+}
+
+
+// 会话类型枚举
+enum ConvType {
+  SINGLE = 0;  // 单聊
+  GROUP = 1;   // 群聊
+  SYSTEM = 2;  // 系统消息
+}
+
+// 消息类型枚举
+enum MsgType {
+  TEXT = 0;     // 文本
+  IMAGE = 1;    // 图片
+  AUDIO = 2;    // 语音
+  VIDEO = 3;    // 视频
+  FILE = 4;     // 文件
+  EMOJI = 5;    // 表情
+  SYSTEM = 6;   // 系统消息
+}
+
+// 消息状态枚举
+enum MsgStatus {
+  SENDING = 0;   // 发送中
+  SENT = 1;      // 已发送
+  DELIVERED = 2; // 已送达
+  READ = 3;      // 已读
+  FAILED = 4;    // 失败
+}
+
+// 会话结构
+message Conversation {
+  uint64 conv_id = 1;         // 会话ID
+  ConvType conv_type = 2;      // 会话类型
+  repeated uint64 members = 3; // 参与成员
+  uint64 last_msg_id = 4;      // 最后一条消息ID
+  uint32 unread_count = 5;     // 未读消息数
+  int64 created_at = 6;        // 创建时间戳（毫秒）
+  int64 updated_at = 7;        // 更新时间戳（毫秒）
+}
+
+// 消息结构
+message Message {
+  uint64 msg_id = 1;          // 消息ID（全局唯一）
+  uint64 conv_id = 2;         // 所属会话ID
+  uint64 sender_id = 3;       // 发送者ID
+  MsgType msg_type = 4;       // 消息类型
+  string content = 5;         // 消息内容
+  int64 timestamp = 6;        // 时间戳（毫秒）
+  MsgStatus status = 7;       // 消息状态
+  map<string, string> extra = 8; // 扩展字段
+}

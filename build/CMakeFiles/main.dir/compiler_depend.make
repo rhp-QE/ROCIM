@@ -1164,12 +1164,7 @@ CMakeFiles/main.dir/main.cpp.o: ../main.cpp \
   /usr/include/c++/11/list \
   /usr/include/c++/11/bits/stl_list.h \
   /usr/include/c++/11/bits/list.tcc \
-  ../include/net/LongConnectionImpl.h \
-  /usr/include/c++/11/queue \
-  /usr/include/c++/11/deque \
-  /usr/include/c++/11/bits/stl_deque.h \
-  /usr/include/c++/11/bits/deque.tcc \
-  /usr/include/c++/11/bits/stl_queue.h \
+  ../src/net/LongConnectionImpl.h \
   ../buffertest.h \
   /usr/include/c++/11/random \
   /usr/include/c++/11/bits/random.h \
@@ -3473,12 +3468,7 @@ CMakeFiles/main.dir/src/net/LongConnectionImpl.cpp.o: ../src/net/LongConnectionI
   /usr/include/c++/11/bits/stl_list.h \
   /usr/include/c++/11/bits/list.tcc \
   ../include/net/ILongConnection.h \
-  ../include/net/LongConnectionImpl.h \
-  /usr/include/c++/11/queue \
-  /usr/include/c++/11/deque \
-  /usr/include/c++/11/bits/stl_deque.h \
-  /usr/include/c++/11/bits/deque.tcc \
-  /usr/include/c++/11/bits/stl_queue.h
+  ../src/net/LongConnectionImpl.h
 
 
 ../src/base/LinkBuffer.cpp:
@@ -3495,11 +3485,7 @@ CMakeFiles/main.dir/src/net/LongConnectionImpl.cpp.o: ../src/net/LongConnectionI
 
 ../buffertest.h:
 
-/usr/include/c++/11/bits/stl_queue.h:
-
-/usr/include/c++/11/deque:
-
-../include/net/LongConnectionImpl.h:
+../src/net/LongConnectionImpl.h:
 
 /usr/include/c++/11/list:
 
@@ -3566,8 +3552,6 @@ CMakeFiles/main.dir/src/net/LongConnectionImpl.cpp.o: ../src/net/LongConnectionI
 /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/atomic_count.hpp:
 
 /root/vcpkg/vcpkg/installed/x64-linux/include/boost/smart_ptr/detail/sp_counted_impl.hpp:
-
-/usr/include/c++/11/queue:
 
 /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/resolve_query_op.hpp:
 
@@ -5397,8 +5381,6 @@ CMakeFiles/main.dir/src/net/LongConnectionImpl.cpp.o: ../src/net/LongConnectionI
 
 /root/vcpkg/vcpkg/installed/x64-linux/include/boost/preprocessor/facilities/expand.hpp:
 
-/usr/include/c++/11/bits/deque.tcc:
-
 /root/vcpkg/vcpkg/installed/x64-linux/include/boost/preprocessor/facilities/check_empty.hpp:
 
 /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/prefer.hpp:
@@ -5576,8 +5558,6 @@ CMakeFiles/main.dir/src/net/LongConnectionImpl.cpp.o: ../src/net/LongConnectionI
 /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/bind_executor.hpp:
 
 /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/ip/impl/network_v4.hpp:
-
-/usr/include/c++/11/bits/stl_deque.h:
 
 /root/vcpkg/vcpkg/installed/x64-linux/include/boost/mpl/aux_/is_msvc_eti_arg.hpp:
 

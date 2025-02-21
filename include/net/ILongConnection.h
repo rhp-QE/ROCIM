@@ -4,11 +4,18 @@
 #include <boost/asio.hpp>
 #include <functional>
 #include <linux/stat.h>
+#include <memory>
 #include <vector>
 #include <base/LinkBuffer.h>
 
 
 namespace roc::net {
+
+/// 前置声明
+class LongConnectionImpl;
+
+template<typename Ty>
+class ILongConnection;
 
 struct LongConnectionConfig {
     std::string host;
@@ -16,9 +23,10 @@ struct LongConnectionConfig {
     uint32_t reconnect_interval = 5000; // 重连间隔，单位毫秒
 };
 
-using ReceiveCallback = std::function<void(base::NetBuffer *buffer)>;
-using ConnectCallback = std::function<void()>;
+using ReceiveCallback = std::function<void(std::shared_ptr<ILongConnection<LongConnectionImpl>> con, base::NetBuffer *buffer)>;
+using ConnectCallback = std::function<void(std::shared_ptr<ILongConnection<LongConnectionImpl>> con)>;
 
+///----------------- Interface ---------------------------
 template<typename T>
 class ILongConnection {
 public:
@@ -30,6 +38,8 @@ public:
     void connect();
     void disconnect();
 };
+/// -----------------------------------------------------
+
 
 template<typename T>
 void ILongConnection<T>::set_receive_callback(ReceiveCallback callback) {

@@ -104,74 +104,6 @@ void test1() {
     }
 }
 
-void test2() {
-    // boost::asio::io_context io_context;
-    
-    // roc::net::LongConnectionConfig config1 = {"127.0.0.1", "8181", 30000 };
-
-
-    // auto client = roc::net::Client::create(io_context, config1);
-    
-    // client->set_receive_callback([](const std::vector<char>& data) {
-    //     std::cout<<"receive data : "<<std::string(data.begin(), data.end())<<std::endl;
-    // });
-
-    // client->set_connect_callback([&client]() {
-    //     std::cout<<"connect success up"<<std::endl;
-    //     // 发送数据示例
-    //     client->send({'H', 'e', 'l', 'l', 'o'});
-    // });
-    
-    // client->connect();
-
-    // // 在其他线程运行io_context
-    // std::thread io_thread([&io_context](){
-    //     io_context.run();
-    // });
-    
-   
-    // ...其他业务逻辑
-    while(true){}
-}
-
-void test4() {
-    using namespace::roc::net;
-    using LongConnectionType = ILongConnection<LongConnectionImpl>;
-
-    boost::asio::io_context io_context;
-    
-    roc::net::LongConnectionConfig config = {"127.0.0.1", "8181", 30000 };
-
-    std::shared_ptr<LongConnectionType> conn = std::make_shared<LongConnectionImpl>(io_context, config);
-
-
-    conn->set_receive_callback([](roc::base::NetBuffer *buffer) {
-        auto str = buffer->get_read_buffers().value().readString();
-
-        std::cout<<"[receive data]"<<str<<std::endl;
-    });
-
-    conn->set_connect_callback([&conn]() {
-        std::cout<<"[connect success up]"<<std::endl;
-        // 发送数据示例
-        conn->send("connected");
-    });
-    
-    conn->connect();
-
-
-    // 在其他线程运行io_context
-    std::thread io_thread([&io_context](){
-        io_context.run();
-    });
-
-    // ...其他业务逻辑
-    std::string str;
-    while(std::cin>>str){
-        conn->send(str);
-    }
-}
-
 
 void testBuffer() {
     using namespace::roc::base;
@@ -199,7 +131,7 @@ void testBuffer() {
 
 int main() {
    // testBuffer();
-    test3();
+    testLongConAndBuffer();
     testUniquePtr();
     return 0;
 }

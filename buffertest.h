@@ -13,8 +13,10 @@
 #include <utility>
 #include <variant>
 
+/// 发送前
 char buf[6096];
 
+/// 接受数据
 char bbb[6096];
 
 size_t size;
@@ -24,6 +26,7 @@ size_t hash;
 // 定义字符范围
 const char charset[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
+/// 生成数据
 void product() {
         // 创建随机数生成器
         std::random_device rd;  // 获取随机数种子
@@ -45,6 +48,7 @@ void product() {
     }
 }
 
+/// 数据检验
 void check() {
     size_t hh = 0;
     for (int i = 0; i < size; ++i) {
@@ -59,7 +63,7 @@ void check() {
 
 int cc = 1000;
 
-void test3() {
+void testLongConAndBuffer() {
     using namespace::roc::net;
     using LongConnectionType = ILongConnection<LongConnectionImpl>;
 
@@ -71,7 +75,7 @@ void test3() {
 
     int cnt = 1;
 
-    conn->set_receive_callback([&cnt, conn](roc::base::NetBuffer *buffer) {
+    conn->set_receive_callback([&cnt, conn](std::shared_ptr<LongConnectionType> con, roc::base::NetBuffer *buffer) {
         
         auto data = buffer->get_read_buffers(size);
         if (!data) {
@@ -93,11 +97,11 @@ void test3() {
         }
     });
 
-    conn->set_connect_callback([&conn]() {
+    conn->set_connect_callback([](std::shared_ptr<LongConnectionType> con) {
         std::cout<<"[connect success up]"<<std::endl;
         // 发送数据示例
         product();
-        conn->send(buf, size);
+        con->send(buf, size);
     });
     
     conn->connect();

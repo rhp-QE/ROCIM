@@ -13,10 +13,11 @@ set (CMAKE_TOOLCHAIN_FILE "/root/vcpkg/vcpkg/scripts/buildsystems/vcpkg.cmake")
 # -------------------------------------
 project(ROCIM_CLIENT VERSION 0.1.0 LANGUAGES C CXX)
 
-# -------------------------------------
+# -------------------------------------c
 
 #include
 include_directories(${CMAKE_SOURCE_DIR}/include)
+include_directories(${CMAKE_SOURCE_DIR}/src)
 
 # src
 file(GLOB SOURCES "src/net/*.cpp")
