@@ -6,6 +6,8 @@
 #include <boost/beast/http.hpp>
 #include <boost/asio.hpp>
 #include <boost/beast/http/field.hpp>
+#include <boost/beast/http/string_body.hpp>
+#include <boost/beast/http/verb.hpp>
 #include <iostream>
 #include <memory>
 #include <thread>
@@ -20,31 +22,26 @@ using tcp = boost::beast::net::ip::tcp;
 namespace roc::net {
 
 class Session : public std::enable_shared_from_this<Session> {
+
+private:
+
     tcp::resolver resolver;
     tcp::socket socket;
     beast::flat_buffer buffer;
-    http::request<http::empty_body> req;
+    http::request<http::string_body> req;
     http::response<http::dynamic_body> res;
-    std::function<void(const std::string str)> callback;
     boost::asio::steady_timer timer;
-    roc::net::Reuqest request;
+    roc::net::Request reqInfo;
 
 public:
-    Session(roc::net::Reuqest request, boost::asio::io_context& ioc) :
+    Session(roc::net::Request request, boost::asio::io_context& ioc) :
         socket(ioc),
         timer(ioc),
         resolver(ioc),
-        request(request) {}
+        reqInfo(request) {}
 
     void start() {
-
         auto self = shared_from_this(); // 关键：保持对象存活
-        self->callback = callback;
-
-        req.method(http::verb::get);
-        req.target(request.url_);
-        req.set(http::field::host, request.host_);
-        req.set(http::field::user_agent, "Boost.Beast");
 
         // 设置超时（可选）
         timer.expires_after(std::chrono::seconds(5));
@@ -56,14 +53,13 @@ public:
 
         // 异步解析域名（直接使用 IP 时可跳过，但需保持逻辑一致）
         resolver.async_resolve(
-            request.host_, 
-            request.port_,
+            reqInfo.host_, 
+            reqInfo.port_,
             [self](const boost::system::error_code& ec, tcp::resolver::results_type results) {
                 if (ec) return self->fail(ec, "resolve");
                 self->async_connect(results);
             }
         );
-
     }
 
     void async_connect(tcp::resolver::results_type results) {
@@ -78,6 +74,14 @@ public:
     }
 
     void async_write_request() {
+        req.method((reqInfo.method_ == Request::GET) ? http::verb::get : http::verb::post);
+        req.target(reqInfo.url_);
+        req.set(http::field::host, reqInfo.host_);
+        req.set(http::field::content_type, reqInfo.content_type_);
+        req.set(http::field::user_agent, "Boost.Beast");
+        req.body() = reqInfo.body_;
+        req.prepare_payload();
+
         http::async_write(socket, req, [self = shared_from_this()](beast::error_code ec, size_t) {
             if (ec) return self->fail(ec, "write");
             self->async_read_response();
@@ -90,8 +94,8 @@ public:
 
             std::string str = beast::buffers_to_string(self->res.body().data());
 
-            if (self->request.callback_) {
-                self->request.callback_(str);
+            if (self->reqInfo.callback_) {
+                self->reqInfo.callback_(str);
             }
         });
     }
@@ -102,7 +106,7 @@ public:
 };
 
 
-void roc::net::Reuqest::request() {
+void roc::net::Request::request() {
     static boost::asio::io_context io_context;
     static auto wotk = boost::beast::net::make_work_guard(io_context);
     static std::thread thread([]{

@@ -9,24 +9,39 @@ namespace roc::net {
 
 class Session;
 
-struct Reuqest {
+struct Request {
+
+    //-------------------
+    enum Method {
+        GET,
+        POST,
+    };
+    //-------------------
 
     friend class Session;
 
-    Reuqest& set_url(std::string url) {
+    Request& set_url(std::string url) {
         url_ = url;
         return *this;
     }
-    Reuqest& set_method(std::string method) {
+
+    Request& set_method(Method method) {
         method_ = method;
         return *this;
     }
-    Reuqest& set_params(std::string params) {
-        params_ = params;
+
+    Request& set_body(std::string body) {
+        body_ = body;
         return *this;
     }
-    Reuqest& set_callback(std::function<void(std::string data)> callback) {
+
+    Request& set_callback(std::function<void(std::string data)> callback) {
         callback_ = callback;
+        return *this;
+    }
+
+    Request& set_content_type(std::string content_type) {
+        content_type_ = content_type;
         return *this;
     }
 
@@ -34,8 +49,9 @@ struct Reuqest {
 
 private:
     std::string url_;
-    std::string method_;
-    std::string params_;
+    std::string body_;
+    std::string content_type_ = "application/json";
+    Request::Method method_;
     std::string host_ = "127.0.0.1";
     std::string port_ = "8080";
     std::function<void(std::string data)> callback_;
