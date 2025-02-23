@@ -2,6 +2,7 @@
 #include <algorithm>
 #include <boost/asio/buffer.hpp>
 #include <cstddef>
+#include <cstdint>
 #include <iostream>
 #include <list>
 #include <memory>
@@ -30,16 +31,12 @@ size_t NetBuffer::Block::readable() const noexcept {
 }
 
 void NetBuffer::ReadResult::release() const {
-    for (auto& ref_block_iterator : cursor.ref_block_iterators) {
+    for (auto& ref_block_iterator : ref_block_iterators_) {
         if (ref_block_iterator == buffer_->blocks_.end()) {
             continue;
         }
         
         --(*ref_block_iterator)->refCount;
-
-        if ((*ref_block_iterator)->refCount != 0 && (*ref_block_iterator)->readable() !=0 ) {
-            std::cout<<"[error --]"<<std::endl;
-        }
 
         std::cout<<"[block refcount]"<<(*ref_block_iterator)->refCount<<std::endl;
 
@@ -85,7 +82,7 @@ std::string NetBuffer::ReadResult::readString() const {
     return result;
 }
 
-size_t NetBuffer::ReadResult::readBytes(char* buf) {
+size_t NetBuffer::ReadResult::readBytes(char* buf, size_t size) {
     // 计算所有缓冲区的总字节数
     size_t total_size = 0;
 
@@ -96,12 +93,34 @@ size_t NetBuffer::ReadResult::readBytes(char* buf) {
     size_t pos = 0;
     for (const auto& buffer : buffers) {
         const char* data = boost::asio::buffer_cast<const char*>(buffer);
-        size_t length = boost::asio::buffer_size(buffer);
+        size_t length = std::min(boost::asio::buffer_size(buffer), size);
 
         std::copy(data, data + length, buf + pos);
         pos += length;
+
+        size -= length;
+        if (size == 0) {
+            break;
+        }
     }
     return pos;
+}
+
+uint32_t NetBuffer::ReadResult::peekUnint32() {
+    char number_bytes[4];
+    readBytes(number_bytes, 4);
+
+    std::cout<<"[read bytes]";
+    for (int i = 0; i < 4; ++i) {
+        std::cout<<uint8_t(number_bytes[i])<<std::endl;
+    }
+    std::cout<<std::endl;
+
+    uint32_t number = 0;
+    for (int i = 0; i < 4; ++i ) {
+        number |= static_cast<uint8_t>(number_bytes[i]) << (i<<3);
+    }
+    return number;
 }
 
 NetBuffer::NetBuffer(size_t init_block_size)
@@ -218,7 +237,7 @@ std::optional<NetBuffer::ReadResult> NetBuffer::get_read_buffers(size_t size) {
 
     // 记录本次读取的起始位置
     std::vector<boost::asio::const_buffer> buffers;
-    std::vector<ReadCursor::BlockItorType> ref_block_iterators;
+    std::vector<ReadResult::BlockItorType> ref_block_iterators;
 
     for (; it != blocks_.end(); ++it) {
         auto& block = *it;
@@ -247,9 +266,10 @@ std::optional<NetBuffer::ReadResult> NetBuffer::get_read_buffers(size_t size) {
     }
     read_block_cursor_ = it;
 
-    result.cursor.ref_block_iterators = ref_block_iterators;
+    result.set_ref_block_iterators(ref_block_iterators);
     result.buffers = buffers;
     result.buffer_ = shared_from_this();
+
 
     return result;
 }

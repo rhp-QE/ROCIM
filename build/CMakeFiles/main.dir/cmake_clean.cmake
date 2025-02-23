@@ -1,6 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/main.dir/main.cpp.o"
   "CMakeFiles/main.dir/main.cpp.o.d"
+  "CMakeFiles/main.dir/src/base/HttpClient.cpp.o"
+  "CMakeFiles/main.dir/src/base/HttpClient.cpp.o.d"
   "CMakeFiles/main.dir/src/base/LinkBuffer.cpp.o"
   "CMakeFiles/main.dir/src/base/LinkBuffer.cpp.o.d"
   "CMakeFiles/main.dir/src/net/LongConnectionImpl.cpp.o"

@@ -11,6 +11,7 @@
 #include <base/LinkBuffer.h>
 
 #include "buffertest.h"
+#include "httpTest.h"
 
 using boost::asio::ip::tcp;
 
@@ -131,7 +132,11 @@ void testBuffer() {
 
 int main() {
    // testBuffer();
-    testLongConAndBuffer();
-    testUniquePtr();
+    // testLongConAndBuffer();
+    // testUniquePtr();
+    // test();
+    testHttp();
+
+    while(true) {}
     return 0;
 }

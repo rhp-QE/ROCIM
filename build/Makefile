@@ -527,6 +527,30 @@ main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+src/base/HttpClient.o: src/base/HttpClient.cpp.o
+.PHONY : src/base/HttpClient.o
+
+# target to build an object file
+src/base/HttpClient.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/base/HttpClient.cpp.o
+.PHONY : src/base/HttpClient.cpp.o
+
+src/base/HttpClient.i: src/base/HttpClient.cpp.i
+.PHONY : src/base/HttpClient.i
+
+# target to preprocess a source file
+src/base/HttpClient.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/base/HttpClient.cpp.i
+.PHONY : src/base/HttpClient.cpp.i
+
+src/base/HttpClient.s: src/base/HttpClient.cpp.s
+.PHONY : src/base/HttpClient.s
+
+# target to generate assembly for a file
+src/base/HttpClient.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/base/HttpClient.cpp.s
+.PHONY : src/base/HttpClient.cpp.s
+
 src/base/LinkBuffer.o: src/base/LinkBuffer.cpp.o
 .PHONY : src/base/LinkBuffer.o
 
@@ -616,6 +640,9 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... src/base/HttpClient.o"
+	@echo "... src/base/HttpClient.i"
+	@echo "... src/base/HttpClient.s"
 	@echo "... src/base/LinkBuffer.o"
 	@echo "... src/base/LinkBuffer.i"
 	@echo "... src/base/LinkBuffer.s"

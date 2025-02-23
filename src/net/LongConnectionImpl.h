@@ -1,7 +1,9 @@
+#include <cstddef>
 #include <memory>
 #include <net/ILongConnection.h>
 
 #include <base/LinkBuffer.h>
+#include <optional>
 
 #ifndef LongConnection_H_
 #define LongConnection_H_
@@ -25,6 +27,8 @@ private:
     void do_write();
     void schedule_reconnect();
     void handle_disconnect(const boost::system::error_code& ec);
+
+    std::optional<uint32_t> nextPackLen = std::nullopt;
 
     boost::asio::io_context& io_context_;
     boost::asio::ip::tcp::socket socket_;

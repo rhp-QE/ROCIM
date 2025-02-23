@@ -97,10 +97,24 @@ CMakeFiles/main.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/main.cpp.s"
 	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /root/ROCIM/ROCIM_CLIENT/main.cpp -o CMakeFiles/main.dir/main.cpp.s
 
+CMakeFiles/main.dir/src/base/HttpClient.cpp.o: CMakeFiles/main.dir/flags.make
+CMakeFiles/main.dir/src/base/HttpClient.cpp.o: ../src/base/HttpClient.cpp
+CMakeFiles/main.dir/src/base/HttpClient.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/ROCIM/ROCIM_CLIENT/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/main.dir/src/base/HttpClient.cpp.o"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/src/base/HttpClient.cpp.o -MF CMakeFiles/main.dir/src/base/HttpClient.cpp.o.d -o CMakeFiles/main.dir/src/base/HttpClient.cpp.o -c /root/ROCIM/ROCIM_CLIENT/src/base/HttpClient.cpp
+
+CMakeFiles/main.dir/src/base/HttpClient.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/src/base/HttpClient.cpp.i"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /root/ROCIM/ROCIM_CLIENT/src/base/HttpClient.cpp > CMakeFiles/main.dir/src/base/HttpClient.cpp.i
+
+CMakeFiles/main.dir/src/base/HttpClient.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/src/base/HttpClient.cpp.s"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /root/ROCIM/ROCIM_CLIENT/src/base/HttpClient.cpp -o CMakeFiles/main.dir/src/base/HttpClient.cpp.s
+
 CMakeFiles/main.dir/src/base/LinkBuffer.cpp.o: CMakeFiles/main.dir/flags.make
 CMakeFiles/main.dir/src/base/LinkBuffer.cpp.o: ../src/base/LinkBuffer.cpp
 CMakeFiles/main.dir/src/base/LinkBuffer.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/ROCIM/ROCIM_CLIENT/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/main.dir/src/base/LinkBuffer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/ROCIM/ROCIM_CLIENT/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/main.dir/src/base/LinkBuffer.cpp.o"
 	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/src/base/LinkBuffer.cpp.o -MF CMakeFiles/main.dir/src/base/LinkBuffer.cpp.o.d -o CMakeFiles/main.dir/src/base/LinkBuffer.cpp.o -c /root/ROCIM/ROCIM_CLIENT/src/base/LinkBuffer.cpp
 
 CMakeFiles/main.dir/src/base/LinkBuffer.cpp.i: cmake_force
@@ -115,6 +129,7 @@ CMakeFiles/main.dir/src/base/LinkBuffer.cpp.s: cmake_force
 main_OBJECTS = \
 "CMakeFiles/main.dir/src/net/LongConnectionImpl.cpp.o" \
 "CMakeFiles/main.dir/main.cpp.o" \
+"CMakeFiles/main.dir/src/base/HttpClient.cpp.o" \
 "CMakeFiles/main.dir/src/base/LinkBuffer.cpp.o"
 
 # External object files for target main
@@ -122,11 +137,13 @@ main_EXTERNAL_OBJECTS =
 
 main: CMakeFiles/main.dir/src/net/LongConnectionImpl.cpp.o
 main: CMakeFiles/main.dir/main.cpp.o
+main: CMakeFiles/main.dir/src/base/HttpClient.cpp.o
 main: CMakeFiles/main.dir/src/base/LinkBuffer.cpp.o
 main: CMakeFiles/main.dir/build.make
 main: /root/vcpkg/vcpkg/installed/x64-linux/debug/lib/libfolly.a
 main: /root/vcpkg/vcpkg/installed/x64-linux/debug/lib/libfollybenchmark.a
 main: /root/vcpkg/vcpkg/installed/x64-linux/debug/lib/libfolly_test_util.a
+main: /root/vcpkg/vcpkg/installed/x64-linux/debug/lib/libboost_json.a
 main: /root/vcpkg/vcpkg/installed/x64-linux/debug/lib/libfolly.a
 main: /root/vcpkg/vcpkg/installed/x64-linux/debug/lib/libfmtd.a
 main: /root/vcpkg/vcpkg/installed/x64-linux/debug/lib/libboost_context.a
@@ -135,9 +152,7 @@ main: /root/vcpkg/vcpkg/installed/x64-linux/debug/lib/libboost_program_options.a
 main: /root/vcpkg/vcpkg/installed/x64-linux/debug/lib/libboost_thread.a
 main: /root/vcpkg/vcpkg/installed/x64-linux/debug/lib/libboost_atomic.a
 main: /root/vcpkg/vcpkg/installed/x64-linux/debug/lib/libboost_chrono.a
-main: /root/vcpkg/vcpkg/installed/x64-linux/debug/lib/libboost_system.a
 main: /root/vcpkg/vcpkg/installed/x64-linux/debug/lib/libboost_date_time.a
-main: /root/vcpkg/vcpkg/installed/x64-linux/debug/lib/libboost_container.a
 main: /root/vcpkg/vcpkg/installed/x64-linux/debug/lib/libboost_regex.a
 main: /root/vcpkg/vcpkg/installed/x64-linux/debug/lib/libdouble-conversion.a
 main: /root/vcpkg/vcpkg/installed/x64-linux/debug/lib/libglog.a
@@ -152,8 +167,13 @@ main: /root/vcpkg/vcpkg/installed/x64-linux/debug/lib/libunwind.a
 main: /root/vcpkg/vcpkg/installed/x64-linux/debug/lib/liblzma.a
 main: /root/vcpkg/vcpkg/installed/x64-linux/debug/lib/libunwind.a
 main: /root/vcpkg/vcpkg/installed/x64-linux/debug/lib/liblzma.a
+main: /root/vcpkg/vcpkg/installed/x64-linux/debug/lib/libbrotlienc.a
+main: /root/vcpkg/vcpkg/installed/x64-linux/debug/lib/libbrotlidec.a
+main: /root/vcpkg/vcpkg/installed/x64-linux/debug/lib/libbrotlicommon.a
+main: /root/vcpkg/vcpkg/installed/x64-linux/debug/lib/libboost_system.a
+main: /root/vcpkg/vcpkg/installed/x64-linux/debug/lib/libboost_container.a
 main: CMakeFiles/main.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/root/ROCIM/ROCIM_CLIENT/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable main"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/root/ROCIM/ROCIM_CLIENT/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable main"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/main.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

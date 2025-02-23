@@ -4,12 +4,14 @@
 #include <boost/asio.hpp>
 #include <boost/asio/buffer.hpp>
 #include <cstddef>
+#include <cstdint>
 #include <iostream>
 #include <list>
 #include <memory>
 #include <mutex>
 #include <cstring>
 #include <optional>
+#include <vector>
 
 namespace roc::base {
 
@@ -33,30 +35,27 @@ public:
         }
     };
 
-    // 读取游标（记录数据区间）
-    struct ReadCursor {
+    struct ReadResult {
+
         using BlockItorType = std::list<std::unique_ptr<Block>>::iterator;
 
-        std::vector<BlockItorType> ref_block_iterators;
-
-        std::list<std::unique_ptr<Block>>::iterator ref_block_iterator; // 起始块
-        size_t start_offset;       // 起始块内的偏移
-        std::list<std::unique_ptr<Block>>::const_iterator end_block;   // 结束块
-        size_t end_offset;         // 结束块内的偏移
-        size_t total_size;         // 区间总大小
-    };
-
-    // 读取结果（缓冲区 + 游标）
-    struct ReadResult {
         public:
-            std::vector<boost::asio::const_buffer> buffers; // 数据缓冲区
-            ReadCursor cursor;                               // 对应的数据区间
-            std::shared_ptr<NetBuffer> buffer_;
 
+            std::vector<boost::asio::const_buffer> buffers; // 数据缓冲区
+            std::shared_ptr<NetBuffer> buffer_;
             void release() const;
             std::string readString() const;
+            uint32_t peekUnint32();
+            size_t readBytes(char *buf, size_t size);
+            
+            void set_ref_block_iterators(const std::vector<BlockItorType>& vec) {
+                ref_block_iterators_ = vec;
+            }
+        
+        private:
 
-            size_t readBytes(char *buf);
+            std::vector<BlockItorType> ref_block_iterators_; // 
+
     };
 
     explicit NetBuffer(size_t init_block_size = 4096);

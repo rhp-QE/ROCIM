@@ -22,13 +22,14 @@ include_directories(${CMAKE_SOURCE_DIR}/src)
 # src
 file(GLOB SOURCES "src/net/*.cpp")
 file(GLOB SOURCES1 "src/base/*.cpp")
+file(GLOB SOURCES2 "src/base/HttpClient.cpp")
 
 # main
 list(APPEND SOURCES ${CMAKE_SOURCE_DIR}/main.cpp)
 
 
 
-add_executable(main ${SOURCES} ${SOURCES1})
+add_executable(main ${SOURCES} ${SOURCES1} ${SOURCES2})
 
 #--------------------------------------
 
@@ -39,6 +40,14 @@ target_link_libraries(main PRIVATE Folly::folly Folly::folly_deps Folly::follybe
 target_include_directories(main PRIVATE "/root/wcdb/src/build/export_headers")
 target_link_directories(main PRIVATE "/root/wcdb/src/build/")
 target_link_libraries(main PRIVATE WCDB)
+
+#cpp-httplib
+find_package(httplib CONFIG REQUIRED)
+target_link_libraries(main PRIVATE httplib::httplib)
+
+#boost_json
+find_package(Boost REQUIRED COMPONENTS json)
+target_link_libraries(main PRIVATE Boost::json)
 
 # 设置默认构建类型为 Debug（可选）
 if (NOT CMAKE_BUILD_TYPE)
