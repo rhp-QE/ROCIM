@@ -1,64 +1,101 @@
 syntax = "proto3";
 
-package im;
+package roc.im.sdk;
 
 option go_package = "./;im";
 option csharp_namespace = "IM.Protocol";
 
 
-// 新增用户结构
-message User {
-  uint64 uid = 1;                // 用户ID
-  string username = 2;           // 用户名
-  map<string, string> profile = 6; // 扩展属性
-}
-
-
-// 会话类型枚举
-enum ConvType {
-  SINGLE = 0;  // 单聊
-  GROUP = 1;   // 群聊
-  SYSTEM = 2;  // 系统消息
-}
-
-// 消息类型枚举
-enum MsgType {
-  TEXT = 0;     // 文本
-  IMAGE = 1;    // 图片
-  AUDIO = 2;    // 语音
-  VIDEO = 3;    // 视频
-  FILE = 4;     // 文件
-  EMOJI = 5;    // 表情
-}
-
-// 消息状态枚举
-enum MsgStatus {
-  SENDING = 0;   // 发送中
-  SENT = 1;      // 已发送
-  DELIVERED = 2; // 已送达
-  READ = 3;      // 已读
-  FAILED = 4;    // 失败
-}
-
-// 会话结构
 message Conversation {
-  uint64 conv_id = 1;         // 会话ID
-  ConvType conv_type = 2;      // 会话类型
-  repeated uint64 members = 3; // 参与成员
-  uint64 last_msg_id = 4;      // 最后一条消息ID
-  uint32 unread_count = 5;     // 未读消息数
-  int64 created_at = 6;        // 创建时间戳（毫秒）
-  int64 updated_at = 7;        // 更新时间戳（毫秒）
-}
+  // 会话ID
+  string convertsion_id = 1;
 
-// 消息结构
+  // 群主id
+  string owner_id = 2;
+
+  // ext
+  map<string, string> ext = 3;
+};
+
 message Message {
-  uint64 msg_id = 1;          // 消息ID（全局唯一）
-  uint64 conv_id = 2;         // 所属会话ID
-  uint64 sender_id = 3;       // 发送者ID
-  MsgType msg_type = 4;       // 消息类型
-  string content = 5;         // 消息内容
-  int64 timestamp = 6;        // 时间戳（毫秒）
-  MsgStatus status = 7;       // 消息状态
-  map<string, string> extra = 8; // 扩展字段
-}
+  // 消息 ID
+  string message_id = 1;
+
+  // 消息类容
+  bytes content = 2;
+
+  map<string, string> ext = 3;
+
+  string sender_id = 4;
+
+  string convertsion_id = 5;
+
+  int64 message_type = 6;
+
+  int64 index = 7;
+};
+
+
+message ConversationMessages {
+  string conversation_id = 1;
+  repeated Message message_arr = 2;
+};
+
+// 拉取单链信息
+// -------------------- fetch conv message ------------------
+message FetchSingleLinkMessagesReq{
+  string conversation_id = 1;
+  int64 from_index = 2;
+  int64 to_index = 3;
+};
+
+message FetchSingleLinkMessagesResp {
+  ConversationMessages conversation_messages = 1;
+};
+// ----------------------------------------------------------
+
+// 拉取混链信息
+// --------------------- fetch convs -------------------------
+message FetchMixedLinkMessagesReq {
+  repeated string conversation_id_arr = 1;
+  int64 count = 2; // 每个会话携带的消息数目
+};
+
+message FetchMixedLinkMessagesResp {
+  repeated ConversationMessages conversation_messages = 1;
+};
+//-----------------------------------------------------------
+
+// 发送消息信息
+// -------------------- send message ------------------------
+message SendBatchMessageReq {
+  repeated Message message_arr = 1;
+};
+
+message SendBatchMessageResp {
+  repeated SendBatchMessageResp send_message_response_arr = 1;
+};
+//-----------------------------------------------------------
+
+// 下推消息
+// --------------------- push message -----------------------
+message PushMessages {
+  repeated Message push_message_arr = 1;
+};
+// ----------------------------------------------------------
+
+message Request {
+  string request_id = 1;
+  FetchMixedLinkMessagesReq fetch_mixed_link_messages_request = 2;
+  FetchSingleLinkMessagesReq fetch_single_link_messages_request = 3;
+  SendBatchMessageReq send_batch_messages_request = 4;
+};
+
+
+message Response {
+  string response_id = 1;
+  FetchMixedLinkMessagesResp fetch_mixed_link_messages_response = 2;
+  FetchSingleLinkMessagesResp fetch_single_link_messages_response = 3;
+  SendBatchMessageResp send_batch_messages_response = 4;
+  PushMessages push_message = 5;
+};
