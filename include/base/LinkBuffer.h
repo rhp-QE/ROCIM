@@ -13,6 +13,7 @@
 #include <optional>
 #include <vector>
 
+
 namespace roc::base {
 
 class NetBuffer : public std::enable_shared_from_this<NetBuffer> {

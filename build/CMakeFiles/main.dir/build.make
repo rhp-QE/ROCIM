@@ -69,38 +69,10 @@ include CMakeFiles/main.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/main.dir/flags.make
 
-CMakeFiles/main.dir/src/net/LongConnectionImpl.cpp.o: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/src/net/LongConnectionImpl.cpp.o: ../src/net/LongConnectionImpl.cpp
-CMakeFiles/main.dir/src/net/LongConnectionImpl.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/ROCIM/ROCIM_CLIENT/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/main.dir/src/net/LongConnectionImpl.cpp.o"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/src/net/LongConnectionImpl.cpp.o -MF CMakeFiles/main.dir/src/net/LongConnectionImpl.cpp.o.d -o CMakeFiles/main.dir/src/net/LongConnectionImpl.cpp.o -c /root/ROCIM/ROCIM_CLIENT/src/net/LongConnectionImpl.cpp
-
-CMakeFiles/main.dir/src/net/LongConnectionImpl.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/src/net/LongConnectionImpl.cpp.i"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /root/ROCIM/ROCIM_CLIENT/src/net/LongConnectionImpl.cpp > CMakeFiles/main.dir/src/net/LongConnectionImpl.cpp.i
-
-CMakeFiles/main.dir/src/net/LongConnectionImpl.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/src/net/LongConnectionImpl.cpp.s"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /root/ROCIM/ROCIM_CLIENT/src/net/LongConnectionImpl.cpp -o CMakeFiles/main.dir/src/net/LongConnectionImpl.cpp.s
-
-CMakeFiles/main.dir/main.cpp.o: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/main.cpp.o: ../main.cpp
-CMakeFiles/main.dir/main.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/ROCIM/ROCIM_CLIENT/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/main.dir/main.cpp.o"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/main.cpp.o -MF CMakeFiles/main.dir/main.cpp.o.d -o CMakeFiles/main.dir/main.cpp.o -c /root/ROCIM/ROCIM_CLIENT/main.cpp
-
-CMakeFiles/main.dir/main.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/main.cpp.i"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /root/ROCIM/ROCIM_CLIENT/main.cpp > CMakeFiles/main.dir/main.cpp.i
-
-CMakeFiles/main.dir/main.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/main.cpp.s"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /root/ROCIM/ROCIM_CLIENT/main.cpp -o CMakeFiles/main.dir/main.cpp.s
-
 CMakeFiles/main.dir/src/base/HttpClient.cpp.o: CMakeFiles/main.dir/flags.make
 CMakeFiles/main.dir/src/base/HttpClient.cpp.o: ../src/base/HttpClient.cpp
 CMakeFiles/main.dir/src/base/HttpClient.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/ROCIM/ROCIM_CLIENT/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/main.dir/src/base/HttpClient.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/ROCIM/ROCIM_CLIENT/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/main.dir/src/base/HttpClient.cpp.o"
 	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/src/base/HttpClient.cpp.o -MF CMakeFiles/main.dir/src/base/HttpClient.cpp.o.d -o CMakeFiles/main.dir/src/base/HttpClient.cpp.o -c /root/ROCIM/ROCIM_CLIENT/src/base/HttpClient.cpp
 
 CMakeFiles/main.dir/src/base/HttpClient.cpp.i: cmake_force
@@ -114,7 +86,7 @@ CMakeFiles/main.dir/src/base/HttpClient.cpp.s: cmake_force
 CMakeFiles/main.dir/src/base/LinkBuffer.cpp.o: CMakeFiles/main.dir/flags.make
 CMakeFiles/main.dir/src/base/LinkBuffer.cpp.o: ../src/base/LinkBuffer.cpp
 CMakeFiles/main.dir/src/base/LinkBuffer.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/ROCIM/ROCIM_CLIENT/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/main.dir/src/base/LinkBuffer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/ROCIM/ROCIM_CLIENT/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/main.dir/src/base/LinkBuffer.cpp.o"
 	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/src/base/LinkBuffer.cpp.o -MF CMakeFiles/main.dir/src/base/LinkBuffer.cpp.o.d -o CMakeFiles/main.dir/src/base/LinkBuffer.cpp.o -c /root/ROCIM/ROCIM_CLIENT/src/base/LinkBuffer.cpp
 
 CMakeFiles/main.dir/src/base/LinkBuffer.cpp.i: cmake_force
@@ -125,25 +97,54 @@ CMakeFiles/main.dir/src/base/LinkBuffer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/src/base/LinkBuffer.cpp.s"
 	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /root/ROCIM/ROCIM_CLIENT/src/base/LinkBuffer.cpp -o CMakeFiles/main.dir/src/base/LinkBuffer.cpp.s
 
+CMakeFiles/main.dir/src/net/LongConnectionImpl.cpp.o: CMakeFiles/main.dir/flags.make
+CMakeFiles/main.dir/src/net/LongConnectionImpl.cpp.o: ../src/net/LongConnectionImpl.cpp
+CMakeFiles/main.dir/src/net/LongConnectionImpl.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/ROCIM/ROCIM_CLIENT/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/main.dir/src/net/LongConnectionImpl.cpp.o"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/src/net/LongConnectionImpl.cpp.o -MF CMakeFiles/main.dir/src/net/LongConnectionImpl.cpp.o.d -o CMakeFiles/main.dir/src/net/LongConnectionImpl.cpp.o -c /root/ROCIM/ROCIM_CLIENT/src/net/LongConnectionImpl.cpp
+
+CMakeFiles/main.dir/src/net/LongConnectionImpl.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/src/net/LongConnectionImpl.cpp.i"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /root/ROCIM/ROCIM_CLIENT/src/net/LongConnectionImpl.cpp > CMakeFiles/main.dir/src/net/LongConnectionImpl.cpp.i
+
+CMakeFiles/main.dir/src/net/LongConnectionImpl.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/src/net/LongConnectionImpl.cpp.s"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /root/ROCIM/ROCIM_CLIENT/src/net/LongConnectionImpl.cpp -o CMakeFiles/main.dir/src/net/LongConnectionImpl.cpp.s
+
+CMakeFiles/main.dir/main.cpp.o: CMakeFiles/main.dir/flags.make
+CMakeFiles/main.dir/main.cpp.o: ../main.cpp
+CMakeFiles/main.dir/main.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/ROCIM/ROCIM_CLIENT/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/main.dir/main.cpp.o"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/main.cpp.o -MF CMakeFiles/main.dir/main.cpp.o.d -o CMakeFiles/main.dir/main.cpp.o -c /root/ROCIM/ROCIM_CLIENT/main.cpp
+
+CMakeFiles/main.dir/main.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/main.cpp.i"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /root/ROCIM/ROCIM_CLIENT/main.cpp > CMakeFiles/main.dir/main.cpp.i
+
+CMakeFiles/main.dir/main.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/main.cpp.s"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /root/ROCIM/ROCIM_CLIENT/main.cpp -o CMakeFiles/main.dir/main.cpp.s
+
 # Object files for target main
 main_OBJECTS = \
-"CMakeFiles/main.dir/src/net/LongConnectionImpl.cpp.o" \
-"CMakeFiles/main.dir/main.cpp.o" \
 "CMakeFiles/main.dir/src/base/HttpClient.cpp.o" \
-"CMakeFiles/main.dir/src/base/LinkBuffer.cpp.o"
+"CMakeFiles/main.dir/src/base/LinkBuffer.cpp.o" \
+"CMakeFiles/main.dir/src/net/LongConnectionImpl.cpp.o" \
+"CMakeFiles/main.dir/main.cpp.o"
 
 # External object files for target main
 main_EXTERNAL_OBJECTS =
 
-main: CMakeFiles/main.dir/src/net/LongConnectionImpl.cpp.o
-main: CMakeFiles/main.dir/main.cpp.o
 main: CMakeFiles/main.dir/src/base/HttpClient.cpp.o
 main: CMakeFiles/main.dir/src/base/LinkBuffer.cpp.o
+main: CMakeFiles/main.dir/src/net/LongConnectionImpl.cpp.o
+main: CMakeFiles/main.dir/main.cpp.o
 main: CMakeFiles/main.dir/build.make
 main: /root/vcpkg/vcpkg/installed/x64-linux/debug/lib/libfolly.a
 main: /root/vcpkg/vcpkg/installed/x64-linux/debug/lib/libfollybenchmark.a
 main: /root/vcpkg/vcpkg/installed/x64-linux/debug/lib/libfolly_test_util.a
 main: /root/vcpkg/vcpkg/installed/x64-linux/debug/lib/libboost_json.a
+main: sdk/libsdk.a
 main: /root/vcpkg/vcpkg/installed/x64-linux/debug/lib/libfolly.a
 main: /root/vcpkg/vcpkg/installed/x64-linux/debug/lib/libfmtd.a
 main: /root/vcpkg/vcpkg/installed/x64-linux/debug/lib/libboost_context.a

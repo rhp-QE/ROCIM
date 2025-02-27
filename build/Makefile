@@ -503,6 +503,19 @@ ContinuousSubmit/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ContinuousSubmit.dir/build.make CMakeFiles/ContinuousSubmit.dir/build
 .PHONY : ContinuousSubmit/fast
 
+#=============================================================================
+# Target rules for targets named sdk
+
+# Build rule for target.
+sdk: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 sdk
+.PHONY : sdk
+
+# fast build rule for target.
+sdk/fast:
+	$(MAKE) $(MAKESILENT) -f sdk/CMakeFiles/sdk.dir/build.make sdk/CMakeFiles/sdk.dir/build
+.PHONY : sdk/fast
+
 main.o: main.cpp.o
 .PHONY : main.o
 
@@ -637,6 +650,7 @@ help:
 	@echo "... NightlyTest"
 	@echo "... NightlyUpdate"
 	@echo "... main"
+	@echo "... sdk"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

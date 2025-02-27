@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.10.0)
+cmake_minimum_required(VERSION 3.13.0)
 
 # 设置 C++ 标准为 11
 set(CMAKE_CXX_STANDARD 17)
@@ -18,18 +18,17 @@ project(ROCIM_CLIENT VERSION 0.1.0 LANGUAGES C CXX)
 #include
 include_directories(${CMAKE_SOURCE_DIR}/include)
 include_directories(${CMAKE_SOURCE_DIR}/src)
+include_directories(${CMAKE_SOURCE_DIR})
 
 # src
-file(GLOB SOURCES "src/net/*.cpp")
-file(GLOB SOURCES1 "src/base/*.cpp")
-file(GLOB SOURCES2 "src/base/HttpClient.cpp")
+file(GLOB SOURCES "src/**/*.cpp")
 
 # main
 list(APPEND SOURCES ${CMAKE_SOURCE_DIR}/main.cpp)
 
 
 
-add_executable(main ${SOURCES} ${SOURCES1} ${SOURCES2})
+add_executable(main ${SOURCES})
 
 #--------------------------------------
 
@@ -56,6 +55,11 @@ endif()
 
 # 显式添加调试编译选项（通常 CMake 会自动处理）
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -g -O0")
+
+#sub directory
+add_subdirectory(sdk)
+
+target_link_libraries(main PRIVATE sdk)
 
 include(CTest)
 enable_testing()

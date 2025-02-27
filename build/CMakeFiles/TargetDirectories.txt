@@ -30,3 +30,7 @@
 /root/ROCIM/ROCIM_CLIENT/build/CMakeFiles/test.dir
 /root/ROCIM/ROCIM_CLIENT/build/CMakeFiles/edit_cache.dir
 /root/ROCIM/ROCIM_CLIENT/build/CMakeFiles/rebuild_cache.dir
+/root/ROCIM/ROCIM_CLIENT/build/sdk/CMakeFiles/sdk.dir
+/root/ROCIM/ROCIM_CLIENT/build/sdk/CMakeFiles/test.dir
+/root/ROCIM/ROCIM_CLIENT/build/sdk/CMakeFiles/edit_cache.dir
+/root/ROCIM/ROCIM_CLIENT/build/sdk/CMakeFiles/rebuild_cache.dir
