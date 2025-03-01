@@ -13,8 +13,6 @@
 #include <thread>
 #include <boost/json.hpp>
 
-#include <sdk/interface/test.h>
-
 namespace beast = boost::beast;
 namespace http = beast::http;
 namespace json = boost::json;

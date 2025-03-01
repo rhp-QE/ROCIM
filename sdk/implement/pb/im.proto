@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package roc.im.sdk;
+package roc.im.sdk.net;
 
 option go_package = "./;im";
 option csharp_namespace = "IM.Protocol";
@@ -84,7 +84,7 @@ message PushMessages {
 };
 // ----------------------------------------------------------
 
-message Request {
+message RequestBody {
   string request_id = 1;
   FetchMixedLinkMessagesReq fetch_mixed_link_messages_request = 2;
   FetchSingleLinkMessagesReq fetch_single_link_messages_request = 3;
@@ -92,7 +92,7 @@ message Request {
 };
 
 
-message Response {
+message ResponseBody {
   string response_id = 1;
   FetchMixedLinkMessagesResp fetch_mixed_link_messages_response = 2;
   FetchSingleLinkMessagesResp fetch_single_link_messages_response = 3;

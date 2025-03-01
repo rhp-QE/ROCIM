@@ -79,7 +79,7 @@ void LongConnectionImpl::do_connect() {
         config_.port,
         [self](const boost::system::error_code& ec, const auto& endpoints) {
             if (ec) {
-                std::cout << "[resolve addr error]" << std::endl;
+                std::cout << "[resolve addr error]" << ec.message() << std::endl;
                 self->schedule_reconnect();
                 return;
             }
