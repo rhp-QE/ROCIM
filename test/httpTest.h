@@ -4,9 +4,8 @@
 #include <boost/json/object.hpp>
 #include <boost/json/parse.hpp>
 #include <boost/json/serialize.hpp>
+#include <im/base/HttpClient.h>
 #include <iostream>
-
-
 
 int testHttp() {
     using namespace::roc::net;

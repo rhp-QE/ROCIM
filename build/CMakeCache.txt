@@ -57,8 +57,9 @@ CMAKE_ADDR2LINE:FILEPATH=/usr/bin/addr2line
 //Path to a program.
 CMAKE_AR:FILEPATH=/usr/bin/ar
 
-//No help, variable specified on the command line.
-CMAKE_BUILD_TYPE:STRING=Debug
+//Choose the type of build, options are: None Debug Release RelWithDebInfo
+// MinSizeRel ...
+CMAKE_BUILD_TYPE:STRING=
 
 //Enable/Disable color output during build.
 CMAKE_COLOR_MAKEFILE:BOOL=ON
@@ -128,9 +129,6 @@ CMAKE_EXE_LINKER_FLAGS_RELEASE:STRING=
 
 //Flags used by the linker during RELWITHDEBINFO builds.
 CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO:STRING=
-
-//No help, variable specified on the command line.
-CMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE
 
 //Install path prefix, prepended onto install directories.
 CMAKE_INSTALL_PREFIX:PATH=/usr/local
@@ -311,9 +309,6 @@ PKG_CONFIG_ARGN:STRING=
 //pkg-config executable
 PKG_CONFIG_EXECUTABLE:FILEPATH=/usr/bin/pkg-config
 
-//Path to a program.
-Protobuf_PROTOC_EXECUTABLE:FILEPATH=/root/vcpkg/vcpkg/installed/x64-linux/tools/protobuf/protoc
-
 //Value Computed by CMake
 ROCIM_CLIENT_BINARY_DIR:STATIC=/root/ROCIM/ROCIM_CLIENT/build
 
@@ -389,9 +384,6 @@ _event_lib_dbg:FILEPATH=/root/vcpkg/vcpkg/installed/x64-linux/debug/lib/libevent
 
 //Path to a library.
 _event_lib_rel:FILEPATH=/root/vcpkg/vcpkg/installed/x64-linux/lib/libevent_pthreads.a
-
-//The directory containing a CMake configuration file for absl.
-absl_DIR:PATH=/root/vcpkg/vcpkg/installed/x64-linux/share/absl
 
 //The directory containing a CMake configuration file for boost_algorithm.
 boost_algorithm_DIR:PATH=/root/vcpkg/vcpkg/installed/x64-linux/share/boost_algorithm
@@ -597,20 +589,8 @@ pkgcfg_lib__OPENSSL_dl:FILEPATH=/usr/lib/x86_64-linux-gnu/libdl.a
 //Path to a library.
 pkgcfg_lib__OPENSSL_ssl:FILEPATH=/root/vcpkg/vcpkg/installed/x64-linux/debug/lib/libssl.a
 
-//The directory containing a CMake configuration file for protobuf.
-protobuf_DIR:PATH=/root/vcpkg/vcpkg/installed/x64-linux/share/protobuf
-
-//CMake built-in FindProtobuf.cmake module compatible
-protobuf_MODULE_COMPATIBLE:BOOL=OFF
-
-//Enable for verbose output
-protobuf_VERBOSE:BOOL=OFF
-
 //The directory containing a CMake configuration file for unofficial-brotli.
 unofficial-brotli_DIR:PATH=/root/vcpkg/vcpkg/installed/x64-linux/share/unofficial-brotli
-
-//The directory containing a CMake configuration file for utf8_range.
-utf8_range_DIR:PATH=/root/vcpkg/vcpkg/installed/x64-linux/share/utf8_range
 
 
 ########################
@@ -723,7 +703,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=2
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP
@@ -782,12 +762,10 @@ DART_TESTING_TIMEOUT-ADVANCED:INTERNAL=1
 FIND_PACKAGE_MESSAGE_DETAILS_Boost:INTERNAL=[/root/vcpkg/vcpkg/installed/x64-linux/share/boost/BoostConfig.cmake][cfound components: json ][v1.86.0()]
 //Details about finding OpenSSL
 FIND_PACKAGE_MESSAGE_DETAILS_OpenSSL:INTERNAL=[/root/vcpkg/vcpkg/installed/x64-linux/debug/lib/libcrypto.a][/root/vcpkg/vcpkg/installed/x64-linux/include][c ][v3.4.0()]
-//Details about finding Protobuf
-FIND_PACKAGE_MESSAGE_DETAILS_Protobuf:INTERNAL=[/root/vcpkg/vcpkg/installed/x64-linux/tools/protobuf/protoc][optimized;/root/vcpkg/vcpkg/installed/x64-linux/lib/libprotobuf.a;debug;/root/vcpkg/vcpkg/installed/x64-linux/debug/lib/libprotobufd.a][/root/vcpkg/vcpkg/installed/x64-linux/include][v29.2.0()]
 //Details about finding Threads
 FIND_PACKAGE_MESSAGE_DETAILS_Threads:INTERNAL=[TRUE][v()]
 //Details about finding ZLIB
-FIND_PACKAGE_MESSAGE_DETAILS_ZLIB:INTERNAL=[optimized;/root/vcpkg/vcpkg/installed/x64-linux/lib/libz.a;debug;/root/vcpkg/vcpkg/installed/x64-linux/debug/lib/libz.a][/root/vcpkg/vcpkg/installed/x64-linux/include][v1.3.1()]
+FIND_PACKAGE_MESSAGE_DETAILS_ZLIB:INTERNAL=[/root/vcpkg/vcpkg/installed/x64-linux/lib/libz.a][/root/vcpkg/vcpkg/installed/x64-linux/include][v1.3.1()]
 //Details about finding httplib
 FIND_PACKAGE_MESSAGE_DETAILS_httplib:INTERNAL=[/root/vcpkg/vcpkg/installed/x64-linux/include/httplib.h]
 //ADVANCED property for variable: GITCOMMAND
@@ -872,8 +850,4 @@ pkgcfg_lib__OPENSSL_dl-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: pkgcfg_lib__OPENSSL_ssl
 pkgcfg_lib__OPENSSL_ssl-ADVANCED:INTERNAL=1
 prefix_result:INTERNAL=/root/vcpkg/vcpkg/installed/x64-linux/debug/lib/pkgconfig/../../lib
-//ADVANCED property for variable: protobuf_MODULE_COMPATIBLE
-protobuf_MODULE_COMPATIBLE-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: protobuf_VERBOSE
-protobuf_VERBOSE-ADVANCED:INTERNAL=1
 

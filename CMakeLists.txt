@@ -15,21 +15,16 @@ project(ROCIM_CLIENT VERSION 0.1.0 LANGUAGES C CXX)
 
 # -------------------------------------c
 
-#include
-#include_directories(${CMAKE_SOURCE_DIR}/include)
-#include_directories(${CMAKE_SOURCE_DIR}/src)
-#include_directories(${CMAKE_SOURCE_DIR})
-#include_directories(${CMAKE_SOURCE_DIR}/sdk_module/include)
+include_directories(${CMAKE_SOURCE_DIR})
 
 # src
-file(GLOB SOURCES "src/**/*.cpp")
+file(GLOB_RECURSE SOURCES "im/**/*.cpp")
+file(GLOB_RECURSE SOURCES1 "im/**/*.cc")
 
 # main
 list(APPEND SOURCES ${CMAKE_SOURCE_DIR}/main.cpp)
 
-
-
-add_executable(main ${SOURCES})
+add_executable(main ${SOURCES} ${SOURCES1})
 
 #--------------------------------------
 
@@ -50,8 +45,9 @@ find_package(Boost REQUIRED COMPONENTS json)
 target_link_libraries(main PRIVATE Boost::json)
 
 #protobuf
-find_package(protobuf CONFIG REQUIRED)
-  target_link_libraries(main PRIVATE protobuf::libprotoc protobuf::libprotobuf protobuf::libprotobuf-lite)
+target_include_directories(main PRIVATE "/root/share/protobuf/include")
+target_link_directories(main PRIVATE "/root/share/protobuf/lib")
+target_link_libraries(main PRIVATE protoc protobuf protobuf-lite)
 
 # 设置默认构建类型为 Debug（可选）
 if (NOT CMAKE_BUILD_TYPE)
@@ -61,10 +57,6 @@ endif()
 # 显式添加调试编译选项（通常 CMake 会自动处理）
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -g -O0")
 
-#sub directory
-add_subdirectory(sdk_module)
-
-target_link_libraries(main PRIVATE sdk)
 
 include(CTest)
 enable_testing()

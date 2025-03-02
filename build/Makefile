@@ -503,18 +503,149 @@ ContinuousSubmit/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ContinuousSubmit.dir/build.make CMakeFiles/ContinuousSubmit.dir/build
 .PHONY : ContinuousSubmit/fast
 
-#=============================================================================
-# Target rules for targets named sdk
+im/base/HttpClient.o: im/base/HttpClient.cpp.o
+.PHONY : im/base/HttpClient.o
 
-# Build rule for target.
-sdk: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 sdk
-.PHONY : sdk
+# target to build an object file
+im/base/HttpClient.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/im/base/HttpClient.cpp.o
+.PHONY : im/base/HttpClient.cpp.o
 
-# fast build rule for target.
-sdk/fast:
-	$(MAKE) $(MAKESILENT) -f sdk_module/CMakeFiles/sdk.dir/build.make sdk_module/CMakeFiles/sdk.dir/build
-.PHONY : sdk/fast
+im/base/HttpClient.i: im/base/HttpClient.cpp.i
+.PHONY : im/base/HttpClient.i
+
+# target to preprocess a source file
+im/base/HttpClient.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/im/base/HttpClient.cpp.i
+.PHONY : im/base/HttpClient.cpp.i
+
+im/base/HttpClient.s: im/base/HttpClient.cpp.s
+.PHONY : im/base/HttpClient.s
+
+# target to generate assembly for a file
+im/base/HttpClient.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/im/base/HttpClient.cpp.s
+.PHONY : im/base/HttpClient.cpp.s
+
+im/base/LinkBuffer.o: im/base/LinkBuffer.cpp.o
+.PHONY : im/base/LinkBuffer.o
+
+# target to build an object file
+im/base/LinkBuffer.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/im/base/LinkBuffer.cpp.o
+.PHONY : im/base/LinkBuffer.cpp.o
+
+im/base/LinkBuffer.i: im/base/LinkBuffer.cpp.i
+.PHONY : im/base/LinkBuffer.i
+
+# target to preprocess a source file
+im/base/LinkBuffer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/im/base/LinkBuffer.cpp.i
+.PHONY : im/base/LinkBuffer.cpp.i
+
+im/base/LinkBuffer.s: im/base/LinkBuffer.cpp.s
+.PHONY : im/base/LinkBuffer.s
+
+# target to generate assembly for a file
+im/base/LinkBuffer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/im/base/LinkBuffer.cpp.s
+.PHONY : im/base/LinkBuffer.cpp.s
+
+im/base/LongConnectionImpl.o: im/base/LongConnectionImpl.cpp.o
+.PHONY : im/base/LongConnectionImpl.o
+
+# target to build an object file
+im/base/LongConnectionImpl.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/im/base/LongConnectionImpl.cpp.o
+.PHONY : im/base/LongConnectionImpl.cpp.o
+
+im/base/LongConnectionImpl.i: im/base/LongConnectionImpl.cpp.i
+.PHONY : im/base/LongConnectionImpl.i
+
+# target to preprocess a source file
+im/base/LongConnectionImpl.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/im/base/LongConnectionImpl.cpp.i
+.PHONY : im/base/LongConnectionImpl.cpp.i
+
+im/base/LongConnectionImpl.s: im/base/LongConnectionImpl.cpp.s
+.PHONY : im/base/LongConnectionImpl.s
+
+# target to generate assembly for a file
+im/base/LongConnectionImpl.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/im/base/LongConnectionImpl.cpp.s
+.PHONY : im/base/LongConnectionImpl.cpp.s
+
+im/sdk/net/ConnectionManager.o: im/sdk/net/ConnectionManager.cc.o
+.PHONY : im/sdk/net/ConnectionManager.o
+
+# target to build an object file
+im/sdk/net/ConnectionManager.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/im/sdk/net/ConnectionManager.cc.o
+.PHONY : im/sdk/net/ConnectionManager.cc.o
+
+im/sdk/net/ConnectionManager.i: im/sdk/net/ConnectionManager.cc.i
+.PHONY : im/sdk/net/ConnectionManager.i
+
+# target to preprocess a source file
+im/sdk/net/ConnectionManager.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/im/sdk/net/ConnectionManager.cc.i
+.PHONY : im/sdk/net/ConnectionManager.cc.i
+
+im/sdk/net/ConnectionManager.s: im/sdk/net/ConnectionManager.cc.s
+.PHONY : im/sdk/net/ConnectionManager.s
+
+# target to generate assembly for a file
+im/sdk/net/ConnectionManager.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/im/sdk/net/ConnectionManager.cc.s
+.PHONY : im/sdk/net/ConnectionManager.cc.s
+
+im/sdk/net/Request.o: im/sdk/net/Request.cc.o
+.PHONY : im/sdk/net/Request.o
+
+# target to build an object file
+im/sdk/net/Request.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/im/sdk/net/Request.cc.o
+.PHONY : im/sdk/net/Request.cc.o
+
+im/sdk/net/Request.i: im/sdk/net/Request.cc.i
+.PHONY : im/sdk/net/Request.i
+
+# target to preprocess a source file
+im/sdk/net/Request.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/im/sdk/net/Request.cc.i
+.PHONY : im/sdk/net/Request.cc.i
+
+im/sdk/net/Request.s: im/sdk/net/Request.cc.s
+.PHONY : im/sdk/net/Request.s
+
+# target to generate assembly for a file
+im/sdk/net/Request.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/im/sdk/net/Request.cc.s
+.PHONY : im/sdk/net/Request.cc.s
+
+im/sdk/pb/im.pb.o: im/sdk/pb/im.pb.cc.o
+.PHONY : im/sdk/pb/im.pb.o
+
+# target to build an object file
+im/sdk/pb/im.pb.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/im/sdk/pb/im.pb.cc.o
+.PHONY : im/sdk/pb/im.pb.cc.o
+
+im/sdk/pb/im.pb.i: im/sdk/pb/im.pb.cc.i
+.PHONY : im/sdk/pb/im.pb.i
+
+# target to preprocess a source file
+im/sdk/pb/im.pb.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/im/sdk/pb/im.pb.cc.i
+.PHONY : im/sdk/pb/im.pb.cc.i
+
+im/sdk/pb/im.pb.s: im/sdk/pb/im.pb.cc.s
+.PHONY : im/sdk/pb/im.pb.s
+
+# target to generate assembly for a file
+im/sdk/pb/im.pb.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/im/sdk/pb/im.pb.cc.s
+.PHONY : im/sdk/pb/im.pb.cc.s
 
 main.o: main.cpp.o
 .PHONY : main.o
@@ -539,78 +670,6 @@ main.s: main.cpp.s
 main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main.cpp.s
 .PHONY : main.cpp.s
-
-src/base/HttpClient.o: src/base/HttpClient.cpp.o
-.PHONY : src/base/HttpClient.o
-
-# target to build an object file
-src/base/HttpClient.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/base/HttpClient.cpp.o
-.PHONY : src/base/HttpClient.cpp.o
-
-src/base/HttpClient.i: src/base/HttpClient.cpp.i
-.PHONY : src/base/HttpClient.i
-
-# target to preprocess a source file
-src/base/HttpClient.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/base/HttpClient.cpp.i
-.PHONY : src/base/HttpClient.cpp.i
-
-src/base/HttpClient.s: src/base/HttpClient.cpp.s
-.PHONY : src/base/HttpClient.s
-
-# target to generate assembly for a file
-src/base/HttpClient.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/base/HttpClient.cpp.s
-.PHONY : src/base/HttpClient.cpp.s
-
-src/base/LinkBuffer.o: src/base/LinkBuffer.cpp.o
-.PHONY : src/base/LinkBuffer.o
-
-# target to build an object file
-src/base/LinkBuffer.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/base/LinkBuffer.cpp.o
-.PHONY : src/base/LinkBuffer.cpp.o
-
-src/base/LinkBuffer.i: src/base/LinkBuffer.cpp.i
-.PHONY : src/base/LinkBuffer.i
-
-# target to preprocess a source file
-src/base/LinkBuffer.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/base/LinkBuffer.cpp.i
-.PHONY : src/base/LinkBuffer.cpp.i
-
-src/base/LinkBuffer.s: src/base/LinkBuffer.cpp.s
-.PHONY : src/base/LinkBuffer.s
-
-# target to generate assembly for a file
-src/base/LinkBuffer.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/base/LinkBuffer.cpp.s
-.PHONY : src/base/LinkBuffer.cpp.s
-
-src/net/LongConnectionImpl.o: src/net/LongConnectionImpl.cpp.o
-.PHONY : src/net/LongConnectionImpl.o
-
-# target to build an object file
-src/net/LongConnectionImpl.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/net/LongConnectionImpl.cpp.o
-.PHONY : src/net/LongConnectionImpl.cpp.o
-
-src/net/LongConnectionImpl.i: src/net/LongConnectionImpl.cpp.i
-.PHONY : src/net/LongConnectionImpl.i
-
-# target to preprocess a source file
-src/net/LongConnectionImpl.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/net/LongConnectionImpl.cpp.i
-.PHONY : src/net/LongConnectionImpl.cpp.i
-
-src/net/LongConnectionImpl.s: src/net/LongConnectionImpl.cpp.s
-.PHONY : src/net/LongConnectionImpl.s
-
-# target to generate assembly for a file
-src/net/LongConnectionImpl.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/net/LongConnectionImpl.cpp.s
-.PHONY : src/net/LongConnectionImpl.cpp.s
 
 # Help Target
 help:
@@ -650,19 +709,27 @@ help:
 	@echo "... NightlyTest"
 	@echo "... NightlyUpdate"
 	@echo "... main"
-	@echo "... sdk"
+	@echo "... im/base/HttpClient.o"
+	@echo "... im/base/HttpClient.i"
+	@echo "... im/base/HttpClient.s"
+	@echo "... im/base/LinkBuffer.o"
+	@echo "... im/base/LinkBuffer.i"
+	@echo "... im/base/LinkBuffer.s"
+	@echo "... im/base/LongConnectionImpl.o"
+	@echo "... im/base/LongConnectionImpl.i"
+	@echo "... im/base/LongConnectionImpl.s"
+	@echo "... im/sdk/net/ConnectionManager.o"
+	@echo "... im/sdk/net/ConnectionManager.i"
+	@echo "... im/sdk/net/ConnectionManager.s"
+	@echo "... im/sdk/net/Request.o"
+	@echo "... im/sdk/net/Request.i"
+	@echo "... im/sdk/net/Request.s"
+	@echo "... im/sdk/pb/im.pb.o"
+	@echo "... im/sdk/pb/im.pb.i"
+	@echo "... im/sdk/pb/im.pb.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
-	@echo "... src/base/HttpClient.o"
-	@echo "... src/base/HttpClient.i"
-	@echo "... src/base/HttpClient.s"
-	@echo "... src/base/LinkBuffer.o"
-	@echo "... src/base/LinkBuffer.i"
-	@echo "... src/base/LinkBuffer.s"
-	@echo "... src/net/LongConnectionImpl.o"
-	@echo "... src/net/LongConnectionImpl.i"
-	@echo "... src/net/LongConnectionImpl.s"
 .PHONY : help
 
 

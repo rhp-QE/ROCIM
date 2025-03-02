@@ -19,7 +19,7 @@ namespace roc::im::sdk::net {
 class ResponseBody;
 class RequestBody;
 
-class Request : public boost::noncopyable, std::enable_shared_from_this<Request> {
+class Request : public boost::noncopyable, public std::enable_shared_from_this<Request> {
 public:
 
     static std::shared_ptr<Request> create(std::function<void(RequestBody *body)> block);

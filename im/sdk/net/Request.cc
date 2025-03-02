@@ -6,7 +6,10 @@
 
 
 #include <memory>
-#include <memory>
+
+#include <im/sdk/net/Request.h>
+#include <im/base/Utility.h>
+#include <im/sdk/pb/im.pb.h>
 
 // 使用命名空间
 namespace roc::im::sdk::net {
