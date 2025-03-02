@@ -35,8 +35,8 @@ private:
     boost::asio::ip::tcp::resolver resolver_;
     boost::asio::steady_timer reconnect_timer_;
     LongConnectionConfig config_;
-    std::shared_ptr<roc::base::NetBuffer> read_buffer_;
-    std::shared_ptr<roc::base::NetBuffer> write_buffer_;
+    std::shared_ptr<roc::base::LinkBuffer> read_buffer_;
+    std::shared_ptr<roc::base::LinkBuffer> write_buffer_;
     bool connected_ = false;
 
     std::shared_ptr<ILongConnection<LongConnectionImpl>> create_client(

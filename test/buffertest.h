@@ -6,10 +6,10 @@
 #include <boost/bind/bind.hpp>
 
 
-#include <net/ILongConnection.h>
-#include <net/LongConnectionImpl.h>
+#include <im/base/ILongConnection.h>
+#include <im/base/LongConnectionImpl.h>
 
-#include <base/LinkBuffer.h>
+#include <im/base/LinkBuffer.h>
 #include <random>
 #include <variant>
 
@@ -75,7 +75,7 @@ void testLongConAndBuffer() {
 
     int cnt = 1;
 
-    conn->set_receive_callback([&cnt, conn](std::shared_ptr<LongConnectionType> con, roc::base::NetBuffer::ReadResult data) {
+    conn->set_receive_callback([&cnt, conn](std::shared_ptr<LongConnectionType> con, roc::base::LinkBuffer::ReadResult data) {
         
         auto sizee = data.readBytes(bbb, size);
 
@@ -111,24 +111,4 @@ void testLongConAndBuffer() {
     // ...其他业务逻辑
     while(true){
     }
-}
-
-
-void test() {
-    uint32_t number = 1234567;
-    
-    char number_bytes[4];
-
-    for (size_t i = 0; i < sizeof(uint32_t); ++i) {
-        number_bytes[i] = static_cast<char>(number & 0xFF);
-        number >>= 8;  // 右移 8 位处理下一字节
-    }
-
-
-    uint32_t result = 0;
-    for(int i = 0; i < 4; ++i) {
-        result |= static_cast<uint8_t>(number_bytes[i]) << (i<<3);
-    }
-
-    std::cout<<"[number]"<<result<<std::endl;
 }

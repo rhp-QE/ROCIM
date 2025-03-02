@@ -575,6 +575,30 @@ im/base/LongConnectionImpl.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/im/base/LongConnectionImpl.cpp.s
 .PHONY : im/base/LongConnectionImpl.cpp.s
 
+im/base/ProtobufZeroCopyOutStream.o: im/base/ProtobufZeroCopyOutStream.cc.o
+.PHONY : im/base/ProtobufZeroCopyOutStream.o
+
+# target to build an object file
+im/base/ProtobufZeroCopyOutStream.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/im/base/ProtobufZeroCopyOutStream.cc.o
+.PHONY : im/base/ProtobufZeroCopyOutStream.cc.o
+
+im/base/ProtobufZeroCopyOutStream.i: im/base/ProtobufZeroCopyOutStream.cc.i
+.PHONY : im/base/ProtobufZeroCopyOutStream.i
+
+# target to preprocess a source file
+im/base/ProtobufZeroCopyOutStream.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/im/base/ProtobufZeroCopyOutStream.cc.i
+.PHONY : im/base/ProtobufZeroCopyOutStream.cc.i
+
+im/base/ProtobufZeroCopyOutStream.s: im/base/ProtobufZeroCopyOutStream.cc.s
+.PHONY : im/base/ProtobufZeroCopyOutStream.s
+
+# target to generate assembly for a file
+im/base/ProtobufZeroCopyOutStream.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/im/base/ProtobufZeroCopyOutStream.cc.s
+.PHONY : im/base/ProtobufZeroCopyOutStream.cc.s
+
 im/sdk/net/ConnectionManager.o: im/sdk/net/ConnectionManager.cc.o
 .PHONY : im/sdk/net/ConnectionManager.o
 
@@ -718,6 +742,9 @@ help:
 	@echo "... im/base/LongConnectionImpl.o"
 	@echo "... im/base/LongConnectionImpl.i"
 	@echo "... im/base/LongConnectionImpl.s"
+	@echo "... im/base/ProtobufZeroCopyOutStream.o"
+	@echo "... im/base/ProtobufZeroCopyOutStream.i"
+	@echo "... im/base/ProtobufZeroCopyOutStream.s"
 	@echo "... im/sdk/net/ConnectionManager.o"
 	@echo "... im/sdk/net/ConnectionManager.i"
 	@echo "... im/sdk/net/ConnectionManager.s"

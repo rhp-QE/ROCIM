@@ -14,8 +14,8 @@ LongConnectionImpl::LongConnectionImpl(boost::asio::io_context& io_context, cons
       resolver_(io_context),
       reconnect_timer_(io_context),
       config_(config),
-      write_buffer_(std::make_shared<base::NetBuffer>()),
-      read_buffer_(std::make_shared<base::NetBuffer>()){}
+      write_buffer_(std::make_shared<base::LinkBuffer>()),
+      read_buffer_(std::make_shared<base::LinkBuffer>()){}
 
 void LongConnectionImpl::send_impl(const std::string& data) { 
        if (data.length() <= 0) {

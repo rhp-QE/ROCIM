@@ -18,8 +18,8 @@ project(ROCIM_CLIENT VERSION 0.1.0 LANGUAGES C CXX)
 include_directories(${CMAKE_SOURCE_DIR})
 
 # src
-file(GLOB_RECURSE SOURCES "im/**/*.cpp")
-file(GLOB_RECURSE SOURCES1 "im/**/*.cc")
+file(GLOB_RECURSE SOURCES "im/*.cpp")
+file(GLOB_RECURSE SOURCES1 "im/*.cc")
 
 # main
 list(APPEND SOURCES ${CMAKE_SOURCE_DIR}/main.cpp)

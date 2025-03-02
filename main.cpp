@@ -1,12 +1,10 @@
 #include <test/RequestTest.h>
+#include <test/buffertest.h>
 int main() {
-   // testBuffer();
-    // testLongConAndBuffer();
-    // testUniquePtr();
-    // test();
-    // testHttp();
-    roc::im::sdk::net::test();
+    roc::im::sdk::net::testProtobuf();
 
+
+    // testLongConAndBuffer();
     while(true) {}
     return 0;
 }

@@ -23,7 +23,7 @@ struct LongConnectionConfig {
     uint32_t reconnect_interval = 5000; // 重连间隔，单位毫秒
 };
 
-using ReceiveCallback = std::function<void(std::shared_ptr<ILongConnection<LongConnectionImpl>> con, base::NetBuffer::ReadResult readResult)>;
+using ReceiveCallback = std::function<void(std::shared_ptr<ILongConnection<LongConnectionImpl>> con, base::LinkBuffer::ReadResult readResult)>;
 using ConnectCallback = std::function<void(std::shared_ptr<ILongConnection<LongConnectionImpl>> con)>;
 
 ///----------------- Interface ---------------------------

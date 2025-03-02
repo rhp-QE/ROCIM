@@ -16,7 +16,7 @@
 
 namespace roc::base {
 
-class NetBuffer : public std::enable_shared_from_this<NetBuffer> {
+class LinkBuffer : public std::enable_shared_from_this<LinkBuffer> {
 public:
     // 内存块结构
     struct Block {
@@ -38,33 +38,39 @@ public:
 
     struct ReadResult {
 
+        friend class LinkBuffer;
+
         using BlockItorType = std::list<std::unique_ptr<Block>>::iterator;
 
         public:
 
             std::vector<boost::asio::const_buffer> buffers; // 数据缓冲区
-            std::shared_ptr<NetBuffer> buffer_;
+            std::shared_ptr<LinkBuffer> buffer_;
             void release() const;
             std::string readString() const;
             uint32_t peekUnint32();
             size_t readBytes(char *buf, size_t size);
             
+            
+        
+        private:
+            
             void set_ref_block_iterators(const std::vector<BlockItorType>& vec) {
                 ref_block_iterators_ = vec;
             }
-        
-        private:
 
             std::vector<BlockItorType> ref_block_iterators_; // 
 
     };
 
-    explicit NetBuffer(size_t init_block_size = 4096);
+    explicit LinkBuffer(size_t init_block_size = 4096);
     
     // 核心接口
     void write(const void* data, size_t len);           // 用户主动写入数据（追加到末尾）
+
     std::vector<boost::asio::mutable_buffer> prepare_buffers(size_t hint = 0); // 获取可写缓冲区
     void commit(size_t written);                        // 提交写入数据
+
     std::optional<ReadResult> get_read_buffers(size_t size = 0);           // 返回数据及区间游标
 
     size_t readable() const noexcept;                        // 当前可读数据总长度

@@ -57,9 +57,8 @@ CMAKE_ADDR2LINE:FILEPATH=/usr/bin/addr2line
 //Path to a program.
 CMAKE_AR:FILEPATH=/usr/bin/ar
 
-//Choose the type of build, options are: None Debug Release RelWithDebInfo
-// MinSizeRel ...
-CMAKE_BUILD_TYPE:STRING=
+//No help, variable specified on the command line.
+CMAKE_BUILD_TYPE:STRING=Debug
 
 //Enable/Disable color output during build.
 CMAKE_COLOR_MAKEFILE:BOOL=ON
@@ -129,6 +128,9 @@ CMAKE_EXE_LINKER_FLAGS_RELEASE:STRING=
 
 //Flags used by the linker during RELWITHDEBINFO builds.
 CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO:STRING=
+
+//No help, variable specified on the command line.
+CMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE
 
 //Install path prefix, prepended onto install directories.
 CMAKE_INSTALL_PREFIX:PATH=/usr/local
@@ -765,7 +767,7 @@ FIND_PACKAGE_MESSAGE_DETAILS_OpenSSL:INTERNAL=[/root/vcpkg/vcpkg/installed/x64-l
 //Details about finding Threads
 FIND_PACKAGE_MESSAGE_DETAILS_Threads:INTERNAL=[TRUE][v()]
 //Details about finding ZLIB
-FIND_PACKAGE_MESSAGE_DETAILS_ZLIB:INTERNAL=[/root/vcpkg/vcpkg/installed/x64-linux/lib/libz.a][/root/vcpkg/vcpkg/installed/x64-linux/include][v1.3.1()]
+FIND_PACKAGE_MESSAGE_DETAILS_ZLIB:INTERNAL=[optimized;/root/vcpkg/vcpkg/installed/x64-linux/lib/libz.a;debug;/root/vcpkg/vcpkg/installed/x64-linux/debug/lib/libz.a][/root/vcpkg/vcpkg/installed/x64-linux/include][v1.3.1()]
 //Details about finding httplib
 FIND_PACKAGE_MESSAGE_DETAILS_httplib:INTERNAL=[/root/vcpkg/vcpkg/installed/x64-linux/include/httplib.h]
 //ADVANCED property for variable: GITCOMMAND

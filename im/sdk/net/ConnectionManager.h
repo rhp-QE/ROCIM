@@ -15,29 +15,16 @@
 
 namespace roc::im::sdk::net {
 
-class ConnectionManager : public boost::noncopyable, std::enable_shared_from_this<ConnectionManager>{
+class ConnectionManager : public boost::noncopyable, public std::enable_shared_from_this<ConnectionManager>{
 public:
-    // 构造函数
-    explicit ConnectionManager(int value);
-
-    // 拷贝构造函数
-    ConnectionManager(const ConnectionManager& other);
-
-    // 移动构造函数
-    ConnectionManager(ConnectionManager&& other) noexcept;
-
-    // 拷贝赋值操作符（使用拷贝-交换技术）
-    ConnectionManager& operator=(ConnectionManager other);
-
-    // 移动赋值操作符
-    ConnectionManager& operator=(ConnectionManager&& other) noexcept;
-
-    // 成员函数
-    void setValue(int value);
-    int getValue() const;
+    static ConnectionManager& shareInstance() {
+        static ConnectionManager instance;
+        return instance;
+    }
 
 private:
-    int value; // 成员变量
+    ConnectionManager();
+    ~ConnectionManager() = default;
 };
 
 } // namespace roc::im::sdk::net

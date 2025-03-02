@@ -14,23 +14,23 @@ using namespace::roc::base;
 
 int id = 0;
 
-NetBuffer::Block::Block(size_t size) 
+LinkBuffer::Block::Block(size_t size) 
     : capacity(size), data(new char[size]) {}
 
-void NetBuffer::Block::reset() noexcept {
+void LinkBuffer::Block::reset() noexcept {
     write_pos = 0;
     read_pos = 0;
 }
 
-size_t NetBuffer::Block::writable() const noexcept {
+size_t LinkBuffer::Block::writable() const noexcept {
     return capacity - write_pos;
 }
 
-size_t NetBuffer::Block::readable() const noexcept {
+size_t LinkBuffer::Block::readable() const noexcept {
     return write_pos - read_pos;
 }
 
-void NetBuffer::ReadResult::release() const {
+void LinkBuffer::ReadResult::release() const {
     for (auto& ref_block_iterator : ref_block_iterators_) {
         if (ref_block_iterator == buffer_->blocks_.end()) {
             continue;
@@ -59,7 +59,7 @@ void NetBuffer::ReadResult::release() const {
     }
 }
 
-std::string NetBuffer::ReadResult::readString() const {
+std::string LinkBuffer::ReadResult::readString() const {
     std::string result;
 
     // 计算所有缓冲区的总字节数
@@ -82,7 +82,7 @@ std::string NetBuffer::ReadResult::readString() const {
     return result;
 }
 
-size_t NetBuffer::ReadResult::readBytes(char* buf, size_t size) {
+size_t LinkBuffer::ReadResult::readBytes(char* buf, size_t size) {
     // 计算所有缓冲区的总字节数
     size_t total_size = 0;
 
@@ -106,7 +106,7 @@ size_t NetBuffer::ReadResult::readBytes(char* buf, size_t size) {
     return pos;
 }
 
-uint32_t NetBuffer::ReadResult::peekUnint32() {
+uint32_t LinkBuffer::ReadResult::peekUnint32() {
     char number_bytes[4];
     readBytes(number_bytes, 4);
 
@@ -123,7 +123,7 @@ uint32_t NetBuffer::ReadResult::peekUnint32() {
     return number;
 }
 
-NetBuffer::NetBuffer(size_t init_block_size)
+LinkBuffer::LinkBuffer(size_t init_block_size)
     : default_block_size_(init_block_size)
 {
     blocks_.emplace_back(std::make_unique<Block>(init_block_size));
@@ -132,7 +132,7 @@ NetBuffer::NetBuffer(size_t init_block_size)
 }
 
 // 用户主动写入数据（通过 prepare_buffers 和 commit 实现追加）
-void NetBuffer::write(const void* data, size_t len) {
+void LinkBuffer::write(const void* data, size_t len) {
     std::cout<<"[call write]"<<std::endl;
     const char* src = static_cast<const char*>(data);
     auto bufs = prepare_buffers(len);
@@ -153,7 +153,7 @@ void NetBuffer::write(const void* data, size_t len) {
 
 /// 准备写入空间
 /// size = 0 : 返回剩余的所有空间
-std::vector<boost::asio::mutable_buffer> NetBuffer::prepare_buffers(size_t size) {
+std::vector<boost::asio::mutable_buffer> LinkBuffer::prepare_buffers(size_t size) {
     std::cout<<"[block count] "<<this<<" "<<blocks_.size()<<std::endl;
     /// 保证有足够空间
     if (writeable() < size || writeable() == 0) {
@@ -188,7 +188,7 @@ std::vector<boost::asio::mutable_buffer> NetBuffer::prepare_buffers(size_t size)
 }
 
 /// 写入后确认提交
-void NetBuffer::commit(size_t written) {
+void LinkBuffer::commit(size_t written) {
     if (written > writeable()) {
         std::cout<<"[error] commit size over left size"<<std::endl;
         return;
@@ -220,7 +220,7 @@ void NetBuffer::commit(size_t written) {
 
 /// 获取数据
 /// size < readable : 返回 std::nullopt
-std::optional<NetBuffer::ReadResult> NetBuffer::get_read_buffers(size_t size) {
+std::optional<LinkBuffer::ReadResult> LinkBuffer::get_read_buffers(size_t size) {
 
     if (size > readable() || readable() == 0) {
         std::cerr << "[base::buffer::get_read_buffer] readable count is not enough" << std::endl;
@@ -229,7 +229,7 @@ std::optional<NetBuffer::ReadResult> NetBuffer::get_read_buffers(size_t size) {
 
     std::cout<<"[left read count]"<<readable()<<" [block count]"<<blocks_.size()<<" "<<this<<std::endl;
 
-    NetBuffer::ReadResult result;
+    LinkBuffer::ReadResult result;
     size = (size == 0) ? readable() : size;
 
     // 从全局游标位置开始读取
@@ -274,7 +274,7 @@ std::optional<NetBuffer::ReadResult> NetBuffer::get_read_buffers(size_t size) {
     return result;
 }
 
-size_t NetBuffer::readable() const noexcept {
+size_t LinkBuffer::readable() const noexcept {
     std::list<std::unique_ptr<Block>>::const_iterator it = read_block_cursor_;
     size_t total = 0;
 
@@ -286,7 +286,7 @@ size_t NetBuffer::readable() const noexcept {
     return total;
 }
 
-size_t NetBuffer::writeable() const noexcept {
+size_t LinkBuffer::writeable() const noexcept {
     std::list<std::unique_ptr<Block>>::const_iterator it = read_block_cursor_;
     size_t total = 0;
 
@@ -298,7 +298,7 @@ size_t NetBuffer::writeable() const noexcept {
     return total;
 }
 
-void NetBuffer::append_new_block(size_t hint) {
+void LinkBuffer::append_new_block(size_t hint) {
     std::cout<<"malloc new block] "<<this<<std::endl;
 
     if (blocks_.size() > 30) {
@@ -314,7 +314,7 @@ void NetBuffer::append_new_block(size_t hint) {
     }
 }
 
-void NetBuffer::append_new_block(std::unique_ptr<Block> block) {
+void LinkBuffer::append_new_block(std::unique_ptr<Block> block) {
     block->reset();
     block->refCount = 1;
     bool end_write = write_block_cursor_ == blocks_.end();
