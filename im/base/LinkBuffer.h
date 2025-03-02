@@ -16,6 +16,8 @@
 
 namespace roc::base {
 
+/// 非线程安全
+/// 由于提供了 异步写入接口。 需要使用者保证写入操作完成后再 执行下一次写入
 class LinkBuffer : public std::enable_shared_from_this<LinkBuffer> {
 public:
     // 内存块结构
@@ -68,6 +70,10 @@ public:
     // 核心接口
     void write(const void* data, size_t len);           // 用户主动写入数据（追加到末尾）
 
+    // 同步写入
+    void sync_write(size_t size, std::function<size_t(std::vector<boost::asio::mutable_buffer>& buffer)> sync_write_block);
+
+    // 异步写入
     std::vector<boost::asio::mutable_buffer> prepare_buffers(size_t hint = 0); // 获取可写缓冲区
     void commit(size_t written);                        // 提交写入数据
 

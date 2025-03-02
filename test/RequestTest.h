@@ -1,4 +1,5 @@
 #include "im/base/ProtobufZeroCopyInputStream.h"
+#include <boost/asio/buffer.hpp>
 #include <google/protobuf/io/zero_copy_stream.h>
 #include <memory>
 #include <iostream>
@@ -18,21 +19,26 @@ void testProtobuf() {
         std::cout<<body->ByteSizeLong()<<std::endl;
 
         body->set_request_id("1234567890");
+
+
+
         std::shared_ptr<roc::base::LinkBuffer> buffer = std::make_shared<roc::base::LinkBuffer>();
         
         size_t size = body->ByteSizeLong();
 
-        auto buf = buffer->prepare_buffers(size);
-        roc::base::io::ProtobufZeroCopyOutStream stream(buf);
-        body->SerializePartialToZeroCopyStream(&stream);
-        buffer->commit(size);
+        buffer->sync_write(size, [body, size](std::vector<boost::asio::mutable_buffer> buf) -> size_t {
+            roc::base::io::ProtobufZeroCopyOutStream stream(buf);
+            body->SerializePartialToZeroCopyStream(&stream);
+            return size;
+        });
 
-        auto readBuf = buffer->get_read_buffers()->buffers;
-        roc::base::io::ProtobufZeroCopyInputStream streamInput(readBuf);
+
+        auto readBuf = buffer->get_read_buffers();
+        roc::base::io::ProtobufZeroCopyInputStream streamInput(readBuf->buffers);
         
-
         RequestBody requestBodyRe;
         requestBodyRe.ParseFromBoundedZeroCopyStream(&streamInput, 12);
+        readBuf->release();
 
         std::cout<<"obj size" <<requestBodyRe.request_id()<<std::endl;
 

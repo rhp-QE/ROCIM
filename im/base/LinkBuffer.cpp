@@ -7,8 +7,7 @@
 #include <list>
 #include <memory>
 #include <optional>
-#include <system_error>
-#include <type_traits>
+#include <im/base/Utility.h>
 
 using namespace::roc::base;
 
@@ -216,6 +215,13 @@ void LinkBuffer::commit(size_t written) {
     }
 
     write_block_cursor_ = it;
+}
+
+
+void LinkBuffer::sync_write(size_t size, std::function<size_t(std::vector<boost::asio::mutable_buffer>& buffer)> sync_write_block) {
+    auto buf = prepare_buffers(size);
+    size_t written_size = roc::base::util::safe_invoke_block(sync_write_block, buf);
+    commit(written_size);
 }
 
 /// 获取数据
