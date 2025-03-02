@@ -13,6 +13,8 @@
 #include "buffertest.h"
 #include "httpTest.h"
 
+#include <sdk_module/test/sdk_test/ReuqestTest.h>
+
 using boost::asio::ip::tcp;
 
 class Session : public std::enable_shared_from_this<Session> {
@@ -135,7 +137,8 @@ int main() {
     // testLongConAndBuffer();
     // testUniquePtr();
     // test();
-    testHttp();
+    // testHttp();
+    roc::im::sdk::net::test();
 
     while(true) {}
     return 0;

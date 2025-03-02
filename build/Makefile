@@ -513,7 +513,7 @@ sdk: cmake_check_build_system
 
 # fast build rule for target.
 sdk/fast:
-	$(MAKE) $(MAKESILENT) -f sdk/CMakeFiles/sdk.dir/build.make sdk/CMakeFiles/sdk.dir/build
+	$(MAKE) $(MAKESILENT) -f sdk_module/CMakeFiles/sdk.dir/build.make sdk_module/CMakeFiles/sdk.dir/build
 .PHONY : sdk/fast
 
 main.o: main.cpp.o

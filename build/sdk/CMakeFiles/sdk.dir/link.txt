@@ -1,2 +1,0 @@
-/usr/bin/ar qc libsdk.a CMakeFiles/sdk.dir/implement/pb/im.pb.cc.o
-/usr/bin/ranlib libsdk.a

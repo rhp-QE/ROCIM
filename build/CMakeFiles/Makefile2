@@ -64,11 +64,11 @@ CMAKE_BINARY_DIR = /root/ROCIM/ROCIM_CLIENT/build
 
 # The main recursive "all" target.
 all: CMakeFiles/main.dir/all
-all: sdk/all
+all: sdk_module/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
-preinstall: sdk/preinstall
+preinstall: sdk_module/preinstall
 .PHONY : preinstall
 
 # The main recursive "clean" target.
@@ -101,29 +101,29 @@ clean: CMakeFiles/ContinuousTest.dir/clean
 clean: CMakeFiles/ContinuousCoverage.dir/clean
 clean: CMakeFiles/ContinuousMemCheck.dir/clean
 clean: CMakeFiles/ContinuousSubmit.dir/clean
-clean: sdk/clean
+clean: sdk_module/clean
 .PHONY : clean
 
 #=============================================================================
-# Directory level rules for directory sdk
+# Directory level rules for directory sdk_module
 
 # Recursive "all" directory target.
-sdk/all: sdk/CMakeFiles/sdk.dir/all
-.PHONY : sdk/all
+sdk_module/all: sdk_module/CMakeFiles/sdk.dir/all
+.PHONY : sdk_module/all
 
 # Recursive "preinstall" directory target.
-sdk/preinstall:
-.PHONY : sdk/preinstall
+sdk_module/preinstall:
+.PHONY : sdk_module/preinstall
 
 # Recursive "clean" directory target.
-sdk/clean: sdk/CMakeFiles/sdk.dir/clean
-.PHONY : sdk/clean
+sdk_module/clean: sdk_module/CMakeFiles/sdk.dir/clean
+.PHONY : sdk_module/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/main.dir
 
 # All Build rule for target.
-CMakeFiles/main.dir/all: sdk/CMakeFiles/sdk.dir/all
+CMakeFiles/main.dir/all: sdk_module/CMakeFiles/sdk.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/ROCIM/ROCIM_CLIENT/build/CMakeFiles --progress-num=1,2,3,4,5 "Built target main"
@@ -131,7 +131,7 @@ CMakeFiles/main.dir/all: sdk/CMakeFiles/sdk.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/main.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /root/ROCIM/ROCIM_CLIENT/build/CMakeFiles 7
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/ROCIM/ROCIM_CLIENT/build/CMakeFiles 9
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/main.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /root/ROCIM/ROCIM_CLIENT/build/CMakeFiles 0
 .PHONY : CMakeFiles/main.dir/rule
@@ -874,30 +874,30 @@ CMakeFiles/ContinuousSubmit.dir/clean:
 .PHONY : CMakeFiles/ContinuousSubmit.dir/clean
 
 #=============================================================================
-# Target rules for target sdk/CMakeFiles/sdk.dir
+# Target rules for target sdk_module/CMakeFiles/sdk.dir
 
 # All Build rule for target.
-sdk/CMakeFiles/sdk.dir/all:
-	$(MAKE) $(MAKESILENT) -f sdk/CMakeFiles/sdk.dir/build.make sdk/CMakeFiles/sdk.dir/depend
-	$(MAKE) $(MAKESILENT) -f sdk/CMakeFiles/sdk.dir/build.make sdk/CMakeFiles/sdk.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/ROCIM/ROCIM_CLIENT/build/CMakeFiles --progress-num=6,7 "Built target sdk"
-.PHONY : sdk/CMakeFiles/sdk.dir/all
+sdk_module/CMakeFiles/sdk.dir/all:
+	$(MAKE) $(MAKESILENT) -f sdk_module/CMakeFiles/sdk.dir/build.make sdk_module/CMakeFiles/sdk.dir/depend
+	$(MAKE) $(MAKESILENT) -f sdk_module/CMakeFiles/sdk.dir/build.make sdk_module/CMakeFiles/sdk.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/ROCIM/ROCIM_CLIENT/build/CMakeFiles --progress-num=6,7,8,9 "Built target sdk"
+.PHONY : sdk_module/CMakeFiles/sdk.dir/all
 
 # Build rule for subdir invocation for target.
-sdk/CMakeFiles/sdk.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /root/ROCIM/ROCIM_CLIENT/build/CMakeFiles 2
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 sdk/CMakeFiles/sdk.dir/all
+sdk_module/CMakeFiles/sdk.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/ROCIM/ROCIM_CLIENT/build/CMakeFiles 4
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 sdk_module/CMakeFiles/sdk.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /root/ROCIM/ROCIM_CLIENT/build/CMakeFiles 0
-.PHONY : sdk/CMakeFiles/sdk.dir/rule
+.PHONY : sdk_module/CMakeFiles/sdk.dir/rule
 
 # Convenience name for target.
-sdk: sdk/CMakeFiles/sdk.dir/rule
+sdk: sdk_module/CMakeFiles/sdk.dir/rule
 .PHONY : sdk
 
 # clean rule for target.
-sdk/CMakeFiles/sdk.dir/clean:
-	$(MAKE) $(MAKESILENT) -f sdk/CMakeFiles/sdk.dir/build.make sdk/CMakeFiles/sdk.dir/clean
-.PHONY : sdk/CMakeFiles/sdk.dir/clean
+sdk_module/CMakeFiles/sdk.dir/clean:
+	$(MAKE) $(MAKESILENT) -f sdk_module/CMakeFiles/sdk.dir/build.make sdk_module/CMakeFiles/sdk.dir/clean
+.PHONY : sdk_module/CMakeFiles/sdk.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

@@ -16,9 +16,10 @@ project(ROCIM_CLIENT VERSION 0.1.0 LANGUAGES C CXX)
 # -------------------------------------c
 
 #include
-include_directories(${CMAKE_SOURCE_DIR}/include)
-include_directories(${CMAKE_SOURCE_DIR}/src)
-include_directories(${CMAKE_SOURCE_DIR})
+#include_directories(${CMAKE_SOURCE_DIR}/include)
+#include_directories(${CMAKE_SOURCE_DIR}/src)
+#include_directories(${CMAKE_SOURCE_DIR})
+#include_directories(${CMAKE_SOURCE_DIR}/sdk_module/include)
 
 # src
 file(GLOB SOURCES "src/**/*.cpp")
@@ -48,6 +49,10 @@ target_link_libraries(main PRIVATE httplib::httplib)
 find_package(Boost REQUIRED COMPONENTS json)
 target_link_libraries(main PRIVATE Boost::json)
 
+#protobuf
+find_package(protobuf CONFIG REQUIRED)
+  target_link_libraries(main PRIVATE protobuf::libprotoc protobuf::libprotobuf protobuf::libprotobuf-lite)
+
 # 设置默认构建类型为 Debug（可选）
 if (NOT CMAKE_BUILD_TYPE)
     set(CMAKE_BUILD_TYPE Debug)
@@ -57,7 +62,7 @@ endif()
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -g -O0")
 
 #sub directory
-add_subdirectory(sdk)
+add_subdirectory(sdk_module)
 
 target_link_libraries(main PRIVATE sdk)
 
