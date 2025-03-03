@@ -125,10 +125,24 @@ CMakeFiles/main.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/main.cpp.s"
 	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /root/ROCIM/ROCIM_CLIENT/main.cpp -o CMakeFiles/main.dir/main.cpp.s
 
+CMakeFiles/main.dir/im/base/ProtobufZeroCopyInputStream.cc.o: CMakeFiles/main.dir/flags.make
+CMakeFiles/main.dir/im/base/ProtobufZeroCopyInputStream.cc.o: ../im/base/ProtobufZeroCopyInputStream.cc
+CMakeFiles/main.dir/im/base/ProtobufZeroCopyInputStream.cc.o: CMakeFiles/main.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/ROCIM/ROCIM_CLIENT/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/main.dir/im/base/ProtobufZeroCopyInputStream.cc.o"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/im/base/ProtobufZeroCopyInputStream.cc.o -MF CMakeFiles/main.dir/im/base/ProtobufZeroCopyInputStream.cc.o.d -o CMakeFiles/main.dir/im/base/ProtobufZeroCopyInputStream.cc.o -c /root/ROCIM/ROCIM_CLIENT/im/base/ProtobufZeroCopyInputStream.cc
+
+CMakeFiles/main.dir/im/base/ProtobufZeroCopyInputStream.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/im/base/ProtobufZeroCopyInputStream.cc.i"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /root/ROCIM/ROCIM_CLIENT/im/base/ProtobufZeroCopyInputStream.cc > CMakeFiles/main.dir/im/base/ProtobufZeroCopyInputStream.cc.i
+
+CMakeFiles/main.dir/im/base/ProtobufZeroCopyInputStream.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/im/base/ProtobufZeroCopyInputStream.cc.s"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /root/ROCIM/ROCIM_CLIENT/im/base/ProtobufZeroCopyInputStream.cc -o CMakeFiles/main.dir/im/base/ProtobufZeroCopyInputStream.cc.s
+
 CMakeFiles/main.dir/im/base/ProtobufZeroCopyOutStream.cc.o: CMakeFiles/main.dir/flags.make
 CMakeFiles/main.dir/im/base/ProtobufZeroCopyOutStream.cc.o: ../im/base/ProtobufZeroCopyOutStream.cc
 CMakeFiles/main.dir/im/base/ProtobufZeroCopyOutStream.cc.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/ROCIM/ROCIM_CLIENT/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/main.dir/im/base/ProtobufZeroCopyOutStream.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/ROCIM/ROCIM_CLIENT/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/main.dir/im/base/ProtobufZeroCopyOutStream.cc.o"
 	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/im/base/ProtobufZeroCopyOutStream.cc.o -MF CMakeFiles/main.dir/im/base/ProtobufZeroCopyOutStream.cc.o.d -o CMakeFiles/main.dir/im/base/ProtobufZeroCopyOutStream.cc.o -c /root/ROCIM/ROCIM_CLIENT/im/base/ProtobufZeroCopyOutStream.cc
 
 CMakeFiles/main.dir/im/base/ProtobufZeroCopyOutStream.cc.i: cmake_force
@@ -142,7 +156,7 @@ CMakeFiles/main.dir/im/base/ProtobufZeroCopyOutStream.cc.s: cmake_force
 CMakeFiles/main.dir/im/sdk/net/ConnectionManager.cc.o: CMakeFiles/main.dir/flags.make
 CMakeFiles/main.dir/im/sdk/net/ConnectionManager.cc.o: ../im/sdk/net/ConnectionManager.cc
 CMakeFiles/main.dir/im/sdk/net/ConnectionManager.cc.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/ROCIM/ROCIM_CLIENT/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/main.dir/im/sdk/net/ConnectionManager.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/ROCIM/ROCIM_CLIENT/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/main.dir/im/sdk/net/ConnectionManager.cc.o"
 	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/im/sdk/net/ConnectionManager.cc.o -MF CMakeFiles/main.dir/im/sdk/net/ConnectionManager.cc.o.d -o CMakeFiles/main.dir/im/sdk/net/ConnectionManager.cc.o -c /root/ROCIM/ROCIM_CLIENT/im/sdk/net/ConnectionManager.cc
 
 CMakeFiles/main.dir/im/sdk/net/ConnectionManager.cc.i: cmake_force
@@ -156,7 +170,7 @@ CMakeFiles/main.dir/im/sdk/net/ConnectionManager.cc.s: cmake_force
 CMakeFiles/main.dir/im/sdk/net/Request.cc.o: CMakeFiles/main.dir/flags.make
 CMakeFiles/main.dir/im/sdk/net/Request.cc.o: ../im/sdk/net/Request.cc
 CMakeFiles/main.dir/im/sdk/net/Request.cc.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/ROCIM/ROCIM_CLIENT/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/main.dir/im/sdk/net/Request.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/ROCIM/ROCIM_CLIENT/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/main.dir/im/sdk/net/Request.cc.o"
 	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/im/sdk/net/Request.cc.o -MF CMakeFiles/main.dir/im/sdk/net/Request.cc.o.d -o CMakeFiles/main.dir/im/sdk/net/Request.cc.o -c /root/ROCIM/ROCIM_CLIENT/im/sdk/net/Request.cc
 
 CMakeFiles/main.dir/im/sdk/net/Request.cc.i: cmake_force
@@ -170,7 +184,7 @@ CMakeFiles/main.dir/im/sdk/net/Request.cc.s: cmake_force
 CMakeFiles/main.dir/im/sdk/pb/im.pb.cc.o: CMakeFiles/main.dir/flags.make
 CMakeFiles/main.dir/im/sdk/pb/im.pb.cc.o: ../im/sdk/pb/im.pb.cc
 CMakeFiles/main.dir/im/sdk/pb/im.pb.cc.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/ROCIM/ROCIM_CLIENT/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/main.dir/im/sdk/pb/im.pb.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/ROCIM/ROCIM_CLIENT/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/main.dir/im/sdk/pb/im.pb.cc.o"
 	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/im/sdk/pb/im.pb.cc.o -MF CMakeFiles/main.dir/im/sdk/pb/im.pb.cc.o.d -o CMakeFiles/main.dir/im/sdk/pb/im.pb.cc.o -c /root/ROCIM/ROCIM_CLIENT/im/sdk/pb/im.pb.cc
 
 CMakeFiles/main.dir/im/sdk/pb/im.pb.cc.i: cmake_force
@@ -187,6 +201,7 @@ main_OBJECTS = \
 "CMakeFiles/main.dir/im/base/LinkBuffer.cpp.o" \
 "CMakeFiles/main.dir/im/base/LongConnectionImpl.cpp.o" \
 "CMakeFiles/main.dir/main.cpp.o" \
+"CMakeFiles/main.dir/im/base/ProtobufZeroCopyInputStream.cc.o" \
 "CMakeFiles/main.dir/im/base/ProtobufZeroCopyOutStream.cc.o" \
 "CMakeFiles/main.dir/im/sdk/net/ConnectionManager.cc.o" \
 "CMakeFiles/main.dir/im/sdk/net/Request.cc.o" \
@@ -199,6 +214,7 @@ main: CMakeFiles/main.dir/im/base/HttpClient.cpp.o
 main: CMakeFiles/main.dir/im/base/LinkBuffer.cpp.o
 main: CMakeFiles/main.dir/im/base/LongConnectionImpl.cpp.o
 main: CMakeFiles/main.dir/main.cpp.o
+main: CMakeFiles/main.dir/im/base/ProtobufZeroCopyInputStream.cc.o
 main: CMakeFiles/main.dir/im/base/ProtobufZeroCopyOutStream.cc.o
 main: CMakeFiles/main.dir/im/sdk/net/ConnectionManager.cc.o
 main: CMakeFiles/main.dir/im/sdk/net/Request.cc.o
@@ -237,7 +253,7 @@ main: /root/vcpkg/vcpkg/installed/x64-linux/debug/lib/libbrotlicommon.a
 main: /root/vcpkg/vcpkg/installed/x64-linux/debug/lib/libboost_system.a
 main: /root/vcpkg/vcpkg/installed/x64-linux/debug/lib/libboost_container.a
 main: CMakeFiles/main.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/root/ROCIM/ROCIM_CLIENT/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable main"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/root/ROCIM/ROCIM_CLIENT/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX executable main"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/main.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

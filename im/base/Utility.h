@@ -14,8 +14,8 @@
 
 namespace roc::base::util {
 
-template<typename Re, typename... Args>
-Re safe_invoke_block(const std::function<Re(Args...)>& func, Args&&... args) {
+template<typename Re, typename... FuncArgs, typename... Args>
+Re safe_invoke_block(const std::function<Re(FuncArgs...)>& func, Args&&... args) {
     if (func) {
         return func(std::forward<Args>(args)...);
     } 

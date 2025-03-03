@@ -5,6 +5,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/main.dir/im/base/LinkBuffer.cpp.o.d"
   "CMakeFiles/main.dir/im/base/LongConnectionImpl.cpp.o"
   "CMakeFiles/main.dir/im/base/LongConnectionImpl.cpp.o.d"
+  "CMakeFiles/main.dir/im/base/ProtobufZeroCopyInputStream.cc.o"
+  "CMakeFiles/main.dir/im/base/ProtobufZeroCopyInputStream.cc.o.d"
   "CMakeFiles/main.dir/im/base/ProtobufZeroCopyOutStream.cc.o"
   "CMakeFiles/main.dir/im/base/ProtobufZeroCopyOutStream.cc.o.d"
   "CMakeFiles/main.dir/im/sdk/net/ConnectionManager.cc.o"

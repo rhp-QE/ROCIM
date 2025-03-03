@@ -1,3 +1,4 @@
+#include "BaseConfig.h"
 #include "im/base/Utility.h"
 #include <boost/asio/buffer.hpp>
 #include <boost/asio/io_context.hpp>
@@ -69,11 +70,9 @@ void testLongConAndBuffer() {
     using namespace::roc::net;
     using LongConnectionType = ILongConnection<LongConnectionImpl>;
 
-    boost::asio::io_context io_context;
-    
     roc::net::LongConnectionConfig config = {"127.0.0.1", "8182", 30000 };
 
-    std::shared_ptr<LongConnectionType> conn = std::make_shared<LongConnectionImpl>(io_context, config);
+    std::shared_ptr<LongConnectionType> conn = std::make_shared<LongConnectionImpl>(net_io_context, config);
 
     int cnt = 1;
 
@@ -106,15 +105,5 @@ void testLongConAndBuffer() {
     });
     
     conn->connect();
-
-
-    // 在其他线程运行io_context
-    std::thread io_thread([&io_context](){
-        io_context.run();
-    });
-
-
-    // ...其他业务逻辑
-    while(true){
-    }
+    
 }
