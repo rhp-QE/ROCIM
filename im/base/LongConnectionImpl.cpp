@@ -3,6 +3,7 @@
 #include <iostream>
 #include <memory>
 #include "ILongConnection.h"
+#include "im/base/Utility.h"
 
 #include "LongConnectionImpl.h"
 
@@ -32,11 +33,7 @@ void LongConnectionImpl::send_impl(const char* data, size_t size) {
      std::cout<<"[call send_impl]"<<std::endl;
 
     char number_bytes[4];
-    size_t number = size;
-    for (int i = 0; i < 4; ++i) {
-        number_bytes[i] = static_cast<char>(number & 0xFF);
-        number >>= 8;
-    }
+    roc::base::util::encode_uint32_LE(size, number_bytes);
 
     std::cout<<"[write bytes]";
     for (int i = 0; i < 4; ++i) {
@@ -47,6 +44,19 @@ void LongConnectionImpl::send_impl(const char* data, size_t size) {
     /// 分别写入长度 和 数据
     write_buffer_->write(number_bytes, 4);
     write_buffer_->write(data, size);
+    do_write();
+}
+
+void LongConnectionImpl::send_impl(size_t size, SendDataBlockType&& sync_fill_data_block) {
+    char number_bytes[4];
+    roc::base::util::encode_uint32_LE((uint32_t)size, number_bytes);
+
+    write_buffer_->write(number_bytes, 4);
+
+    auto prepare_buffer = write_buffer_->prepare_buffers(size);
+    roc::base::util::safe_invoke_block(sync_fill_data_block, prepare_buffer);
+    write_buffer_->commit(size);
+
     do_write();
 }
 

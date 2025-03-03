@@ -109,17 +109,7 @@ uint32_t LinkBuffer::ReadResult::peekUnint32() {
     char number_bytes[4];
     readBytes(number_bytes, 4);
 
-    std::cout<<"[read bytes]";
-    for (int i = 0; i < 4; ++i) {
-        std::cout<<uint8_t(number_bytes[i])<<std::endl;
-    }
-    std::cout<<std::endl;
-
-    uint32_t number = 0;
-    for (int i = 0; i < 4; ++i ) {
-        number |= static_cast<uint8_t>(number_bytes[i]) << (i<<3);
-    }
-    return number;
+    return roc::base::util::decode_uint32_LE(number_bytes);
 }
 
 LinkBuffer::LinkBuffer(size_t init_block_size)

@@ -16,6 +16,7 @@ public:
 
     void send_impl(const std::string& data);
     void send_impl(const char* data, size_t size);
+    void send_impl(size_t size, SendDataBlockType&& sync_fill_data_block);
     void connect_impl();
     void disconnect_impl();
     void set_connect_callback_impl(ConnectCallback callback);

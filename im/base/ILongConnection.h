@@ -2,6 +2,8 @@
 #define NET_CLIENT_H
 
 #include <boost/asio.hpp>
+#include <boost/asio/buffer.hpp>
+#include <cstddef>
 #include <functional>
 #include <linux/stat.h>
 #include <memory>
@@ -26,6 +28,8 @@ struct LongConnectionConfig {
 using ReceiveCallback = std::function<void(std::shared_ptr<ILongConnection<LongConnectionImpl>> con, base::LinkBuffer::ReadResult readResult)>;
 using ConnectCallback = std::function<void(std::shared_ptr<ILongConnection<LongConnectionImpl>> con)>;
 
+using SendDataBlockType = std::function<void(std::vector<boost::asio::mutable_buffer>&)>;
+
 ///----------------- Interface ---------------------------
 template<typename T>
 class ILongConnection {
@@ -35,6 +39,7 @@ public:
     void set_connect_callback(ConnectCallback callback);
     void send(const std::string& data);
     void send(const char* data, size_t size);
+    void send(size_t size, SendDataBlockType&& sync_fill_data_block);
     void connect();
     void disconnect();
 };
@@ -59,6 +64,11 @@ void ILongConnection<T>::send(const std::string& data) {
 template<typename T>
 void ILongConnection<T>::send(const char* data, size_t size) {
     static_cast<T*>(this)->send_impl(data, size);
+}
+
+template<typename T>
+void ILongConnection<T>::send(size_t size, SendDataBlockType&& sync_fill_data_block) {
+    static_cast<T*>(this)->send_impl(size, std::move(sync_fill_data_block));
 }
 
 template<typename T>

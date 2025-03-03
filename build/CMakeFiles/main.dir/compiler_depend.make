@@ -2882,7 +2882,8 @@ CMakeFiles/main.dir/im/base/LinkBuffer.cpp.o: ../im/base/LinkBuffer.cpp \
   /usr/include/c++/11/iostream \
   /usr/include/c++/11/list \
   /usr/include/c++/11/bits/stl_list.h \
-  /usr/include/c++/11/bits/list.tcc
+  /usr/include/c++/11/bits/list.tcc \
+  ../im/base/Utility.h
 
 CMakeFiles/main.dir/im/base/LongConnectionImpl.cpp.o: ../im/base/LongConnectionImpl.cpp \
   ../im/base/LinkBuffer.h \
@@ -4031,6 +4032,7 @@ CMakeFiles/main.dir/im/base/LongConnectionImpl.cpp.o: ../im/base/LongConnectionI
   /usr/include/c++/11/bits/stl_list.h \
   /usr/include/c++/11/bits/list.tcc \
   ../im/base/ILongConnection.h \
+  ../im/base/Utility.h \
   ../im/base/LongConnectionImpl.h
 
 CMakeFiles/main.dir/im/base/ProtobufZeroCopyOutStream.cc.o: ../im/base/ProtobufZeroCopyOutStream.cc \
@@ -4825,6 +4827,25 @@ CMakeFiles/main.dir/im/sdk/net/Request.cc.o: ../im/sdk/net/Request.cc \
   /usr/include/c++/11/cassert \
   /usr/include/assert.h \
   ../im/base/Utility.h \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/buffer.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/config.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/version.hpp \
+  /usr/include/c++/11/experimental/string_view \
+  /usr/include/linux/version.h \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/array_fwd.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/memory.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/cstdint.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/throw_exception.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/throw_exception.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/exception/exception.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/string_view.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/type_traits.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/is_contiguous_iterator.hpp \
+  /usr/include/c++/11/iterator \
+  /usr/include/c++/11/bits/stream_iterator.h \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/push_options.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/pop_options.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/is_buffer_sequence.hpp \
   ../im/sdk/pb/im.pb.h \
   /root/share/protobuf/include/google/protobuf/port_def.inc \
   /root/share/protobuf/include/google/protobuf/port_undef.inc \
@@ -4877,8 +4898,6 @@ CMakeFiles/main.dir/im/sdk/net/Request.cc.o: ../im/sdk/net/Request.cc \
   /root/share/protobuf/include/google/protobuf/has_bits.h \
   /root/share/protobuf/include/google/protobuf/implicit_weak_message.h \
   /root/share/protobuf/include/google/protobuf/repeated_field.h \
-  /usr/include/c++/11/iterator \
-  /usr/include/c++/11/bits/stream_iterator.h \
   /root/share/protobuf/include/google/protobuf/repeated_ptr_field.h \
   /root/share/protobuf/include/google/protobuf/wire_format_lite.h \
   /root/share/protobuf/include/google/protobuf/stubs/casts.h \
@@ -5545,6 +5564,7 @@ CMakeFiles/main.dir/main.cpp.o: ../main.cpp \
   /root/share/protobuf/include/google/protobuf/stubs/strutil.h \
   /root/share/protobuf/include/google/protobuf/port.h \
   /root/share/protobuf/include/google/protobuf/io/zero_copy_stream.h \
+  ../im/base/Utility.h \
   ../im/sdk/net/Request.h \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/noncopyable.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/core/noncopyable.hpp \

@@ -1,3 +1,5 @@
+#include "im/base/Utility.h"
+#include <boost/asio/buffer.hpp>
 #include <boost/asio/io_context.hpp>
 #include <cstdint>
 #include <iostream>
@@ -88,7 +90,11 @@ void testLongConAndBuffer() {
         std::cout<<"[left receive count]"<<cc<<std::endl;
         if (cc > 0) {
             product();
-            conn->send(buf, size);
+            // conn->send(buf, size);
+
+            conn->send(size, [](std::vector<boost::asio::mutable_buffer> bufs){
+                roc::base::util::copy(buf, size, bufs);
+            });
         }
     });
 

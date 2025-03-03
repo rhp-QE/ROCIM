@@ -47,13 +47,10 @@ public:
         public:
 
             std::vector<boost::asio::const_buffer> buffers; // 数据缓冲区
-            std::shared_ptr<LinkBuffer> buffer_;
             void release() const;
             std::string readString() const;
             uint32_t peekUnint32();
             size_t readBytes(char *buf, size_t size);
-            
-            
         
         private:
             
@@ -62,7 +59,7 @@ public:
             }
 
             std::vector<BlockItorType> ref_block_iterators_; // 
-
+            std::shared_ptr<LinkBuffer> buffer_;
     };
 
     explicit LinkBuffer(size_t init_block_size = 4096);

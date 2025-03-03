@@ -1,5 +1,7 @@
 #include "im/base/ProtobufZeroCopyInputStream.h"
+#include "im/base/Utility.h"
 #include <boost/asio/buffer.hpp>
+#include <cstdint>
 #include <google/protobuf/io/zero_copy_stream.h>
 #include <memory>
 #include <iostream>
@@ -14,6 +16,13 @@ namespace roc::im::sdk::net {
 
 // 测试
 void testProtobuf() {
+
+    uint32_t number = 6669;
+    char number_bytes[4];
+    roc::base::util::encode_uint32_LE(number, number_bytes);
+
+    std::cout<<number<<" "<<roc::base::util::decode_uint32_LE(number_bytes)<<std::endl;
+
     std::cout<<"test in"<<std::endl;
     std::shared_ptr<Request> request = Request::create([](RequestBody *body) {
         std::cout<<body->ByteSizeLong()<<std::endl;
