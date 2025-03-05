@@ -2049,6 +2049,7 @@ class RequestBody final :
 
   enum : int {
     kRequestIdFieldNumber = 1,
+    kUrlFieldNumber = 5,
     kFetchMixedLinkMessagesRequestFieldNumber = 2,
     kFetchSingleLinkMessagesRequestFieldNumber = 3,
     kSendBatchMessagesRequestFieldNumber = 4,
@@ -2065,6 +2066,20 @@ class RequestBody final :
   const std::string& _internal_request_id() const;
   inline PROTOBUF_ALWAYS_INLINE void _internal_set_request_id(const std::string& value);
   std::string* _internal_mutable_request_id();
+  public:
+
+  // string url = 5;
+  void clear_url();
+  const std::string& url() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_url(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_url();
+  PROTOBUF_NODISCARD std::string* release_url();
+  void set_allocated_url(std::string* url);
+  private:
+  const std::string& _internal_url() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_url(const std::string& value);
+  std::string* _internal_mutable_url();
   public:
 
   // .roc.im.sdk.net.FetchMixedLinkMessagesReq fetch_mixed_link_messages_request = 2;
@@ -2130,6 +2145,7 @@ class RequestBody final :
   typedef void DestructorSkippable_;
   struct Impl_ {
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr request_id_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr url_;
     ::roc::im::sdk::net::FetchMixedLinkMessagesReq* fetch_mixed_link_messages_request_;
     ::roc::im::sdk::net::FetchSingleLinkMessagesReq* fetch_single_link_messages_request_;
     ::roc::im::sdk::net::SendBatchMessageReq* send_batch_messages_request_;
@@ -3667,6 +3683,56 @@ inline void RequestBody::set_allocated_send_batch_messages_request(::roc::im::sd
   }
   _impl_.send_batch_messages_request_ = send_batch_messages_request;
   // @@protoc_insertion_point(field_set_allocated:roc.im.sdk.net.RequestBody.send_batch_messages_request)
+}
+
+// string url = 5;
+inline void RequestBody::clear_url() {
+  _impl_.url_.ClearToEmpty();
+}
+inline const std::string& RequestBody::url() const {
+  // @@protoc_insertion_point(field_get:roc.im.sdk.net.RequestBody.url)
+  return _internal_url();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void RequestBody::set_url(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.url_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:roc.im.sdk.net.RequestBody.url)
+}
+inline std::string* RequestBody::mutable_url() {
+  std::string* _s = _internal_mutable_url();
+  // @@protoc_insertion_point(field_mutable:roc.im.sdk.net.RequestBody.url)
+  return _s;
+}
+inline const std::string& RequestBody::_internal_url() const {
+  return _impl_.url_.Get();
+}
+inline void RequestBody::_internal_set_url(const std::string& value) {
+  
+  _impl_.url_.Set(value, GetArenaForAllocation());
+}
+inline std::string* RequestBody::_internal_mutable_url() {
+  
+  return _impl_.url_.Mutable(GetArenaForAllocation());
+}
+inline std::string* RequestBody::release_url() {
+  // @@protoc_insertion_point(field_release:roc.im.sdk.net.RequestBody.url)
+  return _impl_.url_.Release();
+}
+inline void RequestBody::set_allocated_url(std::string* url) {
+  if (url != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.url_.SetAllocated(url, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.url_.IsDefault()) {
+    _impl_.url_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:roc.im.sdk.net.RequestBody.url)
 }
 
 // -------------------------------------------------------------------

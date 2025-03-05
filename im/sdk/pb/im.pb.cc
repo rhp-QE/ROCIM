@@ -191,6 +191,7 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORIT
 PROTOBUF_CONSTEXPR RequestBody::RequestBody(
     ::_pbi::ConstantInitialized): _impl_{
     /*decltype(_impl_.request_id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.url_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.fetch_mixed_link_messages_request_)*/nullptr
   , /*decltype(_impl_.fetch_single_link_messages_request_)*/nullptr
   , /*decltype(_impl_.send_batch_messages_request_)*/nullptr
@@ -342,6 +343,7 @@ const uint32_t TableStruct_im_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(proto
   PROTOBUF_FIELD_OFFSET(::roc::im::sdk::net::RequestBody, _impl_.fetch_mixed_link_messages_request_),
   PROTOBUF_FIELD_OFFSET(::roc::im::sdk::net::RequestBody, _impl_.fetch_single_link_messages_request_),
   PROTOBUF_FIELD_OFFSET(::roc::im::sdk::net::RequestBody, _impl_.send_batch_messages_request_),
+  PROTOBUF_FIELD_OFFSET(::roc::im::sdk::net::RequestBody, _impl_.url_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::roc::im::sdk::net::ResponseBody, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -368,7 +370,7 @@ static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protode
   { 88, -1, -1, sizeof(::roc::im::sdk::net::SendBatchMessageResp)},
   { 95, -1, -1, sizeof(::roc::im::sdk::net::PushMessages)},
   { 102, -1, -1, sizeof(::roc::im::sdk::net::RequestBody)},
-  { 112, -1, -1, sizeof(::roc::im::sdk::net::ResponseBody)},
+  { 113, -1, -1, sizeof(::roc::im::sdk::net::ResponseBody)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -416,27 +418,28 @@ const char descriptor_table_protodef_im_2eproto[] PROTOBUF_SECTION_VARIABLE(prot
   "nd_message_response_arr\030\001 \003(\0132$.roc.im.s"
   "dk.net.SendBatchMessageResp\"A\n\014PushMessa"
   "ges\0221\n\020push_message_arr\030\001 \003(\0132\027.roc.im.s"
-  "dk.net.Message\"\231\002\n\013RequestBody\022\022\n\nreques"
+  "dk.net.Message\"\246\002\n\013RequestBody\022\022\n\nreques"
   "t_id\030\001 \001(\t\022T\n!fetch_mixed_link_messages_"
   "request\030\002 \001(\0132).roc.im.sdk.net.FetchMixe"
   "dLinkMessagesReq\022V\n\"fetch_single_link_me"
   "ssages_request\030\003 \001(\0132*.roc.im.sdk.net.Fe"
   "tchSingleLinkMessagesReq\022H\n\033send_batch_m"
   "essages_request\030\004 \001(\0132#.roc.im.sdk.net.S"
-  "endBatchMessageReq\"\325\002\n\014ResponseBody\022\023\n\013r"
-  "esponse_id\030\001 \001(\t\022V\n\"fetch_mixed_link_mes"
-  "sages_response\030\002 \001(\0132*.roc.im.sdk.net.Fe"
-  "tchMixedLinkMessagesResp\022X\n#fetch_single"
-  "_link_messages_response\030\003 \001(\0132+.roc.im.s"
-  "dk.net.FetchSingleLinkMessagesResp\022J\n\034se"
-  "nd_batch_messages_response\030\004 \001(\0132$.roc.i"
-  "m.sdk.net.SendBatchMessageResp\0222\n\014push_m"
-  "essage\030\005 \001(\0132\034.roc.im.sdk.net.PushMessag"
-  "esB\025Z\005./;im\252\002\013IM.Protocolb\006proto3"
+  "endBatchMessageReq\022\013\n\003url\030\005 \001(\t\"\325\002\n\014Resp"
+  "onseBody\022\023\n\013response_id\030\001 \001(\t\022V\n\"fetch_m"
+  "ixed_link_messages_response\030\002 \001(\0132*.roc."
+  "im.sdk.net.FetchMixedLinkMessagesResp\022X\n"
+  "#fetch_single_link_messages_response\030\003 \001"
+  "(\0132+.roc.im.sdk.net.FetchSingleLinkMessa"
+  "gesResp\022J\n\034send_batch_messages_response\030"
+  "\004 \001(\0132$.roc.im.sdk.net.SendBatchMessageR"
+  "esp\0222\n\014push_message\030\005 \001(\0132\034.roc.im.sdk.n"
+  "et.PushMessagesB\025Z\005./;im\252\002\013IM.Protocolb\006"
+  "proto3"
   ;
 static ::_pbi::once_flag descriptor_table_im_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_im_2eproto = {
-    false, false, 1753, descriptor_table_protodef_im_2eproto,
+    false, false, 1766, descriptor_table_protodef_im_2eproto,
     "im.proto",
     &descriptor_table_im_2eproto_once, nullptr, 0, 14,
     schemas, file_default_instances, TableStruct_im_2eproto::offsets,
@@ -2961,6 +2964,7 @@ RequestBody::RequestBody(const RequestBody& from)
   RequestBody* const _this = this; (void)_this;
   new (&_impl_) Impl_{
       decltype(_impl_.request_id_){}
+    , decltype(_impl_.url_){}
     , decltype(_impl_.fetch_mixed_link_messages_request_){nullptr}
     , decltype(_impl_.fetch_single_link_messages_request_){nullptr}
     , decltype(_impl_.send_batch_messages_request_){nullptr}
@@ -2973,6 +2977,14 @@ RequestBody::RequestBody(const RequestBody& from)
   #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_request_id().empty()) {
     _this->_impl_.request_id_.Set(from._internal_request_id(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.url_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.url_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_url().empty()) {
+    _this->_impl_.url_.Set(from._internal_url(), 
       _this->GetArenaForAllocation());
   }
   if (from._internal_has_fetch_mixed_link_messages_request()) {
@@ -2993,6 +3005,7 @@ inline void RequestBody::SharedCtor(
   (void)is_message_owned;
   new (&_impl_) Impl_{
       decltype(_impl_.request_id_){}
+    , decltype(_impl_.url_){}
     , decltype(_impl_.fetch_mixed_link_messages_request_){nullptr}
     , decltype(_impl_.fetch_single_link_messages_request_){nullptr}
     , decltype(_impl_.send_batch_messages_request_){nullptr}
@@ -3001,6 +3014,10 @@ inline void RequestBody::SharedCtor(
   _impl_.request_id_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
     _impl_.request_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.url_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.url_.Set("", GetArenaForAllocation());
   #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
@@ -3016,6 +3033,7 @@ RequestBody::~RequestBody() {
 inline void RequestBody::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   _impl_.request_id_.Destroy();
+  _impl_.url_.Destroy();
   if (this != internal_default_instance()) delete _impl_.fetch_mixed_link_messages_request_;
   if (this != internal_default_instance()) delete _impl_.fetch_single_link_messages_request_;
   if (this != internal_default_instance()) delete _impl_.send_batch_messages_request_;
@@ -3032,6 +3050,7 @@ void RequestBody::Clear() {
   (void) cached_has_bits;
 
   _impl_.request_id_.ClearToEmpty();
+  _impl_.url_.ClearToEmpty();
   if (GetArenaForAllocation() == nullptr && _impl_.fetch_mixed_link_messages_request_ != nullptr) {
     delete _impl_.fetch_mixed_link_messages_request_;
   }
@@ -3084,6 +3103,16 @@ const char* RequestBody::_InternalParse(const char* ptr, ::_pbi::ParseContext* c
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
           ptr = ctx->ParseMessage(_internal_mutable_send_batch_messages_request(), ptr);
           CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // string url = 5;
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 42)) {
+          auto str = _internal_mutable_url();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "roc.im.sdk.net.RequestBody.url"));
         } else
           goto handle_unusual;
         continue;
@@ -3147,6 +3176,16 @@ uint8_t* RequestBody::_InternalSerialize(
         _Internal::send_batch_messages_request(this).GetCachedSize(), target, stream);
   }
 
+  // string url = 5;
+  if (!this->_internal_url().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_url().data(), static_cast<int>(this->_internal_url().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "roc.im.sdk.net.RequestBody.url");
+    target = stream->WriteStringMaybeAliased(
+        5, this->_internal_url(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -3168,6 +3207,13 @@ size_t RequestBody::ByteSizeLong() const {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
         this->_internal_request_id());
+  }
+
+  // string url = 5;
+  if (!this->_internal_url().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_url());
   }
 
   // .roc.im.sdk.net.FetchMixedLinkMessagesReq fetch_mixed_link_messages_request = 2;
@@ -3212,6 +3258,9 @@ void RequestBody::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PR
   if (!from._internal_request_id().empty()) {
     _this->_internal_set_request_id(from._internal_request_id());
   }
+  if (!from._internal_url().empty()) {
+    _this->_internal_set_url(from._internal_url());
+  }
   if (from._internal_has_fetch_mixed_link_messages_request()) {
     _this->_internal_mutable_fetch_mixed_link_messages_request()->::roc::im::sdk::net::FetchMixedLinkMessagesReq::MergeFrom(
         from._internal_fetch_mixed_link_messages_request());
@@ -3246,6 +3295,10 @@ void RequestBody::InternalSwap(RequestBody* other) {
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
       &_impl_.request_id_, lhs_arena,
       &other->_impl_.request_id_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.url_, lhs_arena,
+      &other->_impl_.url_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(RequestBody, _impl_.send_batch_messages_request_)

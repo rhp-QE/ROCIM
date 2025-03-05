@@ -89,6 +89,8 @@ message RequestBody {
   FetchMixedLinkMessagesReq fetch_mixed_link_messages_request = 2;
   FetchSingleLinkMessagesReq fetch_single_link_messages_request = 3;
   SendBatchMessageReq send_batch_messages_request = 4;
+
+  string url = 5;
 };
 
 
