@@ -22,7 +22,7 @@ namespace roc::im::sdk::net {
 // 显式构造函数实现
 ConnectionManager::ConnectionManager() {
     {
-        roc::net::LongConnectionConfig config = {"127.0.0.1", "8182", 30000 };
+        roc::net::LongConnectionConfig config = {"127.0.0.1", "6080", 30000 };
     
         default_lc_ = std::make_shared<roc::net::LongConnectionImpl>(net_io_context, config);
         

@@ -117,62 +117,64 @@ void LongConnectionImpl::do_read() {
     socket_.async_read_some(
         self->read_buffer_->prepare_buffers(),
         [self](const boost::system::error_code& ec, size_t bytes_transferred) {
-            if (!ec) { /// 接受到对方发送的数据
-                /// 1、buffer 数据确认
-                self->read_buffer_->commit(bytes_transferred);
-
-                /// function 判断是否可以读取到整个包并处理
-                auto handlePacktFunc = [self]() -> bool {
-                    if (!self->nextPackLen) {
-                        return false;
-                    }
-
-                    uint32_t len = self->nextPackLen.value();
-                    if (self->read_buffer_->readable() >= len) {  /// 获取到一个完整包
-                        auto buf = self->read_buffer_->get_read_buffers(len);
-                        if (self->receive_callback_ && buf) {
-                            self->receive_callback_(self, buf.value());
-                        }
-                        self->nextPackLen = std::nullopt;
-                        return true;
-                    }
-
-                    return false;
-                };
-
-                /// 获取包长的function
-                auto getPacketLenFunc = [self]() -> bool {
-                    if (self->nextPackLen) {
-                        return true;
-                    }
-
-                    if (!self->nextPackLen && self->read_buffer_->readable() >= 4) {
-                        auto buf = self->read_buffer_->get_read_buffers(4);
-                        if (buf) {
-                            self->nextPackLen = buf.value().peekUnint32();
-                        }
-                        buf->release();
-                        return true;
-                    }
-                    return false;
-                };
-
-                bool loop = false;
-                do {
-                    bool ok1 = getPacketLenFunc();
-
-                    if (self->nextPackLen) {
-                        std::cout<<"[data len]"<<self->nextPackLen.value()<<std::endl;
-                    }
-
-                    bool ok2 = handlePacktFunc();
-                    loop = ok1 && ok2;
-                } while(loop);
-
-                self->do_read();
-            } else {
+            if (ec) {
                 self->handle_disconnect(ec);
+                return;
             }
+
+            /// 1、buffer 数据确认
+            self->read_buffer_->commit(bytes_transferred);
+
+            /// function 判断是否可以读取到整个包并处理
+            auto handlePacktFunc = [self]() -> bool {
+                if (!self->nextPackLen) {
+                    return false;
+                }
+
+                uint32_t len = self->nextPackLen.value();
+                if (self->read_buffer_->readable() >= len) {  /// 获取到一个完整包
+                    auto buf = self->read_buffer_->get_read_buffers(len);
+                    if (self->receive_callback_ && buf) {
+                        self->receive_callback_(self, buf.value());
+                    }
+                    self->nextPackLen = std::nullopt;
+                    return true;
+                }
+
+                return false;
+            };
+
+            /// 获取包长的function
+            auto getPacketLenFunc = [self]() -> bool {
+                if (self->nextPackLen) {
+                    return true;
+                }
+
+                if (!self->nextPackLen && self->read_buffer_->readable() >= 4) {
+                    auto buf = self->read_buffer_->get_read_buffers(4);
+                    if (buf) {
+                        self->nextPackLen = buf.value().peekUnint32();
+                    }
+                    buf->release();
+                    return true;
+                }
+                return false;
+            };
+
+            bool loop = false;
+            do {
+                bool ok1 = getPacketLenFunc();
+
+                if (self->nextPackLen) {
+                    std::cout<<"[data len]"<<self->nextPackLen.value()<<std::endl;
+                }
+
+                bool ok2 = handlePacktFunc();
+                loop = ok1 && ok2;
+            } while(loop);
+
+            self->do_read();
+
         });
 }
 
