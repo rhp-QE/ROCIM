@@ -6,5 +6,5 @@ CXX_DEFINES = -DBOOST_ATOMIC_NO_LIB -DBOOST_ATOMIC_STATIC_LINK -DBOOST_CHRONO_NO
 
 CXX_INCLUDES = -I/root/ROCIM/ROCIM_CLIENT -I/root/wcdb/src/build/export_headers -I/root/share/protobuf/include -isystem /root/vcpkg/vcpkg/installed/x64-linux/include
 
-CXX_FLAGS = -g -g -O0 -std=gnu++17
+CXX_FLAGS = -g -g -O0 -std=gnu++20
 

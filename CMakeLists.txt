@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.13.0)
 
 # 设置 C++ 标准为 11
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 find_program(CMAKE_C_COMPILER clang)
 find_program(CMAKE_CXX_COMPILER clang++)
