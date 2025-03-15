@@ -218,12 +218,12 @@ class CoroPromise{
 
 public:
     void set_value(const Ty& value) {
-        promise_.set_value(value);
+        promise_->set_value(value);
         h.resume();
     }
 
 private:
-    std::promise<Ty> promise_;
+    std::shared_ptr<std::promise<Ty>> promise_;
     std::coroutine_handle<> h;
 };
 
@@ -235,12 +235,12 @@ class CoroPromise<void>{
 
 public:
     void set_value() {
-        promise_.set_value();
+        promise_->set_value();
         h.resume();
     }
 
 private:
-    std::promise<void> promise_;
+    std::shared_ptr<std::promise<void>> promise_;
     std::coroutine_handle<> h;
 };
 
@@ -248,7 +248,7 @@ private:
 template <typename ReType>
 class co_awaitable_wapper {
 
-    using Type = std::function<void(std::shared_ptr<CoroPromise<ReType>> promise)>;
+    using Type = std::function<void(CoroPromise<ReType> promise)>;
 
     std::future<ReType> future;
     Type func;
@@ -259,10 +259,10 @@ public:
     void await_suspend(std::coroutine_handle<> h) {
         CoroPromise<ReType> co_promise;
         co_promise.h = h;
-        co_promise.promise_ = std::promise<ReType>();
-        future = co_promise.promise_.get_future();
+        co_promise.promise_ = std::make_shared<std::promise<ReType>>();
+        future = co_promise.promise_->get_future();
 
-        func(std::make_shared<CoroPromise<ReType>>(std::move(co_promise)));
+        func(CoroPromise<ReType>(std::move(co_promise)));
     }
 
     ReType await_resume() noexcept { return future.get(); }

@@ -42,9 +42,9 @@ roc::coro::co_async<std::shared_ptr<ResponseBody>> Request::async_request() {
     using ReType = std::shared_ptr<ResponseBody>;
     auto self = shared_from_this();
 
-    auto res = co_await co_awaitable_wapper<ReType>([self](std::shared_ptr<CoroPromise<ReType>> promise){
-        self->request([promise](ReType resp) {
-            promise->set_value(resp);
+    auto res = co_await co_awaitable_wapper<ReType>([self](CoroPromise<ReType> promise){
+        self->request([promise](ReType resp) mutable {
+            promise.set_value(resp);
         });
     });
 
