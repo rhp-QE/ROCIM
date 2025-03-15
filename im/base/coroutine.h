@@ -256,10 +256,12 @@ public:
     bool await_ready() const noexcept { return false; }
 
     void await_suspend(std::coroutine_handle<> h) {
-        CoroPromise<ReType> promise {h, std::promise<ReType>()};
-        future = promise.promise_.get_future();
+        CoroPromise<ReType> co_promise;
+        co_promise.h = h;
+        co_promise.promise_ = std::promise<ReType>();
+        future = co_promise.promise_.get_future();
 
-        func(std::move(promise));
+        func(std::move(co_promise));
     }
 
     ReType await_resume() noexcept { return future.get(); }

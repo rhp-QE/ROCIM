@@ -12,7 +12,7 @@
 #define ROC_COROTINE_H
 
 // -------------------------------------------------------
-inline void request1(CoPromiseWapper<> promise) {
+inline void request1(CoroPromise<> promise) {
     std::cout<<"request 1"<<std::endl;
 
     auto func = [promise_in = std::move(promise)]() mutable{
@@ -27,7 +27,7 @@ inline void request1(CoPromiseWapper<> promise) {
 // 子协程，返回一个Task<int>
 inline co_async<int> child_coroutine(int value) {
     std::cout << "Child coroutine started with value: " << value << "\n";
-    co_await co_awaitable_wapper<>{[](CoPromiseWapper<> promise) {
+    co_await co_awaitable_wapper<>{[](CoroPromise<> promise) {
         request1(std::move(promise));
     }};
     co_return 100 * 2;
