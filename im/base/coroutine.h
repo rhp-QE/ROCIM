@@ -12,6 +12,7 @@
 #include <unordered_map>
 #include <im/base/noncopyable.h>
 
+namespace roc::coro {
 
 // ===================== std:coroutine RAII =====================
 
@@ -31,7 +32,7 @@ private:
 //------------------------ std::coroutine RAII ---------------------
 
 //-------------------   协程生命周期管理  -----------------------------
-std::unordered_map<size_t, std::shared_ptr<CoroRAII>> coro_manager;
+extern std::unordered_map<size_t, std::shared_ptr<CoroRAII>> coro_manager;
 inline size_t ref_coro(std::shared_ptr<CoroRAII> coro) {
     static size_t id = 0;
     ++id;
@@ -247,7 +248,7 @@ private:
 template <typename ReType>
 class co_awaitable_wapper {
 
-    using Type = std::function<void(CoroPromise<ReType> promise)>;
+    using Type = std::function<void(std::shared_ptr<CoroPromise<ReType>> promise)>;
 
     std::future<ReType> future;
     Type func;
@@ -261,7 +262,7 @@ public:
         co_promise.promise_ = std::promise<ReType>();
         future = co_promise.promise_.get_future();
 
-        func(std::move(co_promise));
+        func(std::make_shared<CoroPromise<ReType>>(std::move(co_promise)));
     }
 
     ReType await_resume() noexcept { return future.get(); }
@@ -272,6 +273,6 @@ public:
 // --------------------- 封装 await_able_wapper ---------------------
 
 
-
+} // namespace roc::coro
 
 #endif

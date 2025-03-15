@@ -12,6 +12,7 @@
 #include <boost/noncopyable.hpp>
 #include <boost/system/system_error.hpp>
 #include <memory>
+#include <im/base/coroutine.h>
 
 
 namespace roc::im::sdk::net {
@@ -27,11 +28,12 @@ class Request : public boost::noncopyable, public std::enable_shared_from_this<R
 public:
 
     static std::shared_ptr<Request> create(std::function<void(RequestBody *body)> block);
-    std::shared_ptr<Request> request(std::function<void(std::unique_ptr<ResponseBody>)> callback);
+    std::shared_ptr<Request> request(std::function<void(std::shared_ptr<ResponseBody>)> callback);
+    roc::coro::co_async<std::shared_ptr<ResponseBody>> async_request();
 
 private:
-    std::unique_ptr<RequestBody> request_body_;
-    std::function<void(std::unique_ptr<ResponseBody>)> callback_;
+    std::shared_ptr<RequestBody> request_body_;
+    std::function<void(std::shared_ptr<ResponseBody>)> callback_;
 };
 
 } // namespace roc::im::sdk::net

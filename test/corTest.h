@@ -11,14 +11,15 @@
 #ifndef ROC_COROTINE_H
 #define ROC_COROTINE_H
 
+using namespace roc::coro;
 // -------------------------------------------------------
-inline void request1(CoroPromise<> promise) {
+inline void request1(std::shared_ptr<CoroPromise<>> promise) {
     std::cout<<"request 1"<<std::endl;
 
-    auto func = [promise_in = std::move(promise)]() mutable{
+    auto func = [promise]() mutable{
         std::this_thread::sleep_for(std::chrono::milliseconds(3000));
         std::cout<<"response 1"<<std::endl;
-        promise_in.set_value();
+        promise->set_value();
     };
 
     std::thread(std::move(func)).detach();
@@ -27,7 +28,7 @@ inline void request1(CoroPromise<> promise) {
 // 子协程，返回一个Task<int>
 inline co_async<int> child_coroutine(int value) {
     std::cout << "Child coroutine started with value: " << value << "\n";
-    co_await co_awaitable_wapper<>{[](CoroPromise<> promise) {
+    co_await co_awaitable_wapper<>{[](std::shared_ptr<CoroPromise<>> promise) {
         request1(std::move(promise));
     }};
     co_return 100 * 2;

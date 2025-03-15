@@ -5,7 +5,6 @@
 //
 
 
-#include "im/base/ProtobufZeroCopyOutStream.h"
 #include <boost/asio/buffer.hpp>
 #include <functional>
 #include <memory>
@@ -15,7 +14,7 @@
 #include <im/sdk/pb/im.pb.h>
 
 #include <im/sdk/net/ConnectionManager.h>
-#include <vector>
+#include <im/base/coroutine.h>
 
 // 使用命名空间
 namespace roc::im::sdk::net {
@@ -31,11 +30,25 @@ std::shared_ptr<Request> Request::create(std::function<void(RequestBody *)> init
 }
 
 
-std::shared_ptr<Request> Request::request(std::function<void(std::unique_ptr<ResponseBody>)> callback) {
+std::shared_ptr<Request> Request::request(std::function<void(std::shared_ptr<ResponseBody>)> callback) {
     auto self = shared_from_this();
     self->callback_ = callback;
     ConnectionManager::shareInstance().send(self);
     return self;
+}
+
+roc::coro::co_async<std::shared_ptr<ResponseBody>> Request::async_request() {
+    using namespace roc::coro;
+    using ReType = std::shared_ptr<ResponseBody>;
+    auto self = shared_from_this();
+
+    auto res = co_await co_awaitable_wapper<ReType>([self](std::shared_ptr<CoroPromise<ReType>> promise){
+        self->request([promise](ReType resp) {
+            promise->set_value(resp);
+        });
+    });
+
+    co_return res;
 }
 
 

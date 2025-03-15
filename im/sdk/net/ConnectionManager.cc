@@ -22,14 +22,14 @@ namespace roc::im::sdk::net {
 // 显式构造函数实现
 ConnectionManager::ConnectionManager() {
     {
-        roc::net::LongConnectionConfig config = {"127.0.0.1", "6080", 30000 };
+        roc::net::LongConnectionConfig config = {"127.0.0.1", "8282", 30000 };
     
         default_lc_ = std::make_shared<roc::net::LongConnectionImpl>(net_io_context, config);
         
         default_lc_->set_receive_callback([this](
             std::shared_ptr<Default_LC_Type> conn,
             base::LinkBuffer::ReadResult readResult) {
-                std::unique_ptr<ResponseBody> response_body = std::make_unique<ResponseBody>();
+                std::shared_ptr<ResponseBody> response_body = std::make_shared<ResponseBody>();
 
                 roc::base::io::ProtobufZeroCopyInputStream stream(readResult.buffers);
                 response_body->ParseFromZeroCopyStream(&stream);
@@ -39,7 +39,7 @@ ConnectionManager::ConnectionManager() {
                     return;
                 }
 
-                roc::base::util::safe_invoke_block((*it).second->callback_, std::move(response_body));
+                roc::base::util::safe_invoke_block((*it).second->callback_,response_body);
                 requestRecord.erase(it);
         });
 

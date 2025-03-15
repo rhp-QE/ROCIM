@@ -1229,6 +1229,8 @@ CMakeFiles/main.dir/im/sdk/net/ConnectionManager.cc.o: \
   /root/share/protobuf/include/google/protobuf/map_field_lite.h \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/noncopyable.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/core/noncopyable.hpp \
+  /root/ROCIM/ROCIM_CLIENT/im/base/coroutine.h \
+  /root/ROCIM/ROCIM_CLIENT/im/base/noncopyable.h \
   /root/ROCIM/ROCIM_CLIENT/BaseConfig.h \
   /root/ROCIM/ROCIM_CLIENT/im/base/ProtobufZeroCopyInputStream.h \
   /root/ROCIM/ROCIM_CLIENT/im/base/ProtobufZeroCopyOutStream.h \
