@@ -8978,6 +8978,8 @@ CMakeFiles/main.dir/main.cpp.o: ../main.cpp \
   ../im/base/ProtobufZeroCopyOutStream.h \
   ../test/corTest.h \
   /usr/include/c++/11/thread \
+  ../im/base/coroutine.h \
+  ../im/base/noncopyable.h \
   ../test/buffertest.h \
   ../BaseConfig.h \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/bind/bind.hpp \
@@ -9024,6 +9026,10 @@ CMakeFiles/main.dir/main.cpp.o: ../main.cpp \
 /root/vcpkg/vcpkg/installed/x64-linux/include/boost/bind/mem_fn.hpp:
 
 /root/vcpkg/vcpkg/installed/x64-linux/include/boost/bind/bind.hpp:
+
+../im/base/noncopyable.h:
+
+../im/base/coroutine.h:
 
 ../test/corTest.h:
 

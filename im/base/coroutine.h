@@ -1,0 +1,270 @@
+#ifndef ROC_COROUTINE_H
+#define ROC_COROUTINE_H
+
+
+#include <boost/core/noncopyable.hpp>
+#include <coroutine>
+#include <future>
+#include <iostream>
+#include <memory>
+#include <optional>
+#include <unordered_map>
+#include <im/base/noncopyable.h>
+
+
+// ===================== std:coroutine RAII =====================
+
+/// promise_type = void 的偏特化 版本
+class CoroRAII {
+    using handle_type = std::coroutine_handle<>;
+public:
+    CoroRAII(handle_type coro_handle) : coro_handle_(coro_handle) {}
+    ~CoroRAII() {
+        if (coro_handle_) {
+          // std::cout<<"[destory coroutine] " <<coro_handle_.address()<<std::endl;
+           coro_handle_.destroy();
+        }
+    }
+
+    handle_type coro_handle() {
+        return coro_handle_;
+    }
+
+private: 
+    handle_type coro_handle_;
+};
+
+//------------------------ std::coroutine RAII ---------------------
+
+//-------------------   协程生命周期管理  -----------------------------
+std::unordered_map<size_t, std::shared_ptr<CoroRAII>> coro_manager;
+inline size_t ref_coro(std::shared_ptr<CoroRAII> coro) {
+    static size_t id = 0;
+    ++id;
+    coro_manager[id] = coro;
+    return id; 
+}
+
+inline void unref_coro(size_t id) {
+    coro_manager.erase(id);
+}
+//-------------------------------------------------------------------
+
+
+
+// ==================  co_async 封装  (存在返回值)   ===================
+template<typename ReType = void>
+struct co_async {
+
+    std::shared_ptr<CoroRAII> coro_arii_sptr;
+
+public:
+    struct promise_type;
+    struct awaiter;
+
+    co_async(std::shared_ptr<CoroRAII> h) : coro_arii_sptr(h) {
+    }
+
+    auto operator co_await() noexcept {
+        return awaiter{ 
+            std::coroutine_handle<promise_type>::from_address(coro_arii_sptr->coro_handle().address())
+        };
+    }
+
+    // =================== awaiter ================
+    struct awaiter {
+        std::coroutine_handle<promise_type>  coro_handle;
+
+        bool await_ready() const noexcept {
+            return !coro_handle || coro_handle.done();
+        }
+
+        void await_suspend(std::coroutine_handle<> awaiting_coro) noexcept {
+            coro_handle.promise().parent = awaiting_coro;
+        }
+
+        ReType await_resume() {
+            return coro_handle.promise().result.value();
+        }
+    };
+    // ----------------- awaiter --------------------
+
+    // ================  promise_type   =============
+    struct promise_type {
+    
+    private:
+        size_t id;
+
+    public:
+        std::optional<ReType> result;   // 协程的返回值
+        std::coroutine_handle<> parent; // 保存父协程句柄
+
+        co_async get_return_object() {
+            auto h = std::coroutine_handle<promise_type>::from_promise(*this);
+            auto handle =  std::make_shared<CoroRAII>(std::coroutine_handle<>::from_address(h.address()));
+            id = ref_coro(handle);
+
+            return co_async{ handle };
+        }
+
+        std::suspend_never initial_suspend() noexcept { return {}; }
+
+        auto final_suspend() noexcept {
+            struct FinalAwaiter {
+                bool await_ready() noexcept {  return false; }
+                void await_suspend(std::coroutine_handle<promise_type> self) noexcept {
+                    unref_coro(self.promise().id);
+                    if (self.promise().parent) {
+                        self.promise().parent.resume(); // 恢复父协程
+                    }
+                }
+                void await_resume() noexcept {}
+            };
+            return FinalAwaiter{};
+        }
+
+        void return_value(ReType v) noexcept { result = v; }
+
+        void unhandled_exception() { std::terminate(); }
+    };
+    // ------------------------ promise_type --------------------
+
+};
+// ------------------------ co_async 封装 ------------------------
+
+
+// ==================  co_async 封装  (返回值为空)   ==============
+template<>
+struct co_async<void> {
+
+    std::shared_ptr<CoroRAII> coro_arii_sptr;
+
+public:
+    struct promise_type;
+    struct awaiter;
+
+    co_async(std::shared_ptr<CoroRAII> h) : coro_arii_sptr(h) {
+    }
+
+    auto operator co_await() noexcept {
+        return awaiter{ 
+            std::coroutine_handle<promise_type>::from_address(coro_arii_sptr->coro_handle().address())
+        };
+    }
+
+    // =================== awaiter ================
+    struct awaiter {
+        std::coroutine_handle<promise_type>  coro_handle;
+
+        bool await_ready() const noexcept {
+            return !coro_handle || coro_handle.done();
+        }
+
+        void await_suspend(std::coroutine_handle<> awaiting_coro) noexcept {
+            coro_handle.promise().parent = awaiting_coro;
+        }
+
+        void await_resume() {}
+    };
+    // ----------------- awaiter --------------------
+
+    // ================  promise_type   =============
+    struct promise_type {
+    
+    private:
+        size_t id;
+
+    public:
+        std::coroutine_handle<> parent; // 保存父协程句柄
+
+        co_async get_return_object() {
+            auto h = std::coroutine_handle<promise_type>::from_promise(*this);
+            auto handle =  std::make_shared<CoroRAII>(std::coroutine_handle<>::from_address(h.address()));
+            id = ref_coro(handle);
+
+            return co_async{ handle };
+        }
+
+        std::suspend_never initial_suspend() noexcept { return {}; }
+
+        auto final_suspend() noexcept {
+            struct FinalAwaiter {
+                bool await_ready() noexcept {  return false; }
+                void await_suspend(std::coroutine_handle<promise_type> self) noexcept {
+                    unref_coro(self.promise().id);
+                    if (self.promise().parent) {
+                        self.promise().parent.resume(); // 恢复父协程
+                    }
+                }
+                void await_resume() noexcept {}
+            };
+            return FinalAwaiter{};
+        }
+
+        void return_void() {}
+
+        void unhandled_exception() { std::terminate(); }
+    };
+    // ------------------------ promise_type --------------------
+
+};
+// ------------------------ co_async 封装 ------------------------
+
+
+
+// ==================  封装 awaitable_wapper ===================
+template <typename Ty>
+struct co_awaitable_wapper;
+
+// 自定义 Awaitable 类型
+template <typename Ty = void>
+class CoPromiseWapper{
+    friend co_awaitable_wapper<Ty>;
+
+public:
+    void set_value(const Ty& value) {
+        promise_.set_value(value);
+        h.resume();
+    }
+
+private:
+    std::promise<Ty> promise_;
+    std::coroutine_handle<> h;
+};
+
+
+template <typename Ty>
+struct co_awaitable_wapper {
+
+    using Type = std::function<void(CoPromiseWapper<Ty> promise)>;
+
+    std::future<Ty> future;
+
+    bool await_ready() const noexcept { 
+        return false; // 总是挂起协程
+    }
+
+    void await_suspend(std::coroutine_handle<> h) {
+        CoPromiseWapper<Ty> promise;
+        promise.h = h;
+        promise.promise_ = std::promise<Ty>();
+
+        future = promise.promise_.get_future();
+        func(std::move(promise));
+    }
+
+    Ty await_resume() noexcept {
+        return future.get();
+    }
+
+    Type func;
+
+    co_awaitable_wapper(Type fun) : func(fun) {}
+};
+
+// --------------------- 封装 await_able_wapper ---------------------
+
+
+
+
+#endif

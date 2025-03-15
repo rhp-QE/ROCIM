@@ -1232,6 +1232,8 @@ CMakeFiles/main.dir/main.cpp.o: /root/ROCIM/ROCIM_CLIENT/main.cpp \
   /root/ROCIM/ROCIM_CLIENT/im/base/ProtobufZeroCopyOutStream.h \
   /root/ROCIM/ROCIM_CLIENT/test/corTest.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/thread \
+  /root/ROCIM/ROCIM_CLIENT/im/base/coroutine.h \
+  /root/ROCIM/ROCIM_CLIENT/im/base/noncopyable.h \
   /root/ROCIM/ROCIM_CLIENT/test/buffertest.h \
   /root/ROCIM/ROCIM_CLIENT/BaseConfig.h \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/bind/bind.hpp \

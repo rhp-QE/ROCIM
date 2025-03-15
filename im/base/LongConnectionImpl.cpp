@@ -1,5 +1,6 @@
 #include "LinkBuffer.h"
 #include <cstdint>
+#include <future>
 #include <iostream>
 #include <memory>
 #include "ILongConnection.h"
@@ -114,9 +115,11 @@ void LongConnectionImpl::do_connect() {
 
 void LongConnectionImpl::do_read() {
     auto self = shared_from_this();
+
+    std::promise<int> pp;
     socket_.async_read_some(
         self->read_buffer_->prepare_buffers(),
-        [self](const boost::system::error_code& ec, size_t bytes_transferred) {
+        [self, ppp = std::move(pp)](const boost::system::error_code& ec, size_t bytes_transferred) {
             if (ec) {
                 self->handle_disconnect(ec);
                 return;
