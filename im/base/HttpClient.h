@@ -3,13 +3,15 @@
 
 
 #include <functional>
+#include <memory>
 #include <string>
+#include <im/base/coroutine.h>
 
 namespace roc::net {
 
 class Session;
 
-struct Request {
+struct Request : public std::enable_shared_from_this<Request> {
 
     //-------------------
     enum Method {
@@ -46,6 +48,8 @@ struct Request {
     }
 
     void request();
+
+    coro::co_async<std::string> co_request();
 
 private:
     std::string url_;

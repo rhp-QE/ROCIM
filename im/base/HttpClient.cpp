@@ -12,10 +12,11 @@
 #include <memory>
 #include <thread>
 #include <boost/json.hpp>
+#include <im/base/coroutine.h>
+#include <BaseConfig.h>
 
 namespace beast = boost::beast;
 namespace http = beast::http;
-namespace json = boost::json;
 using tcp = boost::beast::net::ip::tcp;
 
 
@@ -107,15 +108,23 @@ public:
 
 
 void roc::net::Request::request() {
-    static boost::asio::io_context io_context;
-    static auto wotk = boost::beast::net::make_work_guard(io_context);
-    static std::thread thread([]{
-        io_context.run();
-    });
 
-    auto session = std::make_shared<Session>(*this, io_context);
+    auto session = std::make_shared<Session>(*this, net_io_context);
 
     session->start();
+}
+
+coro::co_async<std::string> roc::net::Request::co_request() {
+    using namespace roc::coro;
+
+    auto self = shared_from_this();
+    auto res = co_await co_awaitable_wapper<std::string>([self](CoroPromise<std::string> promise) {
+        self->set_callback([promise](std::string res) mutable{
+            promise.set_value(res);
+        });
+        self->request();
+    });
+    co_return res;
 }
 
 }// namespace::roc::net

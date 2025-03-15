@@ -1,4 +1,5 @@
 
+#include "im/base/coroutine.h"
 #include <boost/json.hpp>
 #include <boost/json/array.hpp>
 #include <boost/json/object.hpp>
@@ -6,10 +7,10 @@
 #include <boost/json/serialize.hpp>
 #include <im/base/HttpClient.h>
 #include <iostream>
+#include <memory>
 
-int testHttp() {
-    using namespace::roc::net;
 
+boost::json::object jsonObj() {
     boost::json::object json_sub1;
     json_sub1["name"] = "rxy";
     json_sub1["age"] = 12;
@@ -24,16 +25,22 @@ int testHttp() {
     json["age"] = 21;
     json["sister"] = json_sub;
 
-    Request request;
-    request
+    return json;
+}
+
+roc::coro::co_async<> testHttp() {
+    using namespace::roc::net;
+
+
+    auto request = std::make_shared<Request>();
+    (*request)
     .set_url("/echo")
     .set_method(Request::Method::POST)
-    .set_body(boost::json::serialize(json))
-    .set_callback([=](std::string str) {
-        std::cout<<str<<std::endl;
-    })
-    .request();
+    .set_body(boost::json::serialize(jsonObj()));
+
+    auto res = co_await request->co_request();
+    
 
 
-    return 0;
+    co_return;
 }

@@ -6,6 +6,7 @@
 
 #include "BaseConfig.h"
 #include <im/base/coroutine.h>
+#include <test/httpTest.h>
 
 boost::asio::io_context net_io_context;
 boost::asio::io_context main_io_context;
@@ -25,9 +26,9 @@ int main() {
 
     roc::im::sdk::net::testProtobuf();
     //testLongConAndBuffer();
+    testHttp();
 
     
-
     boost::asio::io_context::work work_main(main_io_context);
     main_io_context.run();
     

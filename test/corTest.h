@@ -1,3 +1,4 @@
+#include "BaseConfig.h"
 #include <coroutine>
 #include <functional>
 #include <future>
@@ -13,38 +14,32 @@
 
 using namespace roc::coro;
 // -------------------------------------------------------
-inline void request1(CoroPromise<> promise) {
-    std::cout<<"request 1"<<std::endl;
+inline void request1(CoroPromise<int> promise, int value) {
 
-    auto func = [promise]() mutable{
+    auto func = [promise, value]() mutable{
         std::this_thread::sleep_for(std::chrono::milliseconds(3000));
-        std::cout<<"response 1"<<std::endl;
-        promise.set_value();
+        promise.set_value(value);
     };
 
-    std::thread(std::move(func)).detach();
+    main_io_context.post(func);
 }
 
 // 子协程，返回一个Task<int>
 inline co_async<int> child_coroutine(int value) {
-    std::cout << "Child coroutine started with value: " << value << "\n";
-    co_await co_awaitable_wapper<>{[](CoroPromise<> promise) {
-        request1(std::move(promise));
+    int res = co_await co_awaitable_wapper<int>{[value](CoroPromise<int> promise) {
+        request1(std::move(promise), value);
     }};
-    co_return 100 * 2;
+    co_return res * 2;
 }
 
 // 父协程，调用子协程
 inline co_async<int> parent_coroutine(int input) {
-    std::cout << "Parent coroutine started\n";
-    int child_result = co_await child_coroutine(input);;
-    printf("child %d", child_result);
-    co_return child_result * 2;
+    int res = co_await child_coroutine(input);;
+    co_return res * 2;
 }
 
 inline co_async<> co_main() {
     int res = co_await parent_coroutine(100); 
-    printf("parent %d", res);
     co_return;
 }
 
