@@ -15,22 +15,15 @@
 
 // ===================== std:coroutine RAII =====================
 
-/// promise_type = void 的偏特化 版本
 class CoroRAII {
     using handle_type = std::coroutine_handle<>;
 public:
     CoroRAII(handle_type coro_handle) : coro_handle_(coro_handle) {}
     ~CoroRAII() {
-        if (coro_handle_) {
-          // std::cout<<"[destory coroutine] " <<coro_handle_.address()<<std::endl;
-           coro_handle_.destroy();
-        }
+        if (coro_handle_) { coro_handle_.destroy(); }
     }
 
-    handle_type coro_handle() {
-        return coro_handle_;
-    }
-
+    handle_type coro_handle() { return coro_handle_; }
 private: 
     handle_type coro_handle_;
 };
@@ -56,15 +49,13 @@ inline void unref_coro(size_t id) {
 // ==================  co_async 封装  (存在返回值)   ===================
 template<typename ReType = void>
 struct co_async {
-
     std::shared_ptr<CoroRAII> coro_arii_sptr;
 
 public:
     struct promise_type;
     struct awaiter;
 
-    co_async(std::shared_ptr<CoroRAII> h) : coro_arii_sptr(h) {
-    }
+    co_async(std::shared_ptr<CoroRAII> h) : coro_arii_sptr(h) { }
 
     auto operator co_await() noexcept {
         return awaiter{ 
@@ -144,8 +135,7 @@ public:
     struct promise_type;
     struct awaiter;
 
-    co_async(std::shared_ptr<CoroRAII> h) : coro_arii_sptr(h) {
-    }
+    co_async(std::shared_ptr<CoroRAII> h) : coro_arii_sptr(h) { }
 
     auto operator co_await() noexcept {
         return awaiter{ 
@@ -155,7 +145,7 @@ public:
 
     // =================== awaiter ================
     struct awaiter {
-        std::coroutine_handle<promise_type>  coro_handle;
+        std::coroutine_handle<promise_type> coro_handle;
 
         bool await_ready() const noexcept {
             return !coro_handle || coro_handle.done();
