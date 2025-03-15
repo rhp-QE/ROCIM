@@ -12,13 +12,13 @@
 #define ROC_COROTINE_H
 
 // -------------------------------------------------------
-inline void request1(CoPromiseWapper<int> promise) {
+inline void request1(CoPromiseWapper<> promise) {
     std::cout<<"request 1"<<std::endl;
 
     auto func = [promise_in = std::move(promise)]() mutable{
         std::this_thread::sleep_for(std::chrono::milliseconds(3000));
         std::cout<<"response 1"<<std::endl;
-        promise_in.set_value(100);
+        promise_in.set_value();
     };
 
     std::thread(std::move(func)).detach();
@@ -27,10 +27,10 @@ inline void request1(CoPromiseWapper<int> promise) {
 // 子协程，返回一个Task<int>
 inline co_async<int> child_coroutine(int value) {
     std::cout << "Child coroutine started with value: " << value << "\n";
-    int res = co_await co_awaitable_wapper<int>{[](CoPromiseWapper<int> promise) {
+    co_await co_awaitable_wapper<>{[](CoPromiseWapper<> promise) {
         request1(std::move(promise));
     }};
-    co_return res * 2;
+    co_return 100 * 2;
 }
 
 // 父协程，调用子协程
@@ -50,19 +50,6 @@ inline co_async<> co_main() {
 
 inline void test() {
     co_main();
-}
-
-
-inline void pp(std::promise<int> promise) {
-    auto pp = std::move(promise);
-    pp.set_value(100);
-}
-
-inline void tet() {
-    std::promise<int> promise;
-    std::future<int> ff = promise.get_future();
-    pp(std::move(promise));
-    std::cout<<ff.get()<<std::endl;
 }
 
 #endif

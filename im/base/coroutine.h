@@ -2,6 +2,7 @@
 #define ROC_COROUTINE_H
 
 
+#include <algorithm>
 #include <boost/core/noncopyable.hpp>
 #include <coroutine>
 #include <future>
@@ -212,13 +213,16 @@ public:
 
 
 
-// ==================  封装 awaitable_wapper ===================
-template <typename Ty>
+// ===== 封装 awaitable_wapper (便于将异步回调函数封装成awaitable) =====
+template <typename Ty = void>
 struct co_awaitable_wapper;
 
-// 自定义 Awaitable 类型
 template <typename Ty = void>
-class CoPromiseWapper{
+class CoroPromise;
+
+// -------- coroutine promise ------------
+template <typename Ty>
+class CoroPromise{
     friend co_awaitable_wapper<Ty>;
 
 public:
@@ -232,32 +236,43 @@ private:
     std::coroutine_handle<> h;
 };
 
+// 偏特化版本
+// -------- coroutine promise ------------
+template <>
+class CoroPromise<void>{
+    friend co_awaitable_wapper<void>;
 
-template <typename Ty>
-struct co_awaitable_wapper {
-
-    using Type = std::function<void(CoPromiseWapper<Ty> promise)>;
-
-    std::future<Ty> future;
-
-    bool await_ready() const noexcept { 
-        return false; // 总是挂起协程
+public:
+    void set_value() {
+        promise_.set_value();
+        h.resume();
     }
 
-    void await_suspend(std::coroutine_handle<> h) {
-        CoPromiseWapper<Ty> promise;
-        promise.h = h;
-        promise.promise_ = std::promise<Ty>();
+private:
+    std::promise<void> promise_;
+    std::coroutine_handle<> h;
+};
 
+
+template <typename ReType>
+class co_awaitable_wapper {
+
+    using Type = std::function<void(CoroPromise<ReType> promise)>;
+
+    std::future<ReType> future;
+    Type func;
+
+public:
+    bool await_ready() const noexcept { return false; }
+
+    void await_suspend(std::coroutine_handle<> h) {
+        CoroPromise<ReType> promise {h, std::promise<ReType>()};
         future = promise.promise_.get_future();
+
         func(std::move(promise));
     }
 
-    Ty await_resume() noexcept {
-        return future.get();
-    }
-
-    Type func;
+    ReType await_resume() noexcept { return future.get(); }
 
     co_awaitable_wapper(Type fun) : func(fun) {}
 };
