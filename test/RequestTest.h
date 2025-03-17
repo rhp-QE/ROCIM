@@ -1,8 +1,5 @@
-#include "im/base/ProtobufZeroCopyInputStream.h"
-#include "im/base/Utility.h"
 #include "im/base/coroutine.h"
 #include <boost/asio/buffer.hpp>
-#include <cstdint>
 #include <google/protobuf/io/zero_copy_stream.h>
 #include <memory>
 #include <iostream>
@@ -12,6 +9,7 @@
 
 #include <im/base/LinkBuffer.h>
 #include <im/base/ProtobufZeroCopyOutStream.h>
+#include <im/sdk/net/ConnectionManager.h>
 
 using namespace roc::coro;
 
@@ -28,14 +26,14 @@ co_async<> requestSingle() {
 }
 
 // 测试
-void testProtobuf() {
+co_async<> testProtobuf() {
 
-    int value = 0;
+    co_await ConnectionManager::shareInstance().init(); 
     for (int i = 0; i < 10; ++i) {
         requestSingle();
     }
 
-    return;
+    co_return;
 }
 
 };

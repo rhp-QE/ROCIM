@@ -11,6 +11,7 @@
 
 #include "im/base/ILongConnection.h"
 #include "im/base/LongConnectionImpl.h"
+#include "im/base/coroutine.h"
 #include "im/sdk/net/Request.h"
 #include <boost/core/noncopyable.hpp>
 #include <boost/noncopyable.hpp>
@@ -29,6 +30,9 @@ public:
     }
 
     void send(std::shared_ptr<Request> request);
+
+    /// 初始化逻辑
+    roc::coro::co_async<> init();
 
     /// sdk 专用长链
     std::shared_ptr<Default_LC_Type> default_lc() { return default_lc_; }

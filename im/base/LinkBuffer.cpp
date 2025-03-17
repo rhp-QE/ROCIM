@@ -257,7 +257,7 @@ std::optional<LinkBuffer::ReadResult> LinkBuffer::get_read_buffers(size_t size) 
         }
     }
 
-    if ((*it)->refCount == 1) {
+    if (it != blocks_.end() && (*it)->readable() == 0 && (*it)->writable() == 0) {
         ++it;
     }
     read_block_cursor_ = it;
@@ -283,7 +283,7 @@ size_t LinkBuffer::readable() const noexcept {
 }
 
 size_t LinkBuffer::writeable() const noexcept {
-    std::list<std::unique_ptr<Block>>::const_iterator it = read_block_cursor_;
+    std::list<std::unique_ptr<Block>>::const_iterator it = write_block_cursor_;
     size_t total = 0;
 
     for (; it != blocks_.end(); ++it) {
@@ -302,11 +302,17 @@ void LinkBuffer::append_new_block(size_t hint) {
         std::cout<<"[error]"<<this<<" "<<find_index(blocks_, write_block_cursor_)<<" "<<find_index(blocks_, read_block_cursor_)<<std::endl;
     }
 
-    bool end = write_block_cursor_ == blocks_.end();
+    bool end_write = write_block_cursor_ == blocks_.end();
+    bool end_read = read_block_cursor_ == blocks_.end();
     const size_t new_size = std::max(default_block_size_, hint);
     blocks_.emplace_back(std::make_unique<Block>(new_size));
-    if (end) {
+
+    if (end_write) {
         write_block_cursor_ = --blocks_.end();
+    }
+
+    if (end_read) {
+        read_block_cursor_ = --blocks_.end();
     }
 }
 

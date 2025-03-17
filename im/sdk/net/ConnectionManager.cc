@@ -10,6 +10,7 @@
 #include "im/base/ProtobufZeroCopyInputStream.h"
 #include "im/base/ProtobufZeroCopyOutStream.h"
 #include "im/base/Utility.h"
+#include "im/base/coroutine.h"
 #include "im/sdk/pb/im.pb.h"
 #include <cstdlib>
 #include <memory>
@@ -59,6 +60,17 @@ void ConnectionManager::send(std::shared_ptr<Request> request) {
         roc::base::io::ProtobufZeroCopyOutStream stream(bufs);
         request->request_body_->SerializeToZeroCopyStream(&stream);
     });  
+}
+
+roc::coro::co_async<> ConnectionManager::init() {
+    /// 默认长链的初始化、连接操作
+    co_await coro::co_awaitable_wapper<>([this](coro::CoroPromise<> promise){
+        default_lc_->set_connect_callback([promise](std::shared_ptr<Default_LC_Type> conn) mutable {
+            promise.set_value();
+        });
+    });
+
+    co_return;
 }
 
 

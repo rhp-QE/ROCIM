@@ -2,11 +2,13 @@
 #define ROC_COROUTINE_H
 
 
+#include "BaseConfig.h"
 #include <algorithm>
 #include <boost/core/noncopyable.hpp>
 #include <coroutine>
 #include <future>
 #include <memory>
+#include <mutex>
 #include <optional>
 #include <unordered_map>
 #include <im/base/noncopyable.h>
@@ -14,7 +16,6 @@
 namespace roc::coro {
 
 // ===================== std:coroutine RAII =====================
-
 class CoroRAII {
     using handle_type = std::coroutine_handle<>;
 public:
@@ -31,8 +32,10 @@ private:
 //------------------------ std::coroutine RAII ---------------------
 
 //-------------------   协程生命周期管理  -----------------------------
+extern std::mutex coro_mutex;
 extern std::unordered_map<size_t, std::shared_ptr<CoroRAII>> coro_manager;
 inline size_t ref_coro(std::shared_ptr<CoroRAII> coro) {
+    std::lock_guard<std::mutex> lock(coro_mutex);
     static size_t id = 0;
     ++id;
     coro_manager[id] = coro;
@@ -40,6 +43,7 @@ inline size_t ref_coro(std::shared_ptr<CoroRAII> coro) {
 }
 
 inline void unref_coro(size_t id) {
+    std::lock_guard<std::mutex> lock(coro_mutex);
     coro_manager.erase(id);
 }
 //-------------------------------------------------------------------
@@ -183,7 +187,7 @@ public:
                 bool await_ready() noexcept {  return false; }
                 void await_suspend(std::coroutine_handle<promise_type> self) noexcept {
                     unref_coro(self.promise().id);
-                    if (self.promise().parent) {
+                    if (self.promise().parent && self.promise().parent.address() != nullptr) {
                         self.promise().parent.resume(); // 恢复父协程
                     }
                 }
