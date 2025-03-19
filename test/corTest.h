@@ -4,6 +4,7 @@
 #include <future>
 #include <iostream>
 #include <memory>
+#include <mutex>
 #include <optional>
 #include <thread>
 #include <tuple>
@@ -23,8 +24,17 @@ inline void request1(CoroPromise<type> promise, type value, int ms) {
         promise.set_value(value);
     };
 
+    static int ss = 0;
+
+    ++ss;
+    if (ss%2) {
+        net_io_context.post(func);
+    } else {
+        main_io_context.post(func);
+    }
+
     //net_io_context.post(func);
-    std::thread(func).detach();
+    //std::thread(func).detach();
 }
 
 // 子协程，返回一个Task<int>
@@ -51,8 +61,12 @@ inline co_async<> co_main() {
     co_return;
 }
 
-int all = 10000;
+inline void test();
+
+int all = 1000;
 int cur = 0;
+
+std::mutex mutt;
 
 inline co_async<> await_tasks_test() {
     std::vector<int> vec{1,2,3,4,5};
@@ -70,9 +84,20 @@ inline co_async<> await_tasks_test() {
         child_coroutine(std::set<int>{1,2,3,4,5,6}, 10)
     ));
     auto res_copy = res;
-
-    if (++cur == all) {
+ 
+    int cc = 0;
+    {
+        std::lock_guard<std::mutex> lock(mutt);
+        ++cur;
+        cc = cur;
+    }
+    if (cc >= all) {
         std::cout<<"success"<<std::endl;
+        {
+            std::lock_guard<std::mutex> lock(mutt);
+            cur = 0;
+        }
+        test();
     }
 }
 

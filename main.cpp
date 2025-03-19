@@ -39,28 +39,27 @@ void test_tuple(std::tuple<Retype...> res) {
 
 int main() {
 
-    std::tuple<int, double, std::string> ss(1, 1.1111, "fdasfa");
-    std::apply([](auto&&... args) {
-        auto index = std::make_index_sequence<sizeof...(args)>();
-        (..., (print(args)));
-    }, ss);
+    // std::tuple<int, double, std::string> ss(1, 1.1111, "fdasfa");
+    // std::apply([](auto&&... args) {
+    //     auto index = std::make_index_sequence<sizeof...(args)>();
+    //     (..., (print(args)));
+    // }, ss);
 
 
-    print_index(std::index_sequence<1,2,3,4,5,6>());
+    // print_index(std::index_sequence<1,2,3,4,5,6>());
 
-    test_tuple(std::make_tuple(1,2,3,4,5,6));
-
-    boost::asio::io_context::work work(net_io_context);
-    std::thread net_thread([]{
-        net_io_context.run();
-    });
+   // test_tuple(std::make_tuple(1,2,3,4,5,6));
 
     //roc::im::sdk::net::testProtobuf();
     //testLongConAndBuffer();
     //testHttp();
     test();
 
-    
+    boost::asio::io_context::work work(net_io_context);
+    std::thread net_thread([]{
+        net_io_context.run();
+    });
+
     boost::asio::io_context::work work_main(main_io_context);
     main_io_context.run();
     
