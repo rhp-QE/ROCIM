@@ -2,7 +2,6 @@
 #define ROC_COROUTINE_H
 
 
-#include "BaseConfig.h"
 #include <algorithm>
 #include <boost/core/noncopyable.hpp>
 #include <coroutine>
@@ -10,10 +9,22 @@
 #include <memory>
 #include <mutex>
 #include <optional>
+#include <tuple>
+#include <type_traits>
 #include <unordered_map>
 #include <im/base/noncopyable.h>
+#include <utility>
+#include <variant>
+#include <vector>
 
 namespace roc::coro {
+
+// ------------------- pre declare (begin) --------------------
+
+template<typename... ReType>
+class AwaitableAll;
+
+// ------------------- pre declare (end)   --------------------
 
 // ===================== std:coroutine RAII =====================
 class CoroRAII {
@@ -49,17 +60,20 @@ inline void unref_coro(size_t id) {
 //-------------------------------------------------------------------
 
 
-
 // ==================  co_async 封装  (存在返回值)   ===================
-template<typename ReType = void>
+template<typename Type = void>
 struct co_async {
-    std::shared_ptr<CoroRAII> coro_arii_sptr;
-
-public:
     struct promise_type;
     struct awaiter;
 
-    co_async(std::shared_ptr<CoroRAII> h) : coro_arii_sptr(h) { }
+    std::shared_ptr<CoroRAII> coro_arii_sptr;
+    std::coroutine_handle<promise_type> handle;
+
+    using ReType = Type;
+
+    co_async(std::shared_ptr<CoroRAII> h) : coro_arii_sptr(h) { 
+        handle =  std::coroutine_handle<promise_type>::from_address(coro_arii_sptr->coro_handle().address());
+    }
 
     auto operator co_await() noexcept {
         return awaiter{ 
@@ -72,33 +86,49 @@ public:
         std::coroutine_handle<promise_type>  coro_handle;
 
         bool await_ready() const noexcept {
-            return !coro_handle || coro_handle.done();
+            bool ready = false;
+            {
+                std::lock_guard<std::mutex> lock(coro_handle.promise().mutex);
+                ready = !coro_handle || (coro_handle.promise().result != std::nullopt);
+            } // promise lock
+            return ready;
         }
 
         void await_suspend(std::coroutine_handle<> awaiting_coro) noexcept {
+            std::lock_guard<std::mutex> lock(coro_handle.promise().mutex);
             coro_handle.promise().parent = awaiting_coro;
-        }
+        } // promise lock
 
         ReType await_resume() {
-            return coro_handle.promise().result.value();
+            ReType res;
+            {
+                std::lock_guard<std::mutex> lock(coro_handle.promise().mutex);
+                res = coro_handle.promise().result.value();
+            } // promise lock
+            return res;
         }
     };
     // ----------------- awaiter --------------------
 
-    // ================  promise_type   =============
+    // ---------------  promise_type (being) -------------------
+    
+    // promise_type 会暴露给多个线程访
     struct promise_type {
     
-    private:
         size_t id;
 
-    public:
-        std::optional<ReType> result;   // 协程的返回值
-        std::coroutine_handle<> parent; // 保存父协程句柄
+        std::mutex mutex;
+
+        std::optional<ReType>   result;    // 协程的返回值
+        std::coroutine_handle<> parent;    // 保存父协程句柄
+        std::function<void(ReType retule)> callback;  // 当前协程任务完成回调
 
         co_async get_return_object() {
             auto h = std::coroutine_handle<promise_type>::from_promise(*this);
             auto handle =  std::make_shared<CoroRAII>(std::coroutine_handle<>::from_address(h.address()));
-            id = ref_coro(handle);
+            id = ref_coro(handle);  // 引用计数加一
+
+            result = std::nullopt;
 
             return co_async{ handle };
         }
@@ -109,21 +139,39 @@ public:
             struct FinalAwaiter {
                 bool await_ready() noexcept {  return false; }
                 void await_suspend(std::coroutine_handle<promise_type> self) noexcept {
-                    unref_coro(self.promise().id);
-                    if (self.promise().parent) {
-                        self.promise().parent.resume(); // 恢复父协程
+                    auto& promise = self.promise();
+                    
+                    std::coroutine_handle<> parent;
+                    std::function<void(ReType result)> callback;
+                    {
+                        std::lock_guard<std::mutex> lock(promise.mutex);
+                        parent = promise.parent;
+                        callback = promise.callback;
+                    } // promise lock
+
+                    if (parent) { // 恢复父协程
+                       parent.resume();
                     }
+
+                    if (callback) { // 向外通知协程任务完成
+                       callback(promise.result.value());
+                    }
+
+                    unref_coro(promise.id);
                 }
-                void await_resume() noexcept {}
+                void await_resume() noexcept { }
             };
             return FinalAwaiter{};
         }
 
-        void return_value(ReType v) noexcept { result = v; }
+        void return_value(ReType v) noexcept {
+            std::lock_guard<std::mutex> lock(mutex); 
+            result = std::move(v);
+        }
 
         void unhandled_exception() { std::terminate(); }
     };
-    // ------------------------ promise_type --------------------
+    // ------------------------ promise_type (end) --------------------
 
 };
 // ------------------------ co_async 封装 ------------------------
@@ -139,7 +187,11 @@ public:
     struct promise_type;
     struct awaiter;
 
-    co_async(std::shared_ptr<CoroRAII> h) : coro_arii_sptr(h) { }
+    std::coroutine_handle<> handle;
+
+    co_async(std::shared_ptr<CoroRAII> h) : coro_arii_sptr(h) { 
+        handle = std::coroutine_handle<promise_type>::from_address(coro_arii_sptr->coro_handle().address());
+    }
 
     auto operator co_await() noexcept {
         return awaiter{ 
@@ -166,11 +218,11 @@ public:
     // ================  promise_type   =============
     struct promise_type {
     
-    private:
         size_t id;
-
-    public:
+        bool completed;
+        std::mutex mutex;
         std::coroutine_handle<> parent; // 保存父协程句柄
+        std::function<void()> callback;
 
         co_async get_return_object() {
             auto h = std::coroutine_handle<promise_type>::from_promise(*this);
@@ -186,9 +238,23 @@ public:
             struct FinalAwaiter {
                 bool await_ready() noexcept {  return false; }
                 void await_suspend(std::coroutine_handle<promise_type> self) noexcept {
+                    auto& promise = self.promise();
                     unref_coro(self.promise().id);
-                    if (self.promise().parent && self.promise().parent.address() != nullptr) {
-                        self.promise().parent.resume(); // 恢复父协程
+
+                    std::coroutine_handle<> parent;
+                    std::function<void(void)> callback;
+                    {
+                        std::lock_guard<std::mutex> lock(promise.mutex);
+                        parent = promise.parent;
+                        callback = promise.callback;
+                    } // promise lock
+
+                    if (parent) { // 恢复父协程
+                       parent.resume();
+                    }
+
+                    if (callback) { // 向外通知协程任务完成
+                       callback();
                     }
                 }
                 void await_resume() noexcept {}
@@ -196,7 +262,10 @@ public:
             return FinalAwaiter{};
         }
 
-        void return_void() {}
+        void return_void() {
+            std::lock_guard<std::mutex> lock(mutex);
+            completed = true;
+        } // promise lock
 
         void unhandled_exception() { std::terminate(); }
     };
@@ -274,6 +343,98 @@ public:
 };
 
 // --------------------- 封装 await_able_wapper ---------------------
+
+// --------------------- 封装 await all (begin) ---------------------
+
+template<typename... ReType>
+class AwaitableAll {
+public:
+    std::tuple<co_async<ReType>...> awaitCoro_;
+    std::tuple<ReType...> result;
+    std::mutex mutex;
+    std::size_t cnt_;
+    std::coroutine_handle<> parent;
+
+    template<size_t index>
+    void register_callback() {
+        auto& co = std::get<index>(awaitCoro_);
+        using Type = std::tuple_element_t<index, std::tuple<ReType...>>;
+
+        std::lock_guard<std::mutex> lock(co.handle.promise().mutex);
+
+        if constexpr (std::is_void_v<Type>) {
+            auto func = [this]() {
+                std::lock_guard<std::mutex> lock(mutex);
+                if (--cnt_ == 0 && parent) {
+                    parent.resume();
+                }
+            }; // awaitable lock
+
+            if (co.handle.promise().completed) {
+                func();
+            } else {
+                co.handle.promise().callback = func;
+            }
+        } else {
+            auto func = [this](Type res) {
+                std::lock_guard<std::mutex> lock(mutex);
+                std::get<index>(result) = std::move(res);
+                if (--cnt_ == 0 && parent) {
+                    parent.resume();
+                }
+            }; // awaiable lock
+
+            if (co.handle.promise().result != std::nullopt) {
+                func(co.handle.promise().result.value());
+            } else {
+                co.handle.promise().callback = func;
+            }
+        }
+    } // promise lock
+    
+    AwaitableAll(std::tuple<co_async<ReType>...> awaitCoro, int cnt) : 
+        awaitCoro_(awaitCoro),
+        cnt_(cnt)
+    {
+
+        cnt = std::tuple_size_v<decltype(awaitCoro_)>;
+        auto index = std::make_index_sequence<std::tuple_size_v<decltype(awaitCoro_)>>();
+
+        [&]<size_t... I>(std::index_sequence<I...>) {
+            (..., register_callback<I>());
+        }(index);
+    }
+
+
+    bool await_ready() {
+        bool ok = false;
+        {
+            std::lock_guard<std::mutex> lock(mutex);
+            ok = (cnt_ == 0);
+        } // awaiate lock
+        return ok;
+    }
+
+    void await_suspend(std::coroutine_handle<> h) {
+        parent = h;
+    }
+
+    std::tuple<ReType...> await_resume() noexcept { return result; }
+};
+
+
+template <typename... ReType>
+constexpr AwaitableAll<ReType...> when_all(std::tuple<co_async<ReType>...> cos) {
+    return AwaitableAll<ReType...>(cos, std::tuple_size_v<decltype(cos)>);
+}
+
+
+template <typename... ReType>
+constexpr AwaitableAll<ReType...> when_any(std::tuple<co_async<ReType>...> cos) {
+    return AwaitableAll<ReType...>(cos, 1);
+}
+
+// --------------------- 封装 await all  (end) ---------------------
 
 
 } // namespace roc::coro

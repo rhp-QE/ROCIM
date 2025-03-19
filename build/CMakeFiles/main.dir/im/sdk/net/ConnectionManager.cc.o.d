@@ -1162,6 +1162,9 @@ CMakeFiles/main.dir/im/sdk/net/ConnectionManager.cc.o: \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_list.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/list.tcc \
   /root/ROCIM/ROCIM_CLIENT/im/base/LongConnectionImpl.h \
+  /root/ROCIM/ROCIM_CLIENT/im/base/coroutine.h \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/core/noncopyable.hpp \
+  /root/ROCIM/ROCIM_CLIENT/im/base/noncopyable.h \
   /root/ROCIM/ROCIM_CLIENT/im/sdk/net/Request.h \
   /root/ROCIM/ROCIM_CLIENT/im/sdk/pb/im.pb.h \
   /root/share/protobuf/include/google/protobuf/port_def.inc \
@@ -1228,9 +1231,6 @@ CMakeFiles/main.dir/im/sdk/net/ConnectionManager.cc.o: \
   /root/share/protobuf/include/google/protobuf/map_field.h \
   /root/share/protobuf/include/google/protobuf/map_field_lite.h \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/noncopyable.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/core/noncopyable.hpp \
-  /root/ROCIM/ROCIM_CLIENT/im/base/coroutine.h \
-  /root/ROCIM/ROCIM_CLIENT/im/base/noncopyable.h \
   /root/ROCIM/ROCIM_CLIENT/BaseConfig.h \
   /root/ROCIM/ROCIM_CLIENT/im/base/ProtobufZeroCopyInputStream.h \
   /root/ROCIM/ROCIM_CLIENT/im/base/ProtobufZeroCopyOutStream.h \

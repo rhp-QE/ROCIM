@@ -14,27 +14,29 @@
 
 using namespace roc::coro;
 // -------------------------------------------------------
-inline void request1(CoroPromise<int> promise, int value) {
+template<typename type>
+inline void request1(CoroPromise<type> promise, type value, int ms) {
 
-    auto func = [promise, value]() mutable{
-        std::this_thread::sleep_for(std::chrono::milliseconds(3000));
+    auto func = [promise, value, ms]() mutable{
+        std::this_thread::sleep_for(std::chrono::milliseconds(ms));
         promise.set_value(value);
     };
 
-    main_io_context.post(func);
+    net_io_context.post(func);
 }
 
 // 子协程，返回一个Task<int>
-inline co_async<int> child_coroutine(int value) {
-    int res = co_await co_awaitable_wapper<int>{[value](CoroPromise<int> promise) {
-        request1(std::move(promise), value);
+template<typename type>
+inline co_async<type> child_coroutine(type value, int ms) {
+    type res = co_await co_awaitable_wapper<type>{[value, ms](CoroPromise<type> promise) {
+        request1(promise, value, ms);
     }};
-    co_return res * 2;
+    co_return res;
 }
 
 // 父协程，调用子协程
 inline co_async<int> parent_coroutine(int input) {
-    int res = co_await child_coroutine(input);;
+    int res = co_await child_coroutine(input, 1000);
     co_return res * 2;
 }
 
@@ -43,8 +45,19 @@ inline co_async<> co_main() {
     co_return;
 }
 
+inline co_async<> await_all_test() {
+    std::vector<int> vec{1,2,3,4,5};
+    auto a1 = child_coroutine(100, 10000);
+    auto a2 = child_coroutine(89.80, 200000);
+    auto a3 = child_coroutine("string", 1000);
+    auto a4 = child_coroutine(vec, 5000);
+    auto res = co_await when_any(std::make_tuple(a1,a2,a3,a4));
+    auto res_copy =   res;
+}
+
 
 inline void test() {
+    await_all_test();
     co_main();
 }
 
