@@ -34,6 +34,10 @@ inline co_async<type> child_coroutine(type value, int ms) {
     co_return res;
 }
 
+inline co_async<> child_coroutine_void() {
+    co_return;
+}
+
 // 父协程，调用子协程
 inline co_async<int> parent_coroutine(int input) {
     int res = co_await child_coroutine(input, 1000);
@@ -47,11 +51,10 @@ inline co_async<> co_main() {
 
 inline co_async<> await_all_test() {
     std::vector<int> vec{1,2,3,4,5};
-    auto a1 = child_coroutine(100, 10000);
-    auto a2 = child_coroutine(89.80, 200000);
-    auto a3 = child_coroutine("string", 1000);
-    auto a4 = child_coroutine(vec, 5000);
-    auto res = co_await when_any(std::make_tuple(a1,a2,a3,a4));
+    auto a2 = child_coroutine(89.80, 0);
+    auto a1 = child_coroutine(100, 0);
+    auto a3 = child_coroutine("string", 0);
+    auto res = co_await when_any(std::make_tuple(a1,a2,a3));
     auto res_copy =   res;
 }
 

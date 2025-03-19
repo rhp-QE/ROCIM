@@ -118,7 +118,7 @@ struct co_async {
         size_t id;
 
         std::mutex mutex;
-
+        bool completed;
         std::optional<ReType>   result;    // 协程的返回值
         std::coroutine_handle<> parent;    // 保存父协程句柄
         std::function<void(ReType retule)> callback;  // 当前协程任务完成回调
@@ -128,6 +128,7 @@ struct co_async {
             auto handle =  std::make_shared<CoroRAII>(std::coroutine_handle<>::from_address(h.address()));
             id = ref_coro(handle);  // 引用计数加一
 
+            completed = false;
             result = std::nullopt;
 
             return co_async{ handle };
@@ -167,7 +168,8 @@ struct co_async {
         void return_value(ReType v) noexcept {
             std::lock_guard<std::mutex> lock(mutex); 
             result = std::move(v);
-        }
+            completed = true;
+        } // lock promsie
 
         void unhandled_exception() { std::terminate(); }
     };
@@ -384,7 +386,7 @@ public:
                 }
             }; // awaiable lock
 
-            if (co.handle.promise().result != std::nullopt) {
+            if (co.handle.promise().completed) {
                 func(co.handle.promise().result.value());
             } else {
                 co.handle.promise().callback = func;
