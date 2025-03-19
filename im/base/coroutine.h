@@ -63,6 +63,7 @@ inline void unref_coro(size_t id) {
 // ==================  co_async 封装  (存在返回值)   ===================
 template<typename Type = void>
 struct co_async {
+
     struct promise_type;
     struct awaiter;
 
@@ -183,13 +184,11 @@ struct co_async {
 template<>
 struct co_async<void> {
 
-    std::shared_ptr<CoroRAII> coro_arii_sptr;
-
-public:
     struct promise_type;
     struct awaiter;
 
-    std::coroutine_handle<> handle;
+    std::shared_ptr<CoroRAII> coro_arii_sptr;
+    std::coroutine_handle<promise_type> handle;
 
     co_async(std::shared_ptr<CoroRAII> h) : coro_arii_sptr(h) { 
         handle = std::coroutine_handle<promise_type>::from_address(coro_arii_sptr->coro_handle().address());
@@ -348,11 +347,22 @@ public:
 
 // --------------------- 封装 await all (begin) ---------------------
 
+// 将 void 替换为 std::monostate（或其他占位类型）
+template <typename T>
+struct ReplaceVoid {
+    using type = T;
+};
+
+template <>
+struct ReplaceVoid<void> {
+    using type = std::monostate;  // 替换为 std::monostate
+};
+
 template<typename... ReType>
 class AwaitableAll {
 public:
     std::tuple<co_async<ReType>...> awaitCoro_;
-    std::tuple<ReType...> result;
+    std::tuple<typename ReplaceVoid<ReType>::type...> result;
     std::mutex mutex;
     std::size_t cnt_;
     std::coroutine_handle<> parent;
@@ -398,8 +408,6 @@ public:
         awaitCoro_(awaitCoro),
         cnt_(cnt)
     {
-
-        cnt = std::tuple_size_v<decltype(awaitCoro_)>;
         auto index = std::make_index_sequence<std::tuple_size_v<decltype(awaitCoro_)>>();
 
         [&]<size_t... I>(std::index_sequence<I...>) {
@@ -421,7 +429,7 @@ public:
         parent = h;
     }
 
-    std::tuple<ReType...> await_resume() noexcept { return result; }
+    std::tuple<typename ReplaceVoid<ReType>::type ...> await_resume() noexcept { return result; }
 };
 
 

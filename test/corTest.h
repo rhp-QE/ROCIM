@@ -51,10 +51,11 @@ inline co_async<> co_main() {
 
 inline co_async<> await_all_test() {
     std::vector<int> vec{1,2,3,4,5};
-    auto a2 = child_coroutine(89.80, 0);
     auto a1 = child_coroutine(100, 0);
+    auto a2 = child_coroutine(89.80, 0);
     auto a3 = child_coroutine("string", 0);
-    auto res = co_await when_any(std::make_tuple(a1,a2,a3));
+    auto a4 = child_coroutine_void();
+    auto res = co_await when_any(std::make_tuple(a1,a2,a3,a4));
     auto res_copy =   res;
 }
 
