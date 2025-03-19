@@ -364,7 +364,7 @@ public:
     std::tuple<co_async<ReType>...> awaitCoro_;
     std::tuple<typename ReplaceVoid<ReType>::type...> result;
     std::mutex mutex;
-    std::size_t cnt_;
+    int cnt_;
     std::coroutine_handle<> parent;
 
     template<size_t index>
@@ -420,7 +420,7 @@ public:
         bool ok = false;
         {
             std::lock_guard<std::mutex> lock(mutex);
-            ok = (cnt_ == 0);
+            ok = (cnt_ <= 0);
         } // awaiate lock
         return ok;
     }
@@ -435,7 +435,7 @@ public:
 
 template <typename... ReType>
 constexpr AwaitableAll<ReType...> when_all(std::tuple<co_async<ReType>...> cos) {
-    return AwaitableAll<ReType...>(cos, std::tuple_size_v<decltype(cos)>);
+    return AwaitableAll<ReType...>(cos, int(std::tuple_size_v<decltype(cos)>));
 }
 
 

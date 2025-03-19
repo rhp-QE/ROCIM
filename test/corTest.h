@@ -23,7 +23,8 @@ inline void request1(CoroPromise<type> promise, type value, int ms) {
         promise.set_value(value);
     };
 
-    net_io_context.post(func);
+    //net_io_context.post(func);
+    std::thread(func).detach();
 }
 
 // 子协程，返回一个Task<int>
@@ -50,7 +51,10 @@ inline co_async<> co_main() {
     co_return;
 }
 
-inline co_async<> await_all_test() {
+int all = 10000;
+int cur = 0;
+
+inline co_async<> await_tasks_test() {
     std::vector<int> vec{1,2,3,4,5};
     auto a1 = child_coroutine(100, 0);
     auto a2 = child_coroutine(89.80, 0);
@@ -60,17 +64,23 @@ inline co_async<> await_all_test() {
 
     auto res2 = co_await when_all(std::make_tuple(
         child_coroutine_void(),
-        child_coroutine(100, 1000),
+        child_coroutine(100, 89),
         child_coroutine(200, 10),
-        child_coroutine("string", 3000),
+        child_coroutine("string", 13),
         child_coroutine(std::set<int>{1,2,3,4,5,6}, 10)
     ));
-    auto res_copy =   res;
+    auto res_copy = res;
+
+    if (++cur == all) {
+        std::cout<<"success"<<std::endl;
+    }
 }
 
 
 inline void test() {
-    await_all_test();
+    for (int i = 0; i < all; ++i) {
+        await_tasks_test();
+    }
     co_main();
 }
 
