@@ -6,8 +6,9 @@
 #include <memory>
 #include <optional>
 #include <thread>
-#include <unordered_map>
+#include <tuple>
 #include <im/base/coroutine.h>
+#include <set>
 
 #ifndef ROC_COROTINE_H
 #define ROC_COROTINE_H
@@ -56,6 +57,14 @@ inline co_async<> await_all_test() {
     auto a3 = child_coroutine("string", 0);
     auto a4 = child_coroutine_void();
     auto res = co_await when_any(std::make_tuple(a1,a2,a3,a4));
+
+    auto res2 = co_await when_all(std::make_tuple(
+        child_coroutine_void(),
+        child_coroutine(100, 1000),
+        child_coroutine(200, 10),
+        child_coroutine("string", 3000),
+        child_coroutine(std::set<int>{1,2,3,4,5,6}, 10)
+    ));
     auto res_copy =   res;
 }
 
