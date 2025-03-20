@@ -200,6 +200,10 @@ struct co_async<void> {
         };
     }
 
+    void via() {
+        handle.resume();
+    }
+
     // =================== awaiter ================
     struct awaiter {
         std::coroutine_handle<promise_type> coro_handle;

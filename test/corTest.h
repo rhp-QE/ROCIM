@@ -70,17 +70,17 @@ std::mutex mutt;
 
 inline co_async<> await_tasks_test() {
     std::vector<int> vec{1,2,3,4,5};
-    auto a1 = child_coroutine(100, 0);
-    auto a2 = child_coroutine(89.80, 0);
-    auto a3 = child_coroutine("string", 0);
+    auto a1 = child_coroutine(10, 0);
+    auto a2 = child_coroutine(8.80, 0);
+    auto a3 = child_coroutine("string", 3);
     auto a4 = child_coroutine_void();
     auto res = co_await when_any(std::make_tuple(a1,a2,a3,a4));
 
     auto res2 = co_await when_all(std::make_tuple(
         child_coroutine_void(),
-        child_coroutine(100, 89),
-        child_coroutine(200, 10),
-        child_coroutine("string", 13),
+        child_coroutine(100, 8),
+        child_coroutine(200, 4),
+        child_coroutine("string", 7),
         child_coroutine(std::set<int>{1,2,3,4,5,6}, 10)
     ));
     auto res_copy = res;
