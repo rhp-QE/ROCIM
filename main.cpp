@@ -10,6 +10,8 @@
 #include <tuple>
 #include <utility>
 #include <test/coCostTime.h>
+#include <test/boostCoroTest.h>
+#include <test/testwc.h>
 
 boost::asio::io_context net_io_context;
 boost::asio::io_context main_io_context;
@@ -56,7 +58,10 @@ int main() {
     //testHttp();
     //test();
 
-    co_cost_time_test();
+   //  co_cost_time_test();
+
+    // boostCoroTest();
+    testWC();
 
     boost::asio::io_context::work work(net_io_context);
     std::thread net_thread([]{

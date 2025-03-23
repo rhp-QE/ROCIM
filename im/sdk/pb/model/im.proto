@@ -17,8 +17,12 @@ message Conversation {
   map<string, string> ext = 3;
 };
 
-message Message {
-  // 消息 ID
+message CmdMessage {
+  int64 cmd = 1;
+};
+
+message ContentMessage {
+    // 消息 ID
   string message_id = 1;
 
   // 消息类容
@@ -33,6 +37,12 @@ message Message {
   int64 message_type = 6;
 
   int64 index = 7;
+};
+
+message Message {
+  bool isCmd = 1;
+  CmdMessage cmdMessage = 2;
+  ContentMessage contentMessage = 3;
 };
 
 
@@ -69,7 +79,7 @@ message FetchMixedLinkMessagesResp {
 // 发送消息信息
 // -------------------- send message ------------------------
 message SendBatchMessageReq {
-  repeated Message message_arr = 1;
+  repeated ContentMessage message_arr = 1;
 };
 
 message SendBatchMessageResp {

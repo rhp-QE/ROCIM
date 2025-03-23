@@ -623,6 +623,78 @@ im/base/ProtobufZeroCopyOutStream.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/im/base/ProtobufZeroCopyOutStream.cc.s
 .PHONY : im/base/ProtobufZeroCopyOutStream.cc.s
 
+im/base/threadpool/ParallelQueue.o: im/base/threadpool/ParallelQueue.cc.o
+.PHONY : im/base/threadpool/ParallelQueue.o
+
+# target to build an object file
+im/base/threadpool/ParallelQueue.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/im/base/threadpool/ParallelQueue.cc.o
+.PHONY : im/base/threadpool/ParallelQueue.cc.o
+
+im/base/threadpool/ParallelQueue.i: im/base/threadpool/ParallelQueue.cc.i
+.PHONY : im/base/threadpool/ParallelQueue.i
+
+# target to preprocess a source file
+im/base/threadpool/ParallelQueue.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/im/base/threadpool/ParallelQueue.cc.i
+.PHONY : im/base/threadpool/ParallelQueue.cc.i
+
+im/base/threadpool/ParallelQueue.s: im/base/threadpool/ParallelQueue.cc.s
+.PHONY : im/base/threadpool/ParallelQueue.s
+
+# target to generate assembly for a file
+im/base/threadpool/ParallelQueue.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/im/base/threadpool/ParallelQueue.cc.s
+.PHONY : im/base/threadpool/ParallelQueue.cc.s
+
+im/base/threadpool/SerialQueue.o: im/base/threadpool/SerialQueue.cc.o
+.PHONY : im/base/threadpool/SerialQueue.o
+
+# target to build an object file
+im/base/threadpool/SerialQueue.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/im/base/threadpool/SerialQueue.cc.o
+.PHONY : im/base/threadpool/SerialQueue.cc.o
+
+im/base/threadpool/SerialQueue.i: im/base/threadpool/SerialQueue.cc.i
+.PHONY : im/base/threadpool/SerialQueue.i
+
+# target to preprocess a source file
+im/base/threadpool/SerialQueue.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/im/base/threadpool/SerialQueue.cc.i
+.PHONY : im/base/threadpool/SerialQueue.cc.i
+
+im/base/threadpool/SerialQueue.s: im/base/threadpool/SerialQueue.cc.s
+.PHONY : im/base/threadpool/SerialQueue.s
+
+# target to generate assembly for a file
+im/base/threadpool/SerialQueue.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/im/base/threadpool/SerialQueue.cc.s
+.PHONY : im/base/threadpool/SerialQueue.cc.s
+
+im/base/threadpool/ThreadPool.o: im/base/threadpool/ThreadPool.cc.o
+.PHONY : im/base/threadpool/ThreadPool.o
+
+# target to build an object file
+im/base/threadpool/ThreadPool.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/im/base/threadpool/ThreadPool.cc.o
+.PHONY : im/base/threadpool/ThreadPool.cc.o
+
+im/base/threadpool/ThreadPool.i: im/base/threadpool/ThreadPool.cc.i
+.PHONY : im/base/threadpool/ThreadPool.i
+
+# target to preprocess a source file
+im/base/threadpool/ThreadPool.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/im/base/threadpool/ThreadPool.cc.i
+.PHONY : im/base/threadpool/ThreadPool.cc.i
+
+im/base/threadpool/ThreadPool.s: im/base/threadpool/ThreadPool.cc.s
+.PHONY : im/base/threadpool/ThreadPool.s
+
+# target to generate assembly for a file
+im/base/threadpool/ThreadPool.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/im/base/threadpool/ThreadPool.cc.s
+.PHONY : im/base/threadpool/ThreadPool.cc.s
+
 im/sdk/net/ConnectionManager.o: im/sdk/net/ConnectionManager.cc.o
 .PHONY : im/sdk/net/ConnectionManager.o
 
@@ -772,6 +844,15 @@ help:
 	@echo "... im/base/ProtobufZeroCopyOutStream.o"
 	@echo "... im/base/ProtobufZeroCopyOutStream.i"
 	@echo "... im/base/ProtobufZeroCopyOutStream.s"
+	@echo "... im/base/threadpool/ParallelQueue.o"
+	@echo "... im/base/threadpool/ParallelQueue.i"
+	@echo "... im/base/threadpool/ParallelQueue.s"
+	@echo "... im/base/threadpool/SerialQueue.o"
+	@echo "... im/base/threadpool/SerialQueue.i"
+	@echo "... im/base/threadpool/SerialQueue.s"
+	@echo "... im/base/threadpool/ThreadPool.o"
+	@echo "... im/base/threadpool/ThreadPool.i"
+	@echo "... im/base/threadpool/ThreadPool.s"
 	@echo "... im/sdk/net/ConnectionManager.o"
 	@echo "... im/sdk/net/ConnectionManager.i"
 	@echo "... im/sdk/net/ConnectionManager.s"

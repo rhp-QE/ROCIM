@@ -1,3 +1,7 @@
+#include "BaseConfig.h"
+#include <boost/asio/awaitable.hpp>
+#include <boost/asio/co_spawn.hpp>
+#include <boost/asio/detached.hpp>
 #include <iostream>
 #include <chrono>
 #include <coroutine>
@@ -28,13 +32,26 @@ int func() {
     return 0;
 }
 
-co_async<> example_coroutine() {
+constexpr int num_iterations = 10000000;
+
+boost::asio::awaitable<void> sub_coroutine() {
     func();
     co_return;
 }
 
+boost::asio::awaitable<void> par_coroutine() {
+    auto start = std::chrono::high_resolution_clock::now();
+    for (int i = 0; i < num_iterations; ++i) {
+        co_await sub_coroutine();
+    }
+
+    auto end = std::chrono::high_resolution_clock::now();
+    std::cout << "Coroutine creation time: "
+              << double(std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count()) / num_iterations
+              << " ns per coroutine" << std::endl;
+}
+
 int co_cost_time_test() {
-    constexpr int num_iterations = 10000000;
 
     // 测试普通函数调用
     auto start = std::chrono::high_resolution_clock::now();
@@ -48,15 +65,7 @@ int co_cost_time_test() {
               << double(std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count()) / num_iterations
               << " ns per call" << std::endl;
 
-    // 测试协程调用
-    start = std::chrono::high_resolution_clock::now();
-    for (int i = 0; i < num_iterations; ++i) {
-        example_coroutine().via();
-    }
-    end = std::chrono::high_resolution_clock::now();
-    std::cout << "Coroutine creation time: "
-              << double(std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count()) / num_iterations
-              << " ns per coroutine" << std::endl;
+    boost::asio::co_spawn(main_io_context, par_coroutine(), boost::asio::detached);
 
     return 0;
 }

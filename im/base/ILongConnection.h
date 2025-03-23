@@ -13,8 +13,6 @@
 
 namespace roc::net {
 
-/// 前置声明
-class LongConnectionImpl;
 
 template<typename Ty>
 class ILongConnection;
@@ -25,15 +23,20 @@ struct LongConnectionConfig {
     uint32_t reconnect_interval = 5000; // 重连间隔，单位毫秒
 };
 
-using ReceiveCallback = std::function<void(std::shared_ptr<ILongConnection<LongConnectionImpl>> con, base::LinkBuffer::ReadResult readResult)>;
-using ConnectCallback = std::function<void(std::shared_ptr<ILongConnection<LongConnectionImpl>> con)>;
+// using ReceiveCallback = std::function<void(std::shared_ptr<ILongConnection<LongConnectionImpl>> con, base::LinkBuffer::ReadResult readResult)>;
+// using ConnectCallback = std::function<void(std::shared_ptr<ILongConnection<LongConnectionImpl>> con)>;
 
-using SendDataBlockType = std::function<void(std::vector<boost::asio::mutable_buffer>&)>;
+// using SendDataBlockType = std::function<void(std::vector<boost::asio::mutable_buffer>&)>;
 
 ///----------------- Interface ---------------------------
 template<typename T>
 class ILongConnection {
 public:
+
+    using ReceiveCallback = std::function<void(std::shared_ptr<ILongConnection<T>> con, base::LinkBuffer::ReadResult readResult)>;
+    using ConnectCallback = std::function<void(std::shared_ptr<ILongConnection<T>> con)>;
+    using SendDataBlockType = std::function<void(std::vector<boost::asio::mutable_buffer>&)>;
+
     virtual ~ILongConnection() = default;
     void set_receive_callback(ReceiveCallback callback);
     void set_connect_callback(ConnectCallback callback);
