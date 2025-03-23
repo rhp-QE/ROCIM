@@ -547,13 +547,8 @@ CMakeFiles/main.dir/main.cpp.o: /root/ROCIM/ROCIM_CLIENT/main.cpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/work_dispatcher.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/executor_work_guard.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/impl/io_context.ipp \
-  /root/ROCIM/ROCIM_CLIENT/test/RequestTest.h \
-  /root/ROCIM/ROCIM_CLIENT/im/base/coroutine.h \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/algorithm \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/ranges_algo.h \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/ranges_util.h \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/pstl/glue_algorithm_defs.h \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/core/noncopyable.hpp \
+  /root/ROCIM/ROCIM_CLIENT/test/corTest.h \
+  /root/ROCIM/ROCIM_CLIENT/BaseConfig.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/future \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/condition_variable \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/std_thread.h \
@@ -563,82 +558,28 @@ CMakeFiles/main.dir/main.cpp.o: /root/ROCIM/ROCIM_CLIENT/main.cpp \
   /usr/include/x86_64-linux-gnu/sys/time.h /usr/include/semaphore.h \
   /usr/include/x86_64-linux-gnu/bits/semaphore.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/atomic_futex.h \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/iostream \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/istream \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/istream.tcc \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/thread \
+  /root/ROCIM/ROCIM_CLIENT/im/base/coroutine.h \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/algorithm \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/ranges_algo.h \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/ranges_util.h \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/pstl/glue_algorithm_defs.h \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/core/noncopyable.hpp \
   /root/ROCIM/ROCIM_CLIENT/im/base/noncopyable.h \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/set \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_tree.h \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_set.h \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_multiset.h \
+  /root/ROCIM/ROCIM_CLIENT/test/buffertest.h \
+  /root/ROCIM/ROCIM_CLIENT/im/base/Utility.h \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/buffer.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/array_fwd.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/string_view.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/is_contiguous_iterator.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/is_buffer_sequence.hpp \
-  /root/share/protobuf/include/google/protobuf/io/zero_copy_stream.h \
-  /root/share/protobuf/include/google/protobuf/stubs/common.h \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/iostream \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/istream \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/istream.tcc \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/map \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_tree.h \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_map.h \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_multimap.h \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/set \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_set.h \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_multiset.h \
-  /root/share/protobuf/include/google/protobuf/stubs/macros.h \
-  /root/share/protobuf/include/google/protobuf/stubs/platform_macros.h \
-  /root/share/protobuf/include/google/protobuf/stubs/port.h \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/stdlib.h \
-  /root/share/protobuf/include/google/protobuf/port_def.inc \
-  /usr/include/byteswap.h \
-  /root/share/protobuf/include/google/protobuf/port_undef.inc \
-  /root/share/protobuf/include/google/protobuf/stubs/stringpiece.h \
-  /root/share/protobuf/include/google/protobuf/stubs/hash.h \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/unordered_set \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/unordered_set.h \
-  /root/ROCIM/ROCIM_CLIENT/im/sdk/net/Request.h \
-  /root/ROCIM/ROCIM_CLIENT/im/sdk/pb/im.pb.h \
-  /root/share/protobuf/include/google/protobuf/io/coded_stream.h \
-  /root/share/protobuf/include/google/protobuf/stubs/logging.h \
-  /root/share/protobuf/include/google/protobuf/stubs/status.h \
-  /root/share/protobuf/include/google/protobuf/stubs/strutil.h \
-  /root/share/protobuf/include/google/protobuf/port.h \
-  /root/share/protobuf/include/google/protobuf/arena.h \
-  /root/share/protobuf/include/google/protobuf/arena_impl.h \
-  /root/share/protobuf/include/google/protobuf/arenaz_sampler.h \
-  /root/share/protobuf/include/google/protobuf/arenastring.h \
-  /root/share/protobuf/include/google/protobuf/explicitly_constructed.h \
-  /root/share/protobuf/include/google/protobuf/generated_message_util.h \
-  /root/share/protobuf/include/google/protobuf/stubs/once.h \
-  /root/share/protobuf/include/google/protobuf/any.h \
-  /root/share/protobuf/include/google/protobuf/message_lite.h \
-  /root/share/protobuf/include/google/protobuf/metadata_lite.h \
-  /root/share/protobuf/include/google/protobuf/has_bits.h \
-  /root/share/protobuf/include/google/protobuf/implicit_weak_message.h \
-  /root/share/protobuf/include/google/protobuf/repeated_field.h \
-  /root/share/protobuf/include/google/protobuf/repeated_ptr_field.h \
-  /root/share/protobuf/include/google/protobuf/wire_format_lite.h \
-  /root/share/protobuf/include/google/protobuf/stubs/casts.h \
-  /root/share/protobuf/include/google/protobuf/generated_message_reflection.h \
-  /root/share/protobuf/include/google/protobuf/descriptor.h \
-  /root/share/protobuf/include/google/protobuf/stubs/mutex.h \
-  /root/share/protobuf/include/google/protobuf/generated_enum_reflection.h \
-  /root/share/protobuf/include/google/protobuf/generated_enum_util.h \
-  /root/share/protobuf/include/google/protobuf/unknown_field_set.h \
-  /root/share/protobuf/include/google/protobuf/io/zero_copy_stream_impl_lite.h \
-  /root/share/protobuf/include/google/protobuf/stubs/callback.h \
-  /root/share/protobuf/include/google/protobuf/stubs/stl_util.h \
-  /root/share/protobuf/include/google/protobuf/parse_context.h \
-  /root/share/protobuf/include/google/protobuf/endian.h \
-  /root/share/protobuf/include/google/protobuf/inlined_string_field.h \
-  /root/share/protobuf/include/google/protobuf/message.h \
-  /root/share/protobuf/include/google/protobuf/map.h \
-  /root/share/protobuf/include/google/protobuf/map_type_handler.h \
-  /root/share/protobuf/include/google/protobuf/extension_set.h \
-  /root/share/protobuf/include/google/protobuf/map_entry.h \
-  /root/share/protobuf/include/google/protobuf/map_entry_lite.h \
-  /root/share/protobuf/include/google/protobuf/reflection_ops.h \
-  /root/share/protobuf/include/google/protobuf/map_field_inl.h \
-  /root/share/protobuf/include/google/protobuf/map_field.h \
-  /root/share/protobuf/include/google/protobuf/map_field_lite.h \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/noncopyable.hpp \
-  /root/ROCIM/ROCIM_CLIENT/im/base/LinkBuffer.h \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/any_completion_executor.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/impl/any_completion_executor.ipp \
@@ -1225,18 +1166,6 @@ CMakeFiles/main.dir/main.cpp.o: /root/ROCIM/ROCIM_CLIENT/main.cpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/writable_pipe.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/write_at.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/impl/write_at.hpp \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/list \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_list.h \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/list.tcc \
-  /root/ROCIM/ROCIM_CLIENT/im/base/ProtobufZeroCopyOutStream.h \
-  /root/ROCIM/ROCIM_CLIENT/im/sdk/net/ConnectionManager.h \
-  /root/ROCIM/ROCIM_CLIENT/im/base/ILongConnection.h \
-  /root/ROCIM/ROCIM_CLIENT/im/base/LongConnectionImpl.h \
-  /root/ROCIM/ROCIM_CLIENT/test/corTest.h \
-  /root/ROCIM/ROCIM_CLIENT/BaseConfig.h \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/thread \
-  /root/ROCIM/ROCIM_CLIENT/test/buffertest.h \
-  /root/ROCIM/ROCIM_CLIENT/im/base/Utility.h \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/bind/bind.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/bind/mem_fn.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/get_pointer.hpp \
@@ -1253,6 +1182,12 @@ CMakeFiles/main.dir/main.cpp.o: /root/ROCIM/ROCIM_CLIENT/main.cpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/bind/detail/bind_mf_cc.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/bind/detail/bind_mf2_cc.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/bind/placeholders.hpp \
+  /root/ROCIM/ROCIM_CLIENT/im/base/ILongConnection.h \
+  /root/ROCIM/ROCIM_CLIENT/im/base/LinkBuffer.h \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/list \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_list.h \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/list.tcc \
+  /root/ROCIM/ROCIM_CLIENT/im/base/LongConnectionImpl.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/random \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/random.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/x86_64-linux-gnu/c++/11/bits/opt_random.h \
@@ -1417,6 +1352,7 @@ CMakeFiles/main.dir/main.cpp.o: /root/ROCIM/ROCIM_CLIENT/main.cpp \
   /usr/lib/llvm-14/lib/clang/14.0.0/include/xmmintrin.h \
   /usr/lib/llvm-14/lib/clang/14.0.0/include/mmintrin.h \
   /usr/lib/llvm-14/lib/clang/14.0.0/include/mm_malloc.h \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/stdlib.h \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/json/parser.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/json/detail/handler.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/json/value_stack.hpp \

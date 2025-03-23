@@ -623,6 +623,30 @@ im/base/ProtobufZeroCopyOutStream.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/im/base/ProtobufZeroCopyOutStream.cc.s
 .PHONY : im/base/ProtobufZeroCopyOutStream.cc.s
 
+im/base/lc/impl/ws/WSConnection.o: im/base/lc/impl/ws/WSConnection.cc.o
+.PHONY : im/base/lc/impl/ws/WSConnection.o
+
+# target to build an object file
+im/base/lc/impl/ws/WSConnection.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/im/base/lc/impl/ws/WSConnection.cc.o
+.PHONY : im/base/lc/impl/ws/WSConnection.cc.o
+
+im/base/lc/impl/ws/WSConnection.i: im/base/lc/impl/ws/WSConnection.cc.i
+.PHONY : im/base/lc/impl/ws/WSConnection.i
+
+# target to preprocess a source file
+im/base/lc/impl/ws/WSConnection.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/im/base/lc/impl/ws/WSConnection.cc.i
+.PHONY : im/base/lc/impl/ws/WSConnection.cc.i
+
+im/base/lc/impl/ws/WSConnection.s: im/base/lc/impl/ws/WSConnection.cc.s
+.PHONY : im/base/lc/impl/ws/WSConnection.s
+
+# target to generate assembly for a file
+im/base/lc/impl/ws/WSConnection.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/im/base/lc/impl/ws/WSConnection.cc.s
+.PHONY : im/base/lc/impl/ws/WSConnection.cc.s
+
 im/base/threadpool/ParallelQueue.o: im/base/threadpool/ParallelQueue.cc.o
 .PHONY : im/base/threadpool/ParallelQueue.o
 
@@ -695,77 +719,77 @@ im/base/threadpool/ThreadPool.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/im/base/threadpool/ThreadPool.cc.s
 .PHONY : im/base/threadpool/ThreadPool.cc.s
 
-im/sdk/net/ConnectionManager.o: im/sdk/net/ConnectionManager.cc.o
-.PHONY : im/sdk/net/ConnectionManager.o
+im/sdk/model/LCModel.pb.o: im/sdk/model/LCModel.pb.cc.o
+.PHONY : im/sdk/model/LCModel.pb.o
 
 # target to build an object file
-im/sdk/net/ConnectionManager.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/im/sdk/net/ConnectionManager.cc.o
-.PHONY : im/sdk/net/ConnectionManager.cc.o
+im/sdk/model/LCModel.pb.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/im/sdk/model/LCModel.pb.cc.o
+.PHONY : im/sdk/model/LCModel.pb.cc.o
 
-im/sdk/net/ConnectionManager.i: im/sdk/net/ConnectionManager.cc.i
-.PHONY : im/sdk/net/ConnectionManager.i
+im/sdk/model/LCModel.pb.i: im/sdk/model/LCModel.pb.cc.i
+.PHONY : im/sdk/model/LCModel.pb.i
 
 # target to preprocess a source file
-im/sdk/net/ConnectionManager.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/im/sdk/net/ConnectionManager.cc.i
-.PHONY : im/sdk/net/ConnectionManager.cc.i
+im/sdk/model/LCModel.pb.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/im/sdk/model/LCModel.pb.cc.i
+.PHONY : im/sdk/model/LCModel.pb.cc.i
 
-im/sdk/net/ConnectionManager.s: im/sdk/net/ConnectionManager.cc.s
-.PHONY : im/sdk/net/ConnectionManager.s
+im/sdk/model/LCModel.pb.s: im/sdk/model/LCModel.pb.cc.s
+.PHONY : im/sdk/model/LCModel.pb.s
 
 # target to generate assembly for a file
-im/sdk/net/ConnectionManager.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/im/sdk/net/ConnectionManager.cc.s
-.PHONY : im/sdk/net/ConnectionManager.cc.s
+im/sdk/model/LCModel.pb.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/im/sdk/model/LCModel.pb.cc.s
+.PHONY : im/sdk/model/LCModel.pb.cc.s
 
-im/sdk/net/Request.o: im/sdk/net/Request.cc.o
-.PHONY : im/sdk/net/Request.o
+im/sdk/net/LCManager.o: im/sdk/net/LCManager.cc.o
+.PHONY : im/sdk/net/LCManager.o
 
 # target to build an object file
-im/sdk/net/Request.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/im/sdk/net/Request.cc.o
-.PHONY : im/sdk/net/Request.cc.o
+im/sdk/net/LCManager.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/im/sdk/net/LCManager.cc.o
+.PHONY : im/sdk/net/LCManager.cc.o
 
-im/sdk/net/Request.i: im/sdk/net/Request.cc.i
-.PHONY : im/sdk/net/Request.i
+im/sdk/net/LCManager.i: im/sdk/net/LCManager.cc.i
+.PHONY : im/sdk/net/LCManager.i
 
 # target to preprocess a source file
-im/sdk/net/Request.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/im/sdk/net/Request.cc.i
-.PHONY : im/sdk/net/Request.cc.i
+im/sdk/net/LCManager.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/im/sdk/net/LCManager.cc.i
+.PHONY : im/sdk/net/LCManager.cc.i
 
-im/sdk/net/Request.s: im/sdk/net/Request.cc.s
-.PHONY : im/sdk/net/Request.s
+im/sdk/net/LCManager.s: im/sdk/net/LCManager.cc.s
+.PHONY : im/sdk/net/LCManager.s
 
 # target to generate assembly for a file
-im/sdk/net/Request.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/im/sdk/net/Request.cc.s
-.PHONY : im/sdk/net/Request.cc.s
+im/sdk/net/LCManager.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/im/sdk/net/LCManager.cc.s
+.PHONY : im/sdk/net/LCManager.cc.s
 
-im/sdk/pb/im.pb.o: im/sdk/pb/im.pb.cc.o
-.PHONY : im/sdk/pb/im.pb.o
+im/sdk/net/UrlTraits.o: im/sdk/net/UrlTraits.cc.o
+.PHONY : im/sdk/net/UrlTraits.o
 
 # target to build an object file
-im/sdk/pb/im.pb.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/im/sdk/pb/im.pb.cc.o
-.PHONY : im/sdk/pb/im.pb.cc.o
+im/sdk/net/UrlTraits.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/im/sdk/net/UrlTraits.cc.o
+.PHONY : im/sdk/net/UrlTraits.cc.o
 
-im/sdk/pb/im.pb.i: im/sdk/pb/im.pb.cc.i
-.PHONY : im/sdk/pb/im.pb.i
+im/sdk/net/UrlTraits.i: im/sdk/net/UrlTraits.cc.i
+.PHONY : im/sdk/net/UrlTraits.i
 
 # target to preprocess a source file
-im/sdk/pb/im.pb.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/im/sdk/pb/im.pb.cc.i
-.PHONY : im/sdk/pb/im.pb.cc.i
+im/sdk/net/UrlTraits.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/im/sdk/net/UrlTraits.cc.i
+.PHONY : im/sdk/net/UrlTraits.cc.i
 
-im/sdk/pb/im.pb.s: im/sdk/pb/im.pb.cc.s
-.PHONY : im/sdk/pb/im.pb.s
+im/sdk/net/UrlTraits.s: im/sdk/net/UrlTraits.cc.s
+.PHONY : im/sdk/net/UrlTraits.s
 
 # target to generate assembly for a file
-im/sdk/pb/im.pb.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/im/sdk/pb/im.pb.cc.s
-.PHONY : im/sdk/pb/im.pb.cc.s
+im/sdk/net/UrlTraits.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/im/sdk/net/UrlTraits.cc.s
+.PHONY : im/sdk/net/UrlTraits.cc.s
 
 main.o: main.cpp.o
 .PHONY : main.o
@@ -844,6 +868,9 @@ help:
 	@echo "... im/base/ProtobufZeroCopyOutStream.o"
 	@echo "... im/base/ProtobufZeroCopyOutStream.i"
 	@echo "... im/base/ProtobufZeroCopyOutStream.s"
+	@echo "... im/base/lc/impl/ws/WSConnection.o"
+	@echo "... im/base/lc/impl/ws/WSConnection.i"
+	@echo "... im/base/lc/impl/ws/WSConnection.s"
 	@echo "... im/base/threadpool/ParallelQueue.o"
 	@echo "... im/base/threadpool/ParallelQueue.i"
 	@echo "... im/base/threadpool/ParallelQueue.s"
@@ -853,15 +880,15 @@ help:
 	@echo "... im/base/threadpool/ThreadPool.o"
 	@echo "... im/base/threadpool/ThreadPool.i"
 	@echo "... im/base/threadpool/ThreadPool.s"
-	@echo "... im/sdk/net/ConnectionManager.o"
-	@echo "... im/sdk/net/ConnectionManager.i"
-	@echo "... im/sdk/net/ConnectionManager.s"
-	@echo "... im/sdk/net/Request.o"
-	@echo "... im/sdk/net/Request.i"
-	@echo "... im/sdk/net/Request.s"
-	@echo "... im/sdk/pb/im.pb.o"
-	@echo "... im/sdk/pb/im.pb.i"
-	@echo "... im/sdk/pb/im.pb.s"
+	@echo "... im/sdk/model/LCModel.pb.o"
+	@echo "... im/sdk/model/LCModel.pb.i"
+	@echo "... im/sdk/model/LCModel.pb.s"
+	@echo "... im/sdk/net/LCManager.o"
+	@echo "... im/sdk/net/LCManager.i"
+	@echo "... im/sdk/net/LCManager.s"
+	@echo "... im/sdk/net/UrlTraits.o"
+	@echo "... im/sdk/net/UrlTraits.i"
+	@echo "... im/sdk/net/UrlTraits.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

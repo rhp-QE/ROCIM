@@ -1,5 +1,4 @@
 #include <boost/asio/io_context.hpp>
-#include <test/RequestTest.h>
 #include <test/corTest.h>
 #include <test/buffertest.h>
 #include <thread>

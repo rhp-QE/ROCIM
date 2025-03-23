@@ -11,7 +11,7 @@
 #include <boost/asio/awaitable.hpp>
 #include <boost/beast/core/flat_buffer.hpp>
 #include <cstddef>
-namespace roc::net {
+namespace roc::base::net {
 
 struct LCConfig {
     std::string host;
@@ -52,6 +52,6 @@ boost::asio::awaitable<boost::beast::flat_buffer> ICoroLongConnection<T>::read()
     co_return static_cast<T*>(this) -> read();
 }
 
-} // namespace roc::net
+} // namespace roc::bae::net
 
 #endif // ROC_NET_ICOROLONGCONNECTION_H

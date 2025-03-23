@@ -34,6 +34,11 @@ int func() {
 
 constexpr int num_iterations = 10000000;
 
+boost::asio::awaitable<std::unique_ptr<int>> coo() {
+    auto ptr = std::make_unique<int>(1);
+    co_return ptr;
+}
+
 boost::asio::awaitable<void> sub_coroutine() {
     func();
     co_return;
