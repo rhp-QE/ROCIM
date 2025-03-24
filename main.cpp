@@ -57,10 +57,10 @@ int main() {
     //testHttp();
     //test();
 
-   //  co_cost_time_test();
+    co_cost_time_test();
 
     // boostCoroTest();
-    testWC();
+    //testWC();
 
     boost::asio::io_context::work work(net_io_context);
     std::thread net_thread([]{

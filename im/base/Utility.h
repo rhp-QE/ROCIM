@@ -8,8 +8,9 @@
 #ifndef ROC_BASE_UTIL_UTILITY_H
 #define ROC_BASE_UTIL_UTILITY_H
 
+#include "im/base/noncopyable.h"
 #include <boost/asio/buffer.hpp>
-#include <cstdint>
+#include <concepts>
 #include <functional>
 
 namespace roc::base::util {
@@ -20,6 +21,16 @@ Re safe_invoke_block(const std::function<Re(FuncArgs...)>& func, Args&&... args)
         return func(std::forward<Args>(args)...);
     } 
 }
+
+// ------------------------
+template <std::invocable F>
+class defer : noncopyable {
+    F func_;
+public:
+    explicit defer(F func) : func_(func) {}
+    ~defer<F>() { std::invoke(func_); }
+};
+// ------------------------
 
 
 inline uint32_t decode_uint32_LE(char number_bytes[]) {

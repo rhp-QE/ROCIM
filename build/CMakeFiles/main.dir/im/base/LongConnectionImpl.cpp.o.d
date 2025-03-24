@@ -1161,4 +1161,5 @@ CMakeFiles/main.dir/im/base/LongConnectionImpl.cpp.o: \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/list.tcc \
   /root/ROCIM/ROCIM_CLIENT/im/base/ILongConnection.h \
   /root/ROCIM/ROCIM_CLIENT/im/base/Utility.h \
+  /root/ROCIM/ROCIM_CLIENT/im/base/noncopyable.h \
   /root/ROCIM/ROCIM_CLIENT/im/base/LongConnectionImpl.h

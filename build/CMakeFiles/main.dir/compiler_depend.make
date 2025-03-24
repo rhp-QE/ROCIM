@@ -2968,7 +2968,8 @@ CMakeFiles/main.dir/im/base/LinkBuffer.cpp.o: ../im/base/LinkBuffer.cpp \
   /usr/include/c++/11/list \
   /usr/include/c++/11/bits/stl_list.h \
   /usr/include/c++/11/bits/list.tcc \
-  ../im/base/Utility.h
+  ../im/base/Utility.h \
+  ../im/base/noncopyable.h
 
 CMakeFiles/main.dir/im/base/LongConnectionImpl.cpp.o: ../im/base/LongConnectionImpl.cpp \
   ../im/base/LinkBuffer.h \
@@ -4159,6 +4160,7 @@ CMakeFiles/main.dir/im/base/LongConnectionImpl.cpp.o: ../im/base/LongConnectionI
   /usr/include/c++/11/bits/list.tcc \
   ../im/base/ILongConnection.h \
   ../im/base/Utility.h \
+  ../im/base/noncopyable.h \
   ../im/base/LongConnectionImpl.h
 
 CMakeFiles/main.dir/im/base/ProtobufZeroCopyInputStream.cc.o: ../im/base/ProtobufZeroCopyInputStream.cc \
@@ -10147,15 +10149,19 @@ CMakeFiles/main.dir/main.cpp.o: ../main.cpp \
   ../im/base/HttpClient.h \
   ../test/coCostTime.h \
   ../test/boostCoroTest.h \
-  ../test/testwc.h \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/beast.hpp \
+  ../im/base/lc/Interface/ICoroLongConnection.h \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/beast/core/flat_buffer.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/beast/core/detail/config.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/core/ignore_unused.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/beast/core/detail/allocator.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/core/empty_value.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/beast/core/impl/flat_buffer.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/core/exchange.hpp \
+  ../im/base/lc/impl/ws/WSConnection.h \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/beast.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/beast/core.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/beast/core/async_base.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/beast/core/detail/allocator.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/beast/core/detail/async_base.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/core/exchange.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/beast/core/detail/filtering_cancellation_slot.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/beast/core/detail/work_guard.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/optional.hpp \
@@ -10221,7 +10227,6 @@ CMakeFiles/main.dir/main.cpp.o: ../main.cpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/optional/detail/optional_reference_spec.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/optional/detail/optional_relops.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/optional/detail/optional_swap.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/core/empty_value.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/beast/core/impl/async_base.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/beast/core/basic_stream.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/beast/core/detail/stream_base.hpp \
@@ -10436,8 +10441,6 @@ CMakeFiles/main.dir/main.cpp.o: ../main.cpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/beast/core/impl/file_stdio.ipp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/beast/core/detail/win32_unicode_path.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/beast/core/file_win32.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/beast/core/flat_buffer.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/beast/core/impl/flat_buffer.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/beast/core/flat_static_buffer.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/beast/core/impl/flat_static_buffer.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/beast/core/impl/flat_static_buffer.ipp \
@@ -10620,7 +10623,8 @@ CMakeFiles/main.dir/main.cpp.o: ../main.cpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/beast/websocket/impl/read.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/beast/websocket/impl/stream.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/beast/websocket/impl/write.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/beast/zlib.hpp
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/beast/zlib.hpp \
+  ../test/testwc.h
 
 
 ../test/testwc.h:

@@ -1372,15 +1372,19 @@ CMakeFiles/main.dir/main.cpp.o: /root/ROCIM/ROCIM_CLIENT/main.cpp \
   /root/ROCIM/ROCIM_CLIENT/im/base/HttpClient.h \
   /root/ROCIM/ROCIM_CLIENT/test/coCostTime.h \
   /root/ROCIM/ROCIM_CLIENT/test/boostCoroTest.h \
-  /root/ROCIM/ROCIM_CLIENT/test/testwc.h \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/beast.hpp \
+  /root/ROCIM/ROCIM_CLIENT/im/base/lc/Interface/ICoroLongConnection.h \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/beast/core/flat_buffer.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/beast/core/detail/config.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/core/ignore_unused.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/beast/core/detail/allocator.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/core/empty_value.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/beast/core/impl/flat_buffer.hpp \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/core/exchange.hpp \
+  /root/ROCIM/ROCIM_CLIENT/im/base/lc/impl/ws/WSConnection.h \
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/beast.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/beast/core.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/beast/core/async_base.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/beast/core/detail/allocator.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/beast/core/detail/async_base.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/core/exchange.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/beast/core/detail/filtering_cancellation_slot.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/beast/core/detail/work_guard.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/optional.hpp \
@@ -1446,7 +1450,6 @@ CMakeFiles/main.dir/main.cpp.o: /root/ROCIM/ROCIM_CLIENT/main.cpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/optional/detail/optional_reference_spec.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/optional/detail/optional_relops.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/optional/detail/optional_swap.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/core/empty_value.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/beast/core/impl/async_base.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/beast/core/basic_stream.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/beast/core/detail/stream_base.hpp \
@@ -1661,8 +1664,6 @@ CMakeFiles/main.dir/main.cpp.o: /root/ROCIM/ROCIM_CLIENT/main.cpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/beast/core/impl/file_stdio.ipp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/beast/core/detail/win32_unicode_path.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/beast/core/file_win32.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/beast/core/flat_buffer.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/beast/core/impl/flat_buffer.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/beast/core/flat_static_buffer.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/beast/core/impl/flat_static_buffer.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/beast/core/impl/flat_static_buffer.ipp \
@@ -1845,4 +1846,5 @@ CMakeFiles/main.dir/main.cpp.o: /root/ROCIM/ROCIM_CLIENT/main.cpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/beast/websocket/impl/read.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/beast/websocket/impl/stream.hpp \
   /root/vcpkg/vcpkg/installed/x64-linux/include/boost/beast/websocket/impl/write.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/beast/zlib.hpp
+  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/beast/zlib.hpp \
+  /root/ROCIM/ROCIM_CLIENT/test/testwc.h

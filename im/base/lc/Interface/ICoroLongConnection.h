@@ -34,22 +34,22 @@ public:
 
 template <typename T>
 boost::asio::awaitable<bool> ICoroLongConnection<T>::connect(LCConfig config) {
-    co_return static_cast<T*>(this) -> connect_impl(config);
+    return static_cast<T*>(this) -> connect_impl(config);
 }
 
 template <typename T>
 boost::asio::awaitable<bool> ICoroLongConnection<T>::disconnect() {
-    co_return static_cast<T*>(this) -> disconnect_impl();
+    return static_cast<T*>(this) -> disconnect_impl();
 }
 
 template <typename T>
 boost::asio::awaitable<size_t> ICoroLongConnection<T>::send(void *data, size_t size) {
-    co_return static_cast<T*>(this) -> send_impl(data, size);
+    return static_cast<T*>(this) -> send_impl(data, size);
 }
 
 template <typename T>
 boost::asio::awaitable<boost::beast::flat_buffer> ICoroLongConnection<T>::read() {
-    co_return static_cast<T*>(this) -> read();
+    return static_cast<T*>(this) -> read_impl();
 }
 
 } // namespace roc::bae::net

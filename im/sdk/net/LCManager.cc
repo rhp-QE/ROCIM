@@ -86,9 +86,9 @@ template<const char* url>
 awaitable<typename UrlTraits<url>::response_type *>
     LCManager::request(typename UrlTraits<url>::response_type* params) {
     
-    std::unique_ptr<RequestBody> request_body = std::make_unique<RequestBody>();
 
     /// 填充request 消息体
+    std::unique_ptr<RequestBody> request_body = std::make_unique<RequestBody>();
     auto id = generate_request_id();
     request_body->set_request_id(std::to_string(id));
     fill_request_body<url>(request_body.get(), params);
@@ -99,9 +99,12 @@ awaitable<typename UrlTraits<url>::response_type *>
     request_body->SerializePartialToArray(buf.data(), len);
     
     /// 数据发送
-    auto res = co_await lc_->send(buf.data(), len);
+    auto send_ok = co_await lc_->send(buf.data(), len);
 
-    co_return (co_await await_response_<url>(id));
+    /// 等待结果
+    typename UrlTraits<url>::response_type* resp = co_await await_response_<url>(id);
+
+    co_return resp;
 }
 
 

@@ -56,6 +56,10 @@ boost::asio::awaitable<void> par_coroutine() {
               << " ns per coroutine" << std::endl;
 }
 
+boost::asio::awaitable<void> normal_in() {
+    return sub_coroutine();
+}
+
 int co_cost_time_test() {
 
     // 测试普通函数调用
@@ -71,6 +75,7 @@ int co_cost_time_test() {
               << " ns per call" << std::endl;
 
     boost::asio::co_spawn(main_io_context, par_coroutine(), boost::asio::detached);
+    boost::asio::co_spawn(main_io_context, normal_in(), boost::asio::detached);
 
     return 0;
 }
