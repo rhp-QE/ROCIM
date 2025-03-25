@@ -73,7 +73,7 @@ std::string LinkBuffer::ReadResult::readString() const {
 
     // 拼接数据
     for (const auto& buffer : buffers) {
-        const char* data = boost::asio::buffer_cast<const char*>(buffer);
+        const char* data = static_cast<const char *>(buffer.data());
         size_t length = boost::asio::buffer_size(buffer);
         result.append(data, length);
     }
@@ -91,7 +91,7 @@ size_t LinkBuffer::ReadResult::readBytes(char* buf, size_t size) {
 
     size_t pos = 0;
     for (const auto& buffer : buffers) {
-        const char* data = boost::asio::buffer_cast<const char*>(buffer);
+        const char* data = static_cast<const char *>(buffer.data());
         size_t length = std::min(boost::asio::buffer_size(buffer), size);
 
         std::copy(data, data + length, buf + pos);

@@ -1,13 +1,11 @@
-cmake_minimum_required(VERSION 3.13.0)
+cmake_minimum_required(VERSION 3.28.0)
 
-# 设置 C++ 标准为 11
-set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 find_program(CMAKE_C_COMPILER clang)
 find_program(CMAKE_CXX_COMPILER clang++)
 set (CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set (CMAKE_EXPORT_COMPILE_COMMANDS_OUTPUT_PATH "../")
-set (CMAKE_TOOLCHAIN_FILE "/root/vcpkg/vcpkg/scripts/buildsystems/vcpkg.cmake")
 
 
 # -------------------------------------
@@ -17,32 +15,35 @@ project(ROCIM_CLIENT VERSION 0.1.0 LANGUAGES C CXX)
 
 include_directories(${CMAKE_SOURCE_DIR})
 
-# src
-file(GLOB_RECURSE SOURCES "im/*.cpp")
-file(GLOB_RECURSE SOURCES1 "im/*.cc")
+# 使用更安全的源文件收集方式（推荐显式列出）
+file(GLOB_RECURSE SOURCES 
+  "im/*.cpp"
+  "im/*.cc"
+  "${CMAKE_CURRENT_SOURCE_DIR}/main.cpp"
+)
 
-# main
-list(APPEND SOURCES ${CMAKE_SOURCE_DIR}/main.cpp)
-
-add_executable(main ${SOURCES} ${SOURCES1})
+add_executable(main ${SOURCES})
 
 #--------------------------------------
-
-find_package(folly CONFIG REQUIRED)
-target_link_libraries(main PRIVATE Folly::folly Folly::folly_deps Folly::follybenchmark Folly::folly_test_util)
 
 # WCDB
 target_include_directories(main PRIVATE "/root/wcdb/src/build/export_headers")
 target_link_directories(main PRIVATE "/root/wcdb/src/build/")
 target_link_libraries(main PRIVATE WCDB)
 
-#cpp-httplib
-find_package(httplib CONFIG REQUIRED)
-target_link_libraries(main PRIVATE httplib::httplib)
+# BOOST
+# --------------------------------------------
+set(Boost_DIR "/root/ccdep/boost_1_84_0/lib/cmake/Boost-1.84.0")
+set(BOOST_ROOT "/root/ccdep/boost_1_84_0")
 
-#boost_json
-find_package(Boost REQUIRED COMPONENTS json)
-target_link_libraries(main PRIVATE Boost::json)
+find_package(Boost REQUIRED COMPONENTS asio json system)  # 合并查找
+
+target_link_libraries(main PRIVATE 
+    Boost::asio
+    Boost::json 
+    Boost::system
+)
+# --------------------------------------------
 
 #protobuf
 target_include_directories(main PRIVATE "/root/share/protobuf/include")

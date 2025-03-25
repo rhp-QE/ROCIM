@@ -1,15 +1,15 @@
 CMakeFiles/main.dir/im/base/ProtobufZeroCopyInputStream.cc.o: \
   /root/ROCIM/ROCIM_CLIENT/im/base/ProtobufZeroCopyInputStream.cc \
   /root/ROCIM/ROCIM_CLIENT/im/base/ProtobufZeroCopyInputStream.h \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/buffer.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/config.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/config.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/config/user.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/config/detail/select_compiler_config.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/config/compiler/clang.hpp \
-  /usr/lib/llvm-14/lib/clang/14.0.0/include/stdint.h \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/config/compiler/clang_version.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/config/detail/select_stdlib_config.hpp \
+  /root/ccdep/boost_1_84_0/include/boost/asio/buffer.hpp \
+  /root/ccdep/boost_1_84_0/include/boost/asio/detail/config.hpp \
+  /root/ccdep/boost_1_84_0/include/boost/config.hpp \
+  /root/ccdep/boost_1_84_0/include/boost/config/user.hpp \
+  /root/ccdep/boost_1_84_0/include/boost/config/detail/select_compiler_config.hpp \
+  /root/ccdep/boost_1_84_0/include/boost/config/compiler/clang.hpp \
+  /usr/lib/llvm-17/lib/clang/17/include/stdint.h \
+  /root/ccdep/boost_1_84_0/include/boost/config/compiler/clang_version.hpp \
+  /root/ccdep/boost_1_84_0/include/boost/config/detail/select_stdlib_config.hpp \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/version \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/x86_64-linux-gnu/c++/11/bits/c++config.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
@@ -22,13 +22,13 @@ CMakeFiles/main.dir/im/base/ProtobufZeroCopyInputStream.cc.o: \
   /usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/x86_64-linux-gnu/c++/11/bits/cpu_defines.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/pstl/pstl_config.h \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/config/stdlib/libstdcpp3.hpp \
+  /root/ccdep/boost_1_84_0/include/boost/config/stdlib/libstdcpp3.hpp \
   /usr/include/unistd.h /usr/include/x86_64-linux-gnu/bits/posix_opt.h \
   /usr/include/x86_64-linux-gnu/bits/environments.h \
   /usr/include/x86_64-linux-gnu/bits/types.h \
   /usr/include/x86_64-linux-gnu/bits/typesizes.h \
   /usr/include/x86_64-linux-gnu/bits/time64.h \
-  /usr/lib/llvm-14/lib/clang/14.0.0/include/stddef.h \
+  /usr/lib/llvm-17/lib/clang/17/include/stddef.h \
   /usr/include/x86_64-linux-gnu/bits/confname.h \
   /usr/include/x86_64-linux-gnu/bits/getopt_posix.h \
   /usr/include/x86_64-linux-gnu/bits/getopt_core.h \
@@ -37,8 +37,8 @@ CMakeFiles/main.dir/im/base/ProtobufZeroCopyInputStream.cc.o: \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/ext/hash_set \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/ext/slist \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/shared_mutex \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/config/detail/select_platform_config.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/config/platform/linux.hpp \
+  /root/ccdep/boost_1_84_0/include/boost/config/detail/select_platform_config.hpp \
+  /root/ccdep/boost_1_84_0/include/boost/config/platform/linux.hpp \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/cstdlib \
   /usr/include/stdlib.h \
   /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
@@ -73,9 +73,9 @@ CMakeFiles/main.dir/im/base/ProtobufZeroCopyInputStream.cc.o: \
   /usr/include/alloca.h \
   /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/std_abs.h \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/config/detail/posix_features.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/config/detail/suffix.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/config/helper_macros.hpp \
+  /root/ccdep/boost_1_84_0/include/boost/config/detail/posix_features.hpp \
+  /root/ccdep/boost_1_84_0/include/boost/config/detail/suffix.hpp \
+  /root/ccdep/boost_1_84_0/include/boost/config/helper_macros.hpp \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/optional \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/string_view \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/variant \
@@ -97,13 +97,13 @@ CMakeFiles/main.dir/im/base/ProtobufZeroCopyInputStream.cc.o: \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/syncstream \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/coroutine \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/semaphore \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/config/detail/cxx_composite.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/version.hpp \
+  /root/ccdep/boost_1_84_0/include/boost/config/detail/cxx_composite.hpp \
+  /root/ccdep/boost_1_84_0/include/boost/version.hpp \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/experimental/string_view \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/experimental/source_location \
   /usr/include/linux/version.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/cstddef \
-  /usr/lib/llvm-14/lib/clang/14.0.0/include/__stddef_max_align_t.h \
+  /usr/lib/llvm-17/lib/clang/17/include/__stddef_max_align_t.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/cstring \
   /usr/include/string.h /usr/include/strings.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/limits \
@@ -142,8 +142,7 @@ CMakeFiles/main.dir/im/base/ProtobufZeroCopyInputStream.cc.o: \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/predefined_ops.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/postypes.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/cwchar \
-  /usr/include/wchar.h \
-  /usr/lib/llvm-14/lib/clang/14.0.0/include/stdarg.h \
+  /usr/include/wchar.h /usr/lib/llvm-17/lib/clang/17/include/stdarg.h \
   /usr/include/x86_64-linux-gnu/bits/wchar.h \
   /usr/include/x86_64-linux-gnu/bits/types/wint_t.h \
   /usr/include/x86_64-linux-gnu/bits/types/mbstate_t.h \
@@ -217,11 +216,11 @@ CMakeFiles/main.dir/im/base/ProtobufZeroCopyInputStream.cc.o: \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_vector.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_bvector.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/vector.tcc \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/array_fwd.hpp \
+  /root/ccdep/boost_1_84_0/include/boost/asio/detail/array_fwd.hpp \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/array \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/utility \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_relops.h \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/memory.hpp \
+  /root/ccdep/boost_1_84_0/include/boost/asio/detail/memory.hpp \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/memory \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_raw_storage_iter.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/align.h \
@@ -260,8 +259,8 @@ CMakeFiles/main.dir/im/base/ProtobufZeroCopyInputStream.cc.o: \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/atomic_lockfree_defines.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/atomic_wait.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/climits \
-  /usr/lib/llvm-14/lib/clang/14.0.0/include/limits.h \
-  /usr/include/limits.h /usr/include/x86_64-linux-gnu/bits/posix1_lim.h \
+  /usr/lib/llvm-17/lib/clang/17/include/limits.h /usr/include/limits.h \
+  /usr/include/x86_64-linux-gnu/bits/posix1_lim.h \
   /usr/include/x86_64-linux-gnu/bits/local_lim.h \
   /usr/include/linux/limits.h \
   /usr/include/x86_64-linux-gnu/bits/posix2_lim.h \
@@ -280,19 +279,19 @@ CMakeFiles/main.dir/im/base/ProtobufZeroCopyInputStream.cc.o: \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/uses_allocator_args.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/pstl/glue_memory_defs.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/pstl/execution_defs.h \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/cstdint.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/throw_exception.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/throw_exception.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/exception/exception.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/assert/source_location.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/cstdint.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/config/workaround.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/string_view.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/type_traits.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/is_contiguous_iterator.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/push_options.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/pop_options.hpp \
-  /root/vcpkg/vcpkg/installed/x64-linux/include/boost/asio/detail/is_buffer_sequence.hpp \
+  /root/ccdep/boost_1_84_0/include/boost/asio/detail/cstdint.hpp \
+  /root/ccdep/boost_1_84_0/include/boost/asio/detail/throw_exception.hpp \
+  /root/ccdep/boost_1_84_0/include/boost/throw_exception.hpp \
+  /root/ccdep/boost_1_84_0/include/boost/exception/exception.hpp \
+  /root/ccdep/boost_1_84_0/include/boost/assert/source_location.hpp \
+  /root/ccdep/boost_1_84_0/include/boost/cstdint.hpp \
+  /root/ccdep/boost_1_84_0/include/boost/config/workaround.hpp \
+  /root/ccdep/boost_1_84_0/include/boost/asio/detail/string_view.hpp \
+  /root/ccdep/boost_1_84_0/include/boost/asio/detail/type_traits.hpp \
+  /root/ccdep/boost_1_84_0/include/boost/asio/is_contiguous_iterator.hpp \
+  /root/ccdep/boost_1_84_0/include/boost/asio/detail/push_options.hpp \
+  /root/ccdep/boost_1_84_0/include/boost/asio/detail/pop_options.hpp \
+  /root/ccdep/boost_1_84_0/include/boost/asio/detail/is_buffer_sequence.hpp \
   /root/share/protobuf/include/google/protobuf/io/coded_stream.h \
   /usr/include/assert.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/atomic \

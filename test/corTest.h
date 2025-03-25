@@ -10,6 +10,7 @@
 #include <tuple>
 #include <im/base/coroutine.h>
 #include <set>
+#include <boost/asio/post.hpp>  // 明确包含 post 函数声明
 
 #ifndef ROC_COROTINE_H
 #define ROC_COROTINE_H
@@ -28,9 +29,9 @@ inline void request1(CoroPromise<type> promise, type value, int ms) {
 
     ++ss;
     if (ss%2) {
-        net_io_context.post(func);
+        boost::asio::post(net_io_context, func);
     } else {
-        main_io_context.post(func);
+        boost::asio::post(main_io_context, func);
     }
 
     //net_io_context.post(func);
