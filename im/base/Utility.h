@@ -10,7 +10,6 @@
 
 #include "im/base/noncopyable.h"
 #include <boost/asio/buffer.hpp>
-#include <boost/beast/websocket/impl/write.hpp>
 #include <concepts>
 #include <functional>
 

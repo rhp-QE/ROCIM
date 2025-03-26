@@ -109,5 +109,5 @@ message ResponseBody {
   FetchMixedLinkMessagesResp fetch_mixed_link_messages_response = 2;
   FetchSingleLinkMessagesResp fetch_single_link_messages_response = 3;
   SendBatchMessageResp send_batch_messages_response = 4;
-  PushMessages push_message = 5;
+  PushMessages push_messages = 5;
 };

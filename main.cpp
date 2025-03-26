@@ -1,5 +1,7 @@
+#include <boost/asio/detail/concurrency_hint.hpp>
 #include <boost/asio/executor_work_guard.hpp>
 #include <boost/asio/io_context.hpp>
+#include <memory>
 #include <test/corTest.h>
 #include <test/buffertest.h>
 #include <thread>
@@ -8,13 +10,15 @@
 #include <im/base/coroutine.h>
 #include <test/httpTest.h>
 #include <tuple>
+#include <unordered_map>
 #include <utility>
 #include <test/coCostTime.h>
 #include <test/boostCoroTest.h>
 #include <test/testwc.h>
+#include <test/channelTest.h>
 
-boost::asio::io_context net_io_context;
-boost::asio::io_context main_io_context;
+boost::asio::io_context net_io_context{BOOST_ASIO_CONCURRENCY_HINT_UNSAFE_IO};
+boost::asio::io_context main_io_context{BOOST_ASIO_CONCURRENCY_HINT_UNSAFE_IO};
 
 namespace roc::coro {
 std::unordered_map<size_t, std::shared_ptr<CoroRAII>> coro_manager;
@@ -40,6 +44,12 @@ void test_tuple(std::tuple<Retype...> res) {
     }(index);
 }
 
+struct Node{
+    ~Node() {
+        std::cout<<"faf"<<std::endl;
+    }
+};
+
 int main() {
 
     // std::tuple<int, double, std::string> ss(1, 1.1111, "fdasfa");
@@ -47,6 +57,10 @@ int main() {
     //     auto index = std::make_index_sequence<sizeof...(args)>();
     //     (..., (print(args)));
     // }, ss);
+
+
+    std::unordered_map<std::string, std::unique_ptr<int>> map;
+    map["123"] = std::make_unique<int>(1);
 
 
     // print_index(std::index_sequence<1,2,3,4,5,6>());
@@ -58,10 +72,16 @@ int main() {
     //testHttp();
     //test();
 
-    co_cost_time_test();
+    {
+    std::unique_ptr<Node> ptr = std::make_unique<Node>();
+    auto pp = ptr.get();
+    }
+
+   // co_cost_time_test();
 
     // boostCoroTest();
     //testWC();
+    testChannel();
 
     auto wark_work = boost::asio::make_work_guard(net_io_context);
     std::thread net_thread([]{
