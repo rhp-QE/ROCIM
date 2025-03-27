@@ -114,6 +114,11 @@ awaitable<std::unique_ptr<typename UrlTraits<url>::response_type *>>
     /// 等待结果
     channel_map_[request_id] = std::make_unique<channel_type>(executor_, 1);
     std::unique_ptr<ResponseBody> response_body = co_await channel_map_[request_id]->async_receive();
+
+    auto it = std::move(channel_map_[request_id]);
+    channel_map_.erase(request_id);
+    it->close();
+
     /// resp 从 response_body 中解析出来
     using response_type = typename UrlTraits<url>::response_type;
     std::unique_ptr<response_type> resp = std::make_unique<response_type>(parse_response_body<url>(response_body.get()));
@@ -135,7 +140,6 @@ awaitable<bool> LCManager::connect() {
 
     // 持续接受数据
     co_spawn(executor_, do_read_(), detached);
-
 
     // 切换回调用 excutor
     co_await post(bind_executor(current_ex, use_awaitable));
