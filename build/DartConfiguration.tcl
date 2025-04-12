@@ -4,17 +4,17 @@
 
 
 # Configuration directories and files
-SourceDirectory: /root/ROCIM/ROCIM_CLIENT
-BuildDirectory: /root/ROCIM/ROCIM_CLIENT/build
+SourceDirectory: /root/project/ROCIM
+BuildDirectory: /root/project/ROCIM/build
 
 # Where to place the cost data store
 CostDataFile: 
 
 # Site is something like machine.domain, i.e. pragmatic.crd
-Site: WINDOWS-ROC
+Site: DESKTOP-NJDKBVM
 
 # Build name is osname-revision-compiler, i.e. Linux-2.4.2-2smp-c++
-BuildName: Linux-clang++
+BuildName: Linux-clang++-18
 
 # Subprojects
 LabelsForSubprojects: 
@@ -27,8 +27,8 @@ SubmitInactivityTimeout:
 NightlyStartTime: 00:00:00 EDT
 
 # Commands for the build/test/submit cycle
-ConfigureCommand: "/usr/bin/cmake" "/root/ROCIM/ROCIM_CLIENT"
-MakeCommand: /usr/bin/cmake --build . --config "${CTEST_CONFIGURATION_TYPE}"
+ConfigureCommand: "/usr/local/bin/cmake" "/root/project/ROCIM"
+MakeCommand: /usr/local/bin/cmake --build . --config "${CTEST_CONFIGURATION_TYPE}"
 DefaultCTestConfigurationType: Release
 
 # version control
@@ -63,8 +63,8 @@ UpdateOptions:
 UpdateType: git
 
 # Compiler info
-Compiler: /usr/bin/clang++
-CompilerVersion: 17.0.6
+Compiler: /usr/bin/clang++-18
+CompilerVersion: 18.1.8
 
 # Dynamic analysis (MemCheck)
 PurifyCommand: 

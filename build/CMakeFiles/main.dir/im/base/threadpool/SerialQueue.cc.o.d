@@ -1,3 +1,3 @@
 CMakeFiles/main.dir/im/base/threadpool/SerialQueue.cc.o: \
-  /root/ROCIM/ROCIM_CLIENT/im/base/threadpool/SerialQueue.cc \
-  /root/ROCIM/ROCIM_CLIENT/im/base/threadpool/SerialQueue.h
+  /root/project/ROCIM/im/base/threadpool/SerialQueue.cc \
+  /root/project/ROCIM/im/base/threadpool/SerialQueue.h

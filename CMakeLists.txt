@@ -2,10 +2,11 @@ cmake_minimum_required(VERSION 3.28.0)
 
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
-find_program(CMAKE_C_COMPILER clang)
-find_program(CMAKE_CXX_COMPILER clang++)
+find_program(CMAKE_C_COMPILER clang-17)
+find_program(CMAKE_CXX_COMPILER clang++-17)
 set (CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set (CMAKE_EXPORT_COMPILE_COMMANDS_OUTPUT_PATH "../")
+set (CMAKE_TOOLCHAIN_FILE "/root/vcpkg/scripts/buildsystems/vcpkg.cmake")
 
 
 # -------------------------------------
@@ -27,17 +28,16 @@ add_executable(main ${SOURCES})
 #--------------------------------------
 
 # WCDB
-target_include_directories(main PRIVATE "/root/wcdb/src/build/export_headers")
-target_link_directories(main PRIVATE "/root/wcdb/src/build/")
+target_include_directories(main PRIVATE "/root/ccdep/src/wcdb/src/build/export_headers")
+target_link_directories(main PRIVATE "/root/ccdep/src/wcdb/src/build/")
 target_link_libraries(main PRIVATE WCDB)
 
 # BOOST
 # --------------------------------------------
-set(Boost_DIR "/root/ccdep/boost_1_84_0/lib/cmake/Boost-1.84.0")
-set(BOOST_ROOT "/root/ccdep/boost_1_84_0")
+#set(Boost_DIR "/root/ccdep/boost_1_84_0/lib/cmake/Boost-1.84.0")
+#set(BOOST_ROOT "/root/ccdep/boost_1_84_0")
 
 find_package(Boost REQUIRED COMPONENTS asio json system)  # 合并查找
-
 target_link_libraries(main PRIVATE 
     Boost::asio
     Boost::json 
@@ -46,9 +46,15 @@ target_link_libraries(main PRIVATE
 # --------------------------------------------
 
 #protobuf
-target_include_directories(main PRIVATE "/root/share/protobuf/include")
-target_link_directories(main PRIVATE "/root/share/protobuf/lib")
-target_link_libraries(main PRIVATE protoc protobuf protobuf-lite)
+# target_include_directories(main PRIVATE "root/ccdep/protobuf_3_21_12/include")
+# target_link_directories(main PRIVATE "root/ccdep/protobuf_3_21_12/lib")
+# target_link_libraries(main PRIVATE protoc protobuf protobuf-lite)
+
+find_package(protobuf CONFIG REQUIRED)
+target_link_libraries(main PRIVATE protobuf::libprotoc protobuf::libprotobuf protobuf::libprotobuf-lite)
+
+find_package(absl REQUIRED)
+target_link_libraries(main PRIVATE absl::absl_log)
 
 # 设置默认构建类型为 Debug（可选）
 if (NOT CMAKE_BUILD_TYPE)
