@@ -1,13 +1,31 @@
+// {
+//     "version": "0.2.0",
+//     "configurations": [
+//         {
+//             "type": "gdb",
+//             "request": "launch",
+//             "name": "Debug",
+//             "program": "${command:cmake.launchTargetPath}",
+//             "args": [],
+//             "cwd": "${workspaceFolder}"
+//         }
+//     ]
+// }
+
+
 {
     "version": "0.2.0",
     "configurations": [
         {
-            "type": "lldb",
+            "name": "(gdb) Launch",
+            "type": "cppdbg",
             "request": "launch",
-            "name": "Debug",
+            // Resolved by CMake Tools:
             "program": "${command:cmake.launchTargetPath}",
             "args": [],
-            "cwd": "${workspaceFolder}"
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "MIMode": "gdb",
         }
     ]
 }

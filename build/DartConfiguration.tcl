@@ -14,7 +14,7 @@ CostDataFile:
 Site: DESKTOP-NJDKBVM
 
 # Build name is osname-revision-compiler, i.e. Linux-2.4.2-2smp-c++
-BuildName: Linux-clang++-18
+BuildName: Linux-g++-14
 
 # Subprojects
 LabelsForSubprojects: 
@@ -63,8 +63,8 @@ UpdateOptions:
 UpdateType: git
 
 # Compiler info
-Compiler: /usr/bin/clang++-18
-CompilerVersion: 18.1.8
+Compiler: /usr/bin/g++-14
+CompilerVersion: 14.2.0
 
 # Dynamic analysis (MemCheck)
 PurifyCommand: 

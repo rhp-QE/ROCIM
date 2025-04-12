@@ -1,79 +1,79 @@
 [
 {
   "directory": "/root/project/ROCIM/build",
-  "command": "/usr/bin/clang++-18 -DBOOST_CONTAINER_NO_LIB -DBOOST_CONTAINER_STATIC_LINK -DBOOST_CONTEXT_EXPORT=\"\" -DBOOST_CONTEXT_NO_LIB=\"\" -DBOOST_CONTEXT_STATIC_LINK=\"\" -DBOOST_DATE_TIME_NO_LIB -DBOOST_DATE_TIME_STATIC_LINK -DBOOST_JSON_NO_LIB=1 -DBOOST_JSON_STATIC_LINK=1 -I/root/project/ROCIM -I/root/ccdep/src/wcdb/src/build/export_headers -isystem /root/vcpkg/installed/x64-linux/include -g -g -O0 -std=gnu++23 -o CMakeFiles/main.dir/im/base/HttpClient.cpp.o -c /root/project/ROCIM/im/base/HttpClient.cpp",
+  "command": "/usr/bin/g++-14 -DBOOST_CONTAINER_NO_LIB -DBOOST_CONTAINER_STATIC_LINK -DBOOST_CONTEXT_EXPORT=\"\" -DBOOST_CONTEXT_NO_LIB=\"\" -DBOOST_CONTEXT_STATIC_LINK=\"\" -DBOOST_DATE_TIME_NO_LIB -DBOOST_DATE_TIME_STATIC_LINK -DBOOST_JSON_NO_LIB=1 -DBOOST_JSON_STATIC_LINK=1 -I/root/project/ROCIM -I/root/ccdep/src/wcdb/src/build/export_headers -isystem /root/vcpkg/installed/x64-linux/include -g -g -O0 -std=gnu++23 -o CMakeFiles/main.dir/im/base/HttpClient.cpp.o -c /root/project/ROCIM/im/base/HttpClient.cpp",
   "file": "/root/project/ROCIM/im/base/HttpClient.cpp",
   "output": "CMakeFiles/main.dir/im/base/HttpClient.cpp.o"
 },
 {
   "directory": "/root/project/ROCIM/build",
-  "command": "/usr/bin/clang++-18 -DBOOST_CONTAINER_NO_LIB -DBOOST_CONTAINER_STATIC_LINK -DBOOST_CONTEXT_EXPORT=\"\" -DBOOST_CONTEXT_NO_LIB=\"\" -DBOOST_CONTEXT_STATIC_LINK=\"\" -DBOOST_DATE_TIME_NO_LIB -DBOOST_DATE_TIME_STATIC_LINK -DBOOST_JSON_NO_LIB=1 -DBOOST_JSON_STATIC_LINK=1 -I/root/project/ROCIM -I/root/ccdep/src/wcdb/src/build/export_headers -isystem /root/vcpkg/installed/x64-linux/include -g -g -O0 -std=gnu++23 -o CMakeFiles/main.dir/im/base/LinkBuffer.cpp.o -c /root/project/ROCIM/im/base/LinkBuffer.cpp",
+  "command": "/usr/bin/g++-14 -DBOOST_CONTAINER_NO_LIB -DBOOST_CONTAINER_STATIC_LINK -DBOOST_CONTEXT_EXPORT=\"\" -DBOOST_CONTEXT_NO_LIB=\"\" -DBOOST_CONTEXT_STATIC_LINK=\"\" -DBOOST_DATE_TIME_NO_LIB -DBOOST_DATE_TIME_STATIC_LINK -DBOOST_JSON_NO_LIB=1 -DBOOST_JSON_STATIC_LINK=1 -I/root/project/ROCIM -I/root/ccdep/src/wcdb/src/build/export_headers -isystem /root/vcpkg/installed/x64-linux/include -g -g -O0 -std=gnu++23 -o CMakeFiles/main.dir/im/base/LinkBuffer.cpp.o -c /root/project/ROCIM/im/base/LinkBuffer.cpp",
   "file": "/root/project/ROCIM/im/base/LinkBuffer.cpp",
   "output": "CMakeFiles/main.dir/im/base/LinkBuffer.cpp.o"
 },
 {
   "directory": "/root/project/ROCIM/build",
-  "command": "/usr/bin/clang++-18 -DBOOST_CONTAINER_NO_LIB -DBOOST_CONTAINER_STATIC_LINK -DBOOST_CONTEXT_EXPORT=\"\" -DBOOST_CONTEXT_NO_LIB=\"\" -DBOOST_CONTEXT_STATIC_LINK=\"\" -DBOOST_DATE_TIME_NO_LIB -DBOOST_DATE_TIME_STATIC_LINK -DBOOST_JSON_NO_LIB=1 -DBOOST_JSON_STATIC_LINK=1 -I/root/project/ROCIM -I/root/ccdep/src/wcdb/src/build/export_headers -isystem /root/vcpkg/installed/x64-linux/include -g -g -O0 -std=gnu++23 -o CMakeFiles/main.dir/im/base/LongConnectionImpl.cpp.o -c /root/project/ROCIM/im/base/LongConnectionImpl.cpp",
+  "command": "/usr/bin/g++-14 -DBOOST_CONTAINER_NO_LIB -DBOOST_CONTAINER_STATIC_LINK -DBOOST_CONTEXT_EXPORT=\"\" -DBOOST_CONTEXT_NO_LIB=\"\" -DBOOST_CONTEXT_STATIC_LINK=\"\" -DBOOST_DATE_TIME_NO_LIB -DBOOST_DATE_TIME_STATIC_LINK -DBOOST_JSON_NO_LIB=1 -DBOOST_JSON_STATIC_LINK=1 -I/root/project/ROCIM -I/root/ccdep/src/wcdb/src/build/export_headers -isystem /root/vcpkg/installed/x64-linux/include -g -g -O0 -std=gnu++23 -o CMakeFiles/main.dir/im/base/LongConnectionImpl.cpp.o -c /root/project/ROCIM/im/base/LongConnectionImpl.cpp",
   "file": "/root/project/ROCIM/im/base/LongConnectionImpl.cpp",
   "output": "CMakeFiles/main.dir/im/base/LongConnectionImpl.cpp.o"
 },
 {
   "directory": "/root/project/ROCIM/build",
-  "command": "/usr/bin/clang++-18 -DBOOST_CONTAINER_NO_LIB -DBOOST_CONTAINER_STATIC_LINK -DBOOST_CONTEXT_EXPORT=\"\" -DBOOST_CONTEXT_NO_LIB=\"\" -DBOOST_CONTEXT_STATIC_LINK=\"\" -DBOOST_DATE_TIME_NO_LIB -DBOOST_DATE_TIME_STATIC_LINK -DBOOST_JSON_NO_LIB=1 -DBOOST_JSON_STATIC_LINK=1 -I/root/project/ROCIM -I/root/ccdep/src/wcdb/src/build/export_headers -isystem /root/vcpkg/installed/x64-linux/include -g -g -O0 -std=gnu++23 -o CMakeFiles/main.dir/im/base/ProtobufZeroCopyInputStream.cc.o -c /root/project/ROCIM/im/base/ProtobufZeroCopyInputStream.cc",
+  "command": "/usr/bin/g++-14 -DBOOST_CONTAINER_NO_LIB -DBOOST_CONTAINER_STATIC_LINK -DBOOST_CONTEXT_EXPORT=\"\" -DBOOST_CONTEXT_NO_LIB=\"\" -DBOOST_CONTEXT_STATIC_LINK=\"\" -DBOOST_DATE_TIME_NO_LIB -DBOOST_DATE_TIME_STATIC_LINK -DBOOST_JSON_NO_LIB=1 -DBOOST_JSON_STATIC_LINK=1 -I/root/project/ROCIM -I/root/ccdep/src/wcdb/src/build/export_headers -isystem /root/vcpkg/installed/x64-linux/include -g -g -O0 -std=gnu++23 -o CMakeFiles/main.dir/im/base/ProtobufZeroCopyInputStream.cc.o -c /root/project/ROCIM/im/base/ProtobufZeroCopyInputStream.cc",
   "file": "/root/project/ROCIM/im/base/ProtobufZeroCopyInputStream.cc",
   "output": "CMakeFiles/main.dir/im/base/ProtobufZeroCopyInputStream.cc.o"
 },
 {
   "directory": "/root/project/ROCIM/build",
-  "command": "/usr/bin/clang++-18 -DBOOST_CONTAINER_NO_LIB -DBOOST_CONTAINER_STATIC_LINK -DBOOST_CONTEXT_EXPORT=\"\" -DBOOST_CONTEXT_NO_LIB=\"\" -DBOOST_CONTEXT_STATIC_LINK=\"\" -DBOOST_DATE_TIME_NO_LIB -DBOOST_DATE_TIME_STATIC_LINK -DBOOST_JSON_NO_LIB=1 -DBOOST_JSON_STATIC_LINK=1 -I/root/project/ROCIM -I/root/ccdep/src/wcdb/src/build/export_headers -isystem /root/vcpkg/installed/x64-linux/include -g -g -O0 -std=gnu++23 -o CMakeFiles/main.dir/im/base/ProtobufZeroCopyOutStream.cc.o -c /root/project/ROCIM/im/base/ProtobufZeroCopyOutStream.cc",
+  "command": "/usr/bin/g++-14 -DBOOST_CONTAINER_NO_LIB -DBOOST_CONTAINER_STATIC_LINK -DBOOST_CONTEXT_EXPORT=\"\" -DBOOST_CONTEXT_NO_LIB=\"\" -DBOOST_CONTEXT_STATIC_LINK=\"\" -DBOOST_DATE_TIME_NO_LIB -DBOOST_DATE_TIME_STATIC_LINK -DBOOST_JSON_NO_LIB=1 -DBOOST_JSON_STATIC_LINK=1 -I/root/project/ROCIM -I/root/ccdep/src/wcdb/src/build/export_headers -isystem /root/vcpkg/installed/x64-linux/include -g -g -O0 -std=gnu++23 -o CMakeFiles/main.dir/im/base/ProtobufZeroCopyOutStream.cc.o -c /root/project/ROCIM/im/base/ProtobufZeroCopyOutStream.cc",
   "file": "/root/project/ROCIM/im/base/ProtobufZeroCopyOutStream.cc",
   "output": "CMakeFiles/main.dir/im/base/ProtobufZeroCopyOutStream.cc.o"
 },
 {
   "directory": "/root/project/ROCIM/build",
-  "command": "/usr/bin/clang++-18 -DBOOST_CONTAINER_NO_LIB -DBOOST_CONTAINER_STATIC_LINK -DBOOST_CONTEXT_EXPORT=\"\" -DBOOST_CONTEXT_NO_LIB=\"\" -DBOOST_CONTEXT_STATIC_LINK=\"\" -DBOOST_DATE_TIME_NO_LIB -DBOOST_DATE_TIME_STATIC_LINK -DBOOST_JSON_NO_LIB=1 -DBOOST_JSON_STATIC_LINK=1 -I/root/project/ROCIM -I/root/ccdep/src/wcdb/src/build/export_headers -isystem /root/vcpkg/installed/x64-linux/include -g -g -O0 -std=gnu++23 -o CMakeFiles/main.dir/im/base/lc/impl/ws/WSConnection.cc.o -c /root/project/ROCIM/im/base/lc/impl/ws/WSConnection.cc",
+  "command": "/usr/bin/g++-14 -DBOOST_CONTAINER_NO_LIB -DBOOST_CONTAINER_STATIC_LINK -DBOOST_CONTEXT_EXPORT=\"\" -DBOOST_CONTEXT_NO_LIB=\"\" -DBOOST_CONTEXT_STATIC_LINK=\"\" -DBOOST_DATE_TIME_NO_LIB -DBOOST_DATE_TIME_STATIC_LINK -DBOOST_JSON_NO_LIB=1 -DBOOST_JSON_STATIC_LINK=1 -I/root/project/ROCIM -I/root/ccdep/src/wcdb/src/build/export_headers -isystem /root/vcpkg/installed/x64-linux/include -g -g -O0 -std=gnu++23 -o CMakeFiles/main.dir/im/base/lc/impl/ws/WSConnection.cc.o -c /root/project/ROCIM/im/base/lc/impl/ws/WSConnection.cc",
   "file": "/root/project/ROCIM/im/base/lc/impl/ws/WSConnection.cc",
   "output": "CMakeFiles/main.dir/im/base/lc/impl/ws/WSConnection.cc.o"
 },
 {
   "directory": "/root/project/ROCIM/build",
-  "command": "/usr/bin/clang++-18 -DBOOST_CONTAINER_NO_LIB -DBOOST_CONTAINER_STATIC_LINK -DBOOST_CONTEXT_EXPORT=\"\" -DBOOST_CONTEXT_NO_LIB=\"\" -DBOOST_CONTEXT_STATIC_LINK=\"\" -DBOOST_DATE_TIME_NO_LIB -DBOOST_DATE_TIME_STATIC_LINK -DBOOST_JSON_NO_LIB=1 -DBOOST_JSON_STATIC_LINK=1 -I/root/project/ROCIM -I/root/ccdep/src/wcdb/src/build/export_headers -isystem /root/vcpkg/installed/x64-linux/include -g -g -O0 -std=gnu++23 -o CMakeFiles/main.dir/im/base/threadpool/ParallelQueue.cc.o -c /root/project/ROCIM/im/base/threadpool/ParallelQueue.cc",
+  "command": "/usr/bin/g++-14 -DBOOST_CONTAINER_NO_LIB -DBOOST_CONTAINER_STATIC_LINK -DBOOST_CONTEXT_EXPORT=\"\" -DBOOST_CONTEXT_NO_LIB=\"\" -DBOOST_CONTEXT_STATIC_LINK=\"\" -DBOOST_DATE_TIME_NO_LIB -DBOOST_DATE_TIME_STATIC_LINK -DBOOST_JSON_NO_LIB=1 -DBOOST_JSON_STATIC_LINK=1 -I/root/project/ROCIM -I/root/ccdep/src/wcdb/src/build/export_headers -isystem /root/vcpkg/installed/x64-linux/include -g -g -O0 -std=gnu++23 -o CMakeFiles/main.dir/im/base/threadpool/ParallelQueue.cc.o -c /root/project/ROCIM/im/base/threadpool/ParallelQueue.cc",
   "file": "/root/project/ROCIM/im/base/threadpool/ParallelQueue.cc",
   "output": "CMakeFiles/main.dir/im/base/threadpool/ParallelQueue.cc.o"
 },
 {
   "directory": "/root/project/ROCIM/build",
-  "command": "/usr/bin/clang++-18 -DBOOST_CONTAINER_NO_LIB -DBOOST_CONTAINER_STATIC_LINK -DBOOST_CONTEXT_EXPORT=\"\" -DBOOST_CONTEXT_NO_LIB=\"\" -DBOOST_CONTEXT_STATIC_LINK=\"\" -DBOOST_DATE_TIME_NO_LIB -DBOOST_DATE_TIME_STATIC_LINK -DBOOST_JSON_NO_LIB=1 -DBOOST_JSON_STATIC_LINK=1 -I/root/project/ROCIM -I/root/ccdep/src/wcdb/src/build/export_headers -isystem /root/vcpkg/installed/x64-linux/include -g -g -O0 -std=gnu++23 -o CMakeFiles/main.dir/im/base/threadpool/SerialQueue.cc.o -c /root/project/ROCIM/im/base/threadpool/SerialQueue.cc",
+  "command": "/usr/bin/g++-14 -DBOOST_CONTAINER_NO_LIB -DBOOST_CONTAINER_STATIC_LINK -DBOOST_CONTEXT_EXPORT=\"\" -DBOOST_CONTEXT_NO_LIB=\"\" -DBOOST_CONTEXT_STATIC_LINK=\"\" -DBOOST_DATE_TIME_NO_LIB -DBOOST_DATE_TIME_STATIC_LINK -DBOOST_JSON_NO_LIB=1 -DBOOST_JSON_STATIC_LINK=1 -I/root/project/ROCIM -I/root/ccdep/src/wcdb/src/build/export_headers -isystem /root/vcpkg/installed/x64-linux/include -g -g -O0 -std=gnu++23 -o CMakeFiles/main.dir/im/base/threadpool/SerialQueue.cc.o -c /root/project/ROCIM/im/base/threadpool/SerialQueue.cc",
   "file": "/root/project/ROCIM/im/base/threadpool/SerialQueue.cc",
   "output": "CMakeFiles/main.dir/im/base/threadpool/SerialQueue.cc.o"
 },
 {
   "directory": "/root/project/ROCIM/build",
-  "command": "/usr/bin/clang++-18 -DBOOST_CONTAINER_NO_LIB -DBOOST_CONTAINER_STATIC_LINK -DBOOST_CONTEXT_EXPORT=\"\" -DBOOST_CONTEXT_NO_LIB=\"\" -DBOOST_CONTEXT_STATIC_LINK=\"\" -DBOOST_DATE_TIME_NO_LIB -DBOOST_DATE_TIME_STATIC_LINK -DBOOST_JSON_NO_LIB=1 -DBOOST_JSON_STATIC_LINK=1 -I/root/project/ROCIM -I/root/ccdep/src/wcdb/src/build/export_headers -isystem /root/vcpkg/installed/x64-linux/include -g -g -O0 -std=gnu++23 -o CMakeFiles/main.dir/im/base/threadpool/ThreadPool.cc.o -c /root/project/ROCIM/im/base/threadpool/ThreadPool.cc",
+  "command": "/usr/bin/g++-14 -DBOOST_CONTAINER_NO_LIB -DBOOST_CONTAINER_STATIC_LINK -DBOOST_CONTEXT_EXPORT=\"\" -DBOOST_CONTEXT_NO_LIB=\"\" -DBOOST_CONTEXT_STATIC_LINK=\"\" -DBOOST_DATE_TIME_NO_LIB -DBOOST_DATE_TIME_STATIC_LINK -DBOOST_JSON_NO_LIB=1 -DBOOST_JSON_STATIC_LINK=1 -I/root/project/ROCIM -I/root/ccdep/src/wcdb/src/build/export_headers -isystem /root/vcpkg/installed/x64-linux/include -g -g -O0 -std=gnu++23 -o CMakeFiles/main.dir/im/base/threadpool/ThreadPool.cc.o -c /root/project/ROCIM/im/base/threadpool/ThreadPool.cc",
   "file": "/root/project/ROCIM/im/base/threadpool/ThreadPool.cc",
   "output": "CMakeFiles/main.dir/im/base/threadpool/ThreadPool.cc.o"
 },
 {
   "directory": "/root/project/ROCIM/build",
-  "command": "/usr/bin/clang++-18 -DBOOST_CONTAINER_NO_LIB -DBOOST_CONTAINER_STATIC_LINK -DBOOST_CONTEXT_EXPORT=\"\" -DBOOST_CONTEXT_NO_LIB=\"\" -DBOOST_CONTEXT_STATIC_LINK=\"\" -DBOOST_DATE_TIME_NO_LIB -DBOOST_DATE_TIME_STATIC_LINK -DBOOST_JSON_NO_LIB=1 -DBOOST_JSON_STATIC_LINK=1 -I/root/project/ROCIM -I/root/ccdep/src/wcdb/src/build/export_headers -isystem /root/vcpkg/installed/x64-linux/include -g -g -O0 -std=gnu++23 -o CMakeFiles/main.dir/im/sdk/model/LCModel.pb.cc.o -c /root/project/ROCIM/im/sdk/model/LCModel.pb.cc",
+  "command": "/usr/bin/g++-14 -DBOOST_CONTAINER_NO_LIB -DBOOST_CONTAINER_STATIC_LINK -DBOOST_CONTEXT_EXPORT=\"\" -DBOOST_CONTEXT_NO_LIB=\"\" -DBOOST_CONTEXT_STATIC_LINK=\"\" -DBOOST_DATE_TIME_NO_LIB -DBOOST_DATE_TIME_STATIC_LINK -DBOOST_JSON_NO_LIB=1 -DBOOST_JSON_STATIC_LINK=1 -I/root/project/ROCIM -I/root/ccdep/src/wcdb/src/build/export_headers -isystem /root/vcpkg/installed/x64-linux/include -g -g -O0 -std=gnu++23 -o CMakeFiles/main.dir/im/sdk/model/LCModel.pb.cc.o -c /root/project/ROCIM/im/sdk/model/LCModel.pb.cc",
   "file": "/root/project/ROCIM/im/sdk/model/LCModel.pb.cc",
   "output": "CMakeFiles/main.dir/im/sdk/model/LCModel.pb.cc.o"
 },
 {
   "directory": "/root/project/ROCIM/build",
-  "command": "/usr/bin/clang++-18 -DBOOST_CONTAINER_NO_LIB -DBOOST_CONTAINER_STATIC_LINK -DBOOST_CONTEXT_EXPORT=\"\" -DBOOST_CONTEXT_NO_LIB=\"\" -DBOOST_CONTEXT_STATIC_LINK=\"\" -DBOOST_DATE_TIME_NO_LIB -DBOOST_DATE_TIME_STATIC_LINK -DBOOST_JSON_NO_LIB=1 -DBOOST_JSON_STATIC_LINK=1 -I/root/project/ROCIM -I/root/ccdep/src/wcdb/src/build/export_headers -isystem /root/vcpkg/installed/x64-linux/include -g -g -O0 -std=gnu++23 -o CMakeFiles/main.dir/im/sdk/net/LCManager.cc.o -c /root/project/ROCIM/im/sdk/net/LCManager.cc",
+  "command": "/usr/bin/g++-14 -DBOOST_CONTAINER_NO_LIB -DBOOST_CONTAINER_STATIC_LINK -DBOOST_CONTEXT_EXPORT=\"\" -DBOOST_CONTEXT_NO_LIB=\"\" -DBOOST_CONTEXT_STATIC_LINK=\"\" -DBOOST_DATE_TIME_NO_LIB -DBOOST_DATE_TIME_STATIC_LINK -DBOOST_JSON_NO_LIB=1 -DBOOST_JSON_STATIC_LINK=1 -I/root/project/ROCIM -I/root/ccdep/src/wcdb/src/build/export_headers -isystem /root/vcpkg/installed/x64-linux/include -g -g -O0 -std=gnu++23 -o CMakeFiles/main.dir/im/sdk/net/LCManager.cc.o -c /root/project/ROCIM/im/sdk/net/LCManager.cc",
   "file": "/root/project/ROCIM/im/sdk/net/LCManager.cc",
   "output": "CMakeFiles/main.dir/im/sdk/net/LCManager.cc.o"
 },
 {
   "directory": "/root/project/ROCIM/build",
-  "command": "/usr/bin/clang++-18 -DBOOST_CONTAINER_NO_LIB -DBOOST_CONTAINER_STATIC_LINK -DBOOST_CONTEXT_EXPORT=\"\" -DBOOST_CONTEXT_NO_LIB=\"\" -DBOOST_CONTEXT_STATIC_LINK=\"\" -DBOOST_DATE_TIME_NO_LIB -DBOOST_DATE_TIME_STATIC_LINK -DBOOST_JSON_NO_LIB=1 -DBOOST_JSON_STATIC_LINK=1 -I/root/project/ROCIM -I/root/ccdep/src/wcdb/src/build/export_headers -isystem /root/vcpkg/installed/x64-linux/include -g -g -O0 -std=gnu++23 -o CMakeFiles/main.dir/im/sdk/net/UrlTraits.cc.o -c /root/project/ROCIM/im/sdk/net/UrlTraits.cc",
+  "command": "/usr/bin/g++-14 -DBOOST_CONTAINER_NO_LIB -DBOOST_CONTAINER_STATIC_LINK -DBOOST_CONTEXT_EXPORT=\"\" -DBOOST_CONTEXT_NO_LIB=\"\" -DBOOST_CONTEXT_STATIC_LINK=\"\" -DBOOST_DATE_TIME_NO_LIB -DBOOST_DATE_TIME_STATIC_LINK -DBOOST_JSON_NO_LIB=1 -DBOOST_JSON_STATIC_LINK=1 -I/root/project/ROCIM -I/root/ccdep/src/wcdb/src/build/export_headers -isystem /root/vcpkg/installed/x64-linux/include -g -g -O0 -std=gnu++23 -o CMakeFiles/main.dir/im/sdk/net/UrlTraits.cc.o -c /root/project/ROCIM/im/sdk/net/UrlTraits.cc",
   "file": "/root/project/ROCIM/im/sdk/net/UrlTraits.cc",
   "output": "CMakeFiles/main.dir/im/sdk/net/UrlTraits.cc.o"
 },
 {
   "directory": "/root/project/ROCIM/build",
-  "command": "/usr/bin/clang++-18 -DBOOST_CONTAINER_NO_LIB -DBOOST_CONTAINER_STATIC_LINK -DBOOST_CONTEXT_EXPORT=\"\" -DBOOST_CONTEXT_NO_LIB=\"\" -DBOOST_CONTEXT_STATIC_LINK=\"\" -DBOOST_DATE_TIME_NO_LIB -DBOOST_DATE_TIME_STATIC_LINK -DBOOST_JSON_NO_LIB=1 -DBOOST_JSON_STATIC_LINK=1 -I/root/project/ROCIM -I/root/ccdep/src/wcdb/src/build/export_headers -isystem /root/vcpkg/installed/x64-linux/include -g -g -O0 -std=gnu++23 -o CMakeFiles/main.dir/main.cpp.o -c /root/project/ROCIM/main.cpp",
+  "command": "/usr/bin/g++-14 -DBOOST_CONTAINER_NO_LIB -DBOOST_CONTAINER_STATIC_LINK -DBOOST_CONTEXT_EXPORT=\"\" -DBOOST_CONTEXT_NO_LIB=\"\" -DBOOST_CONTEXT_STATIC_LINK=\"\" -DBOOST_DATE_TIME_NO_LIB -DBOOST_DATE_TIME_STATIC_LINK -DBOOST_JSON_NO_LIB=1 -DBOOST_JSON_STATIC_LINK=1 -I/root/project/ROCIM -I/root/ccdep/src/wcdb/src/build/export_headers -isystem /root/vcpkg/installed/x64-linux/include -g -g -O0 -std=gnu++23 -o CMakeFiles/main.dir/main.cpp.o -c /root/project/ROCIM/main.cpp",
   "file": "/root/project/ROCIM/main.cpp",
   "output": "CMakeFiles/main.dir/main.cpp.o"
 }
